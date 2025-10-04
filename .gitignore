@@ -1,0 +1,12 @@
+# Macの余計なファイル
+.DS_Store
+
+# Node_modules（ライブラリ群）
+node_modules/
+
+# Sassのmapファイル（ブラウザ用デバッグだけ）
+*.map
+
+# 不要なCSS（もしscssフォルダ内に誤って生成される用）
+assets/scss/*.css
+assets/scss/*.css.map
