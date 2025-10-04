@@ -1,4 +1,139 @@
-.hero { background: yellow; min-height: 100vh; }
-.body {
-  background: lightyellow;
+/* ===== tokens ===== */
+$ink:   #0f5c5a;
+$cream: #f7f6f2;
+
+/* ===== animations ===== */
+@keyframes fadeUp     { to { opacity: 1; transform: translateY(0)   scale(1); } }
+@keyframes fadeIn     { to { opacity: 1; } }
+@keyframes cloudInR   { to { opacity: 1; transform: translateX(0); } }
+@keyframes cloudInL   { to { opacity: 1; transform: translateX(0); } }
+@keyframes rotateSlow { to { transform: rotate(360deg); } }
+
+/* ===== hero ===== */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  padding: clamp(24px, 6vw, 64px) clamp(16px, 5vw, 64px);
+  background: #fff;
+  isolation: isolate;      /* 重なりの独立 */
+  overflow: clip;
+
+  opacity: 0;              /* セクション全体をふわっと */
+  transform: translateY(8px) scale(.99);
+  animation: fadeUp .8s ease-out .05s forwards;
+
+  &__inner{
+    position: relative;
+    width: min(1200px, 100%);
+    margin-inline: auto;
+  }
+
+  /* 麻の葉の帯 */
+  &__band {
+    position: relative;
+    display: inline-block;
+    margin-top: clamp(12px, 3vw, 24px);
+    padding: clamp(16px, 2.6vw, 36px) clamp(18px, 3vw, 40px);
+    background:
+      url("../imgs/bg-line.png") center/auto 220px repeat;
+    background-color: $cream;
+    border-radius: 6px;
+    box-shadow: 0 2px 0 rgba(0,0,0,.04) inset;
+    z-index: 2;
+
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp .9s ease-out .18s forwards;
+  }
+
+  &__catch {
+    color: $ink;
+    font-family: "Noto Serif JP", serif;
+    font-weight: 700;
+    letter-spacing: .08em;
+    line-height: 1.9;
+    text-shadow: 0 2px 0 rgba(0,0,0,.06);
+    font-size: clamp(16px, 2.2vw, 24px);
+    margin: 0;
+  }
+
+  /* 七宝アイコン（帯の左上に浮かせる） */
+   &__shippou {
+    position: absolute;
+    left: clamp(8px, 8vw, 120px);
+    top: clamp(-18px, -2vw, -6px);
+    width: clamp(28px, 5vw, 56px);
+    aspect-ratio: 1;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-width: none; // ← これ重要！
+    }
+
+    opacity: 0;
+    animation: fadeIn .8s ease-out .28s forwards, rotateSlow 36s linear 1.2s infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: fadeIn .8s ease-out .28s forwards;
+    }
+  }
+
+  /* 木のイラスト（右下固定） */
+  &__tree {
+    position: absolute;
+    right: clamp(4px, 2vw, 40px);
+    bottom: clamp(-6px, -1vw, 0px);
+    width: min(38vw, 420px);
+    max-width: 100%;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,.08));
+    z-index: 1;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-width: none; // ← これ重要！
+    }
+
+    opacity: 0;
+    transform: translateY(12px) scale(.98);
+    animation: fadeUp .9s ease-out .28s forwards;
+  }
+
+  /* 雲（霞） */
+  &__cloud {
+    position: absolute;
+    width: min(34vw, 360px);
+    opacity: 0;
+    z-index: 0;
+
+
+    &--right {
+      right: clamp(0px, 2vw, 16px);
+      top: clamp(40px, 10vw, 160px);
+      transform: translateX(30px);
+      animation: cloudInR .9s ease-out .35s forwards;
+    }
+    &--left {
+      left: clamp(0px, 2vw, 16px);
+      top: clamp(220px, 22vw, 320px);
+      transform: translateX(-30px);
+      animation: cloudInL .9s ease-out .42s forwards;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-width: none; // ← これ重要！
+    }
+  }
+
+  /* 低モーション設定の配慮 */
+  @media (prefers-reduced-motion: reduce) {
+    &, &__band, &__tree { animation: none; opacity: 1; transform: none; }
+    &__shippou, &__cloud { animation: none; opacity: 1; transform: none; }
+  }
 }
