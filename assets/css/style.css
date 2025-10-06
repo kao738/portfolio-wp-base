@@ -15,6 +15,7 @@ body {
   color: #2f3a3a;
   background: #f9f7f1;
   font-family: "Noto Serif JP", system-ui, noto-serif;
+  font-weight: 600;
 }
 
 img {
@@ -30,28 +31,30 @@ a {
 
 /* ===== layout helpers ===== */
 .container {
-  max-width: 1120px;
+  max-width: var(--container); /* ← ここを変数に一本化 */
   margin: 0 auto;
-  padding: 0 20px;
+  padding-inline: 20px; /* 横だけに統一 */
 }
 
 .section {
-  padding: 72px 0;
+  padding: 120px 0;
 }
 
 /* ===== layout tokens ===== */
-:root {
-  --container: min(1200px, 92vw);
-  --header-h: 72px;
-}
-
 :target {
   scroll-margin-top: calc(var(--header-h, 72px) + 16px);
 }
 
 /* ===== header ===== */
 .site-header {
-  position: relative;
+  background: #f9f7f1;
+}
+
+.header-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-inline: 20px;
+  min-height: var(--header-h);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -61,8 +64,7 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 12px 20px;
-  background: #f9f7f1;
+  position: relative;
 }
 
 .site-header .logo {
@@ -141,84 +143,69 @@ a {
 
 /* ===== hero ===== */
 .hero {
-  position: relative;
-  height: 800px;
-  width: 100%;
-  overflow: clip;
-  /*min-height: 90vh; */
-  display: grid;
-  place-items: center;
-  /*padding-block: clamp(24px, 4vh, 56px);*/
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: 3rem;
-  /*height: clamp(60px, 8vw, 96px);*/
-  z-index: 0;
-  background: url("../imgs/bg-line.png") repeat-x center/auto 100%;
-  opacity: 1;
-}
-
-.hero .hero-inner {
-  position: relative;
-  z-index: 1;
+  background-color: #f9f7f1;
+  background-image: url("../imgs/bg-line.png");
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  background-size: auto 300px; /* 帯の高さはここ */
+  min-height: 600px; /* セクション全体の高さ */
+  padding: 40px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.hero-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 0 2rem;
-  width: var(--container);
-  margin-inline: auto;
-  grid-template-columns: 1.1fr 0.9fr; /* コピー大きめ、画像少し小さめ */
-  /*gap: clamp( 4vw);*/
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.hero .hero-copy {
-  font-family: "Noto Serif JP", serif;
-  font-size: clamp(20px, 2.2vw, 28px);
+.hero-copy {
+  max-width: 800px;
+}
+
+.hero-tagline {
+  font-size: 1.8rem;
+  line-height: 1.4;
   color: #245e62;
 }
 
-.hero .hero-tagline {
-  font-weight: 700;
-  /*line-height: 1.2;*/
-  font-size: 40px; /* ここ上げると一気に映える */
-  margin: 0;
-  font-family: "Noto Serif JP", serif;
-  line-height: 1.25;
-  letter-spacing: 0.02em;
-  /*max-width: 22ch; /* 行長を締めて読みやすく */
-  position: relative;
-  z-index: 1;
-  color: #245e62;
+.hero-visual img {
+  width: 200px; /* 木のサイズはここ */
+  height: auto;
+  display: block;
 }
 
-.hero .hero-visual {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-  width: auto;
-  max-width: none;
-  -webkit-transition: width 0.5s, -webkit-flex-basis 0.5s;
-  transition: width 0.5s, -webkit-flex-basis 0.5s;
-  transition: flex-basis 0.5s, width 0.5s;
-  transition: flex-basis 0.5s, width 0.5s, -webkit-flex-basis 0.5s, -ms-flex-preferred-size 0.5s;
+/* モバイル */
+@media (max-width: 768px) {
+  :root {
+    --hero-pad-y: 40px;
+    --band-h: clamp(160px, 40vw, 240px);
+    --tree-w: min(68vw, 320px); /* 木の幅を自動で少し小さく */
+  }
+  .hero .hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero .hero-visual {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 16px;
+  }
 }
-
-.hero .hero-visual img {
-  width: 369px; /* Figmaで測った数値そのまま */
-  max-width: none;
-}
-
 /* About 見出し行：タイトル＋フクロウを横並び */
 .about__header {
   position: relative;
@@ -425,6 +412,9 @@ a {
   position: relative; /* ← ::beforeでオーバーレイする時に必須 */
   padding: 80px 20px; /* 上下に余白をしっかり */
   background: url("assets/imgs/bg-full.png") no-repeat center/cover;
+  height: 900px; /* セクション全体の高さ */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .works::before {
@@ -555,8 +545,11 @@ a {
 }
 .swiper.belt {
   width: 100%;
-  padding: 32px 0;
-  background: transparent;
+  max-width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 16px 0;
 }
 
 .swiper-wrapper {
@@ -565,20 +558,43 @@ a {
           align-items: center;
 }
 
+.swiper-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 8px 2px;
+}
+
+.swiper-slide img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+}
+
 .swiper-pagination {
-  margin-top: 12px;
+  margin-top: 6px;
   text-align: center;
 }
 
 .swiper-button-prev,
 .swiper-button-next {
-  color: #245e62;
+  color: #f0c75e;
   background: #fff;
   border-radius: 50%;
-  -webkit-box-shadow: 0 2px 8px rgba(36, 94, 98, 0.1);
-          box-shadow: 0 2px 8px rgba(36, 94, 98, 0.1);
-  width: 40px;
-  height: 40px;
+  -webkit-box-shadow: 0 2px 8px #f0c75e;
+          box-shadow: 0 2px 8px #f0c75e;
+  width: 20px;
+  height: 20px;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -605,10 +621,10 @@ a {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    padding: 12px 4px;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    padding: 8px 2px;
   }
 }
 @media (max-width: 480px) {
@@ -616,7 +632,12 @@ a {
     padding: 16px 0;
   }
   .swiper-slide img {
-    max-width: 100%;
+    max-width: 120px;
+    height: auto;
+    border-radius: 8px;
+  }
+  .swiper-slide {
+    padding: 8px 2px;
   }
 }
 /* ===== animation ===== */

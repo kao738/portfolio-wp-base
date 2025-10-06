@@ -34,3 +34,34 @@
     if (window.innerWidth > bp) close();
   });
 })();
+
+(() => {
+  // ...既存のヘッダー・メニューのコード...
+})();
+
+<script>
+  const swiper = new Swiper('.swiper.belt', {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 24,
+    speed: 6000, // スライドの移動速度（ms）を大きく
+    autoplay: {
+      delay: 0, // 0で常に流れる
+      disableOnInteraction: false
+    },
+    freeMode: true, // スライドを止めずに流す
+    grabCursor: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    breakpoints: {
+      640: { slidesPerView: 2 },
+      1024: { slidesPerView: 6 }
+    }
+  });
+</script>
