@@ -1,0 +1,162 @@
+/* ==========================
+   Services Sandbox (隔離)
+   ========================== */
+
+/* カラートークン（必要なら調整） */
+$ink:            #0f172a;
+$muted:          #475569;
+$circle-bg:      #ffffff;
+$accent-1:       #2a8a84; // デザイン
+$accent-2:       #1673b1; // コーディング
+$accent-3:       #0b8a6a; // 伴走
+
+/* レイアウト用ラッパ（ページ余白） */
+.sandbox-wrap {
+  padding: clamp(16px, 4vw, 40px);
+  background: #e6f0e9; // 薄萌葱の背景トーンに寄せた薄めグリーン
+  min-height: 100svh;
+  font-family: NotoSerifJP, serif;
+  color: $ink;
+}
+
+/* セクション本体（隔離用に全てプレフィックス） */
+
+/* セクション本体（隔離用に全てプレフィックス） */
+.services-sandbox {
+  --circle-size: clamp(180px, 26vw, 260px);
+
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(56px, 10vw, 96px);
+  padding-bottom: clamp(32px, 8vw, 72px);
+
+  /* ========== タイトル：右寄せ ========== */
+  .services__title-block {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: clamp(22px, 2.8vw, 36px);
+    text-align: right;
+
+    .section-title {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-weight: 800;
+      font-size: clamp(24px, 2vw, 46px);
+
+      .section-icon { height: clamp(18px, 2.1vw, 28px); width: auto; }
+    }
+  }
+
+  /* ========== 説明：中央寄せ ========== */
+  .services__description-block {
+   
+    display: flex;
+    justify-content: center; /* ブロック全体を中央寄せ */ 
+    text-align: center;
+    margin-top: .75rem;
+    margin-bottom: 1.5rem;
+
+    .section-description {
+      max-width: 40ch;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-size: clamp(13px, 1.3vw, 15px);
+      color: #324a5b;
+      text-align: left;
+    }
+  }
+
+  /* ========== カードのグリッド（ここを基準に雲も置く） ========== */
+  .service-grid {
+    position: relative; /* ★ 雲のposition基準にする */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    gap: clamp(24px, 5vw, 48px);
+    max-width: 1100px;
+    margin: 0 auto;
+    z-index: 1;
+  }
+
+  /* ========== カード（丸） ========== */
+  .card {
+    width: var(--circle-size);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: $circle-bg;
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    padding: clamp(16px, 2.4vw, 22px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    transition: transform .25s ease, box-shadow .25s ease;
+    height: auto !important;
+    max-width: none !important;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0,0,0,.12);
+    }
+
+    .card-icon  { width: clamp(40px, 7vw, 56px); height: auto; margin-bottom: .4rem; }
+    .card-title { font-weight: 800; font-size: clamp(15px, 1.6vw, 18px); margin-bottom: .2rem; }
+    .card-text  { font-size: clamp(13px, 1.3vw, 15px); line-height: 1.6; color: $muted; }
+    .card-more  { margin-top: auto; font-size: .92rem; text-decoration: none; color: inherit; }
+  }
+
+  /* タイトルのアクセント色 */
+  .is-design  .card-title { color: $accent-1; }
+  .is-coding  .card-title { color: $accent-2; }
+  .is-training .card-title { color: $accent-3; }
+
+  /* ========== 雲（グリッド相対） ========== */
+  .service-grid .cloud {
+    position: absolute;
+    opacity: .85;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,.05));
+    width: clamp(80px, 12vw, 160px);
+    height: auto;
+    z-index: 0; /* カードの背面にしたいなら0、前面は2などに */
+  }
+
+  /* 上の雲：グリッドの“上・左” */
+  .service-grid .cloud--top {
+    left: 0;          /* 端ぴったり。スキマが見えたら left:-6px; に */
+    top: -56px;       /* カード列の上へ（好みで -48px 〜 -80px で調整） */
+    transform: none;
+  }
+
+  /* 下の雲：グリッドの“下・右”（垂直反転） */
+  .service-grid .cloud--bottom {
+    right: 0;         /* 端ぴったり。スキマが見えたら right:-6px; に */
+    bottom: -56px;    /* カード列の下へ */
+    transform: scaleY(-1);
+  }
+
+  /* ========== レスポンシブ ========== */
+  @media (max-width: 900px) {
+    .services__title-block { text-align: center; }
+    .service-grid { grid-template-columns: 1fr; }
+
+    .service-grid .cloud {
+      width: clamp(90px, 30vw, 160px);
+      opacity: .28;
+    }
+    .service-grid .cloud--top {
+      left: 50%; right: auto; top: -48px; transform: translateX(-50%);
+    }
+    .service-grid .cloud--bottom {
+      right: auto; left: 50%; bottom: -48px; transform: translateX(-50%) scaleY(-1);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .service-grid { grid-template-columns: 1fr; } /* 念のため二重化 */
+  }
+}
+.services-sandbox .services__title-block .section-title { font-size: 40px !important; }

@@ -1,0 +1,204 @@
+@charset "UTF-8";
+/* ==========================
+   Services Sandbox (隔離)
+   ========================== */
+/* カラートークン（必要なら調整） */
+/* レイアウト用ラッパ（ページ余白） */
+.sandbox-wrap {
+  padding: clamp(16px, 4vw, 40px);
+  background: #e6f0e9;
+  min-height: 100svh;
+  font-family: NotoSerifJP, serif;
+  color: #0f172a;
+}
+
+/* セクション本体（隔離用に全てプレフィックス） */
+/* セクション本体（隔離用に全てプレフィックス） */
+.services-sandbox {
+  --circle-size: clamp(180px, 26vw, 260px);
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(56px, 10vw, 96px);
+  padding-bottom: clamp(32px, 8vw, 72px);
+  /* ========== タイトル：右寄せ ========== */
+  /* ========== 説明：中央寄せ ========== */
+  /* ========== カードのグリッド（ここを基準に雲も置く） ========== */
+  /* ========== カード（丸） ========== */
+  /* タイトルのアクセント色 */
+  /* ========== 雲（グリッド相対） ========== */
+  /* 上の雲：グリッドの“上・左” */
+  /* 下の雲：グリッドの“下・右”（垂直反転） */
+  /* ========== レスポンシブ ========== */
+}
+.services-sandbox .services__title-block {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: clamp(22px, 2.8vw, 36px);
+  text-align: right;
+}
+.services-sandbox .services__title-block .section-title {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.45rem;
+  font-weight: 800;
+  font-size: clamp(24px, 2vw, 46px);
+}
+.services-sandbox .services__title-block .section-title .section-icon {
+  height: clamp(18px, 2.1vw, 28px);
+  width: auto;
+}
+.services-sandbox .services__description-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; /* ブロック全体を中央寄せ */
+  text-align: center;
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.services-sandbox .services__description-block .section-description {
+  max-width: 40ch;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-size: clamp(13px, 1.3vw, 15px);
+  color: #324a5b;
+  text-align: left;
+}
+.services-sandbox .service-grid {
+  position: relative; /* ★ 雲のposition基準にする */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  gap: clamp(24px, 5vw, 48px);
+  max-width: 1100px;
+  margin: 0 auto;
+  z-index: 1;
+}
+.services-sandbox .card {
+  width: var(--circle-size);
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: #ffffff;
+  -webkit-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: clamp(16px, 2.4vw, 22px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  -webkit-transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  height: auto !important;
+  max-width: none !important;
+}
+.services-sandbox .card:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+.services-sandbox .card .card-icon {
+  width: clamp(40px, 7vw, 56px);
+  height: auto;
+  margin-bottom: 0.4rem;
+}
+.services-sandbox .card .card-title {
+  font-weight: 800;
+  font-size: clamp(15px, 1.6vw, 18px);
+  margin-bottom: 0.2rem;
+}
+.services-sandbox .card .card-text {
+  font-size: clamp(13px, 1.3vw, 15px);
+  line-height: 1.6;
+  color: #475569;
+}
+.services-sandbox .card .card-more {
+  margin-top: auto;
+  font-size: 0.92rem;
+  text-decoration: none;
+  color: inherit;
+}
+.services-sandbox .is-design .card-title {
+  color: #2a8a84;
+}
+.services-sandbox .is-coding .card-title {
+  color: #1673b1;
+}
+.services-sandbox .is-training .card-title {
+  color: #0b8a6a;
+}
+.services-sandbox .service-grid .cloud {
+  position: absolute;
+  opacity: 0.85;
+  pointer-events: none;
+  -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.05));
+          filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.05));
+  width: clamp(80px, 12vw, 160px);
+  height: auto;
+  z-index: 0; /* カードの背面にしたいなら0、前面は2などに */
+}
+.services-sandbox .service-grid .cloud--top {
+  left: 0; /* 端ぴったり。スキマが見えたら left:-6px; に */
+  top: -56px; /* カード列の上へ（好みで -48px 〜 -80px で調整） */
+  -webkit-transform: none;
+          transform: none;
+}
+.services-sandbox .service-grid .cloud--bottom {
+  right: 0; /* 端ぴったり。スキマが見えたら right:-6px; に */
+  bottom: -56px; /* カード列の下へ */
+  -webkit-transform: scaleY(-1);
+          transform: scaleY(-1);
+}
+@media (max-width: 900px) {
+  .services-sandbox .services__title-block {
+    text-align: center;
+  }
+  .services-sandbox .service-grid {
+    grid-template-columns: 1fr;
+  }
+  .services-sandbox .service-grid .cloud {
+    width: clamp(90px, 30vw, 160px);
+    opacity: 0.28;
+  }
+  .services-sandbox .service-grid .cloud--top {
+    left: 50%;
+    right: auto;
+    top: -48px;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  .services-sandbox .service-grid .cloud--bottom {
+    right: auto;
+    left: 50%;
+    bottom: -48px;
+    -webkit-transform: translateX(-50%) scaleY(-1);
+            transform: translateX(-50%) scaleY(-1);
+  }
+}
+@media (max-width: 600px) {
+  .services-sandbox { /* 念のため二重化 */ }
+  .services-sandbox .service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.services-sandbox .services__title-block .section-title {
+  font-size: 40px !important;
+}/*# sourceMappingURL=sandbox.css.map */

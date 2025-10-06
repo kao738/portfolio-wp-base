@@ -2,7 +2,8 @@
 /* ===== variables ===== */
 /* ===== base ===== */
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html {
@@ -51,12 +52,19 @@ a {
 /* ===== header ===== */
 .site-header {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 12px 20px;
   background: #f9f7f1;
 }
+
 .site-header .logo {
   font-family: "Noto Serif JP", serif;
   font-size: 2rem;
@@ -64,6 +72,7 @@ a {
   color: #245e62;
   margin: 0;
 }
+
 .site-header .hamburger {
   display: none;
   background: none;
@@ -71,6 +80,7 @@ a {
   cursor: pointer;
   z-index: 200;
 }
+
 .site-header .hamburger span {
   display: block;
   width: 24px;
@@ -78,38 +88,54 @@ a {
   background: #333;
   margin-bottom: 4px;
 }
+
 .site-header .hamburger span:last-child {
   margin-bottom: 0;
 }
+
 .site-header .site-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .site-header .site-nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 2rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
 .site-header .site-nav ul li a {
   text-decoration: none;
   color: #245e62;
   font-weight: 700;
 }
+
 .site-header .site-nav.is-open {
   display: block;
   position: absolute;
   top: 60px;
   right: 20px;
   background: #f9f7f1;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   padding: 1.5rem 2rem;
   border-radius: 8px;
   z-index: 100;
 }
+
 .site-header .site-nav.is-open ul {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 1.5rem;
 }
 
@@ -124,6 +150,7 @@ a {
   place-items: center;
   /*padding-block: clamp(24px, 4vh, 56px);*/
 }
+
 .hero::before {
   content: "";
   position: absolute;
@@ -135,23 +162,32 @@ a {
   background: url("../imgs/bg-line.png") repeat-x center/auto 100%;
   opacity: 1;
 }
+
 .hero .hero-inner {
   position: relative;
   z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 0 2rem;
   width: var(--container);
   margin-inline: auto;
   grid-template-columns: 1.1fr 0.9fr; /* コピー大きめ、画像少し小さめ */
   /*gap: clamp( 4vw);*/
 }
+
 .hero .hero-copy {
   font-family: "Noto Serif JP", serif;
   font-size: clamp(20px, 2.2vw, 28px);
   color: #245e62;
 }
+
 .hero .hero-tagline {
   font-weight: 700;
   /*line-height: 1.2;*/
@@ -165,12 +201,19 @@ a {
   z-index: 1;
   color: #245e62;
 }
+
 .hero .hero-visual {
-  flex: 0 0 auto;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
   width: auto;
   max-width: none;
+  -webkit-transition: width 0.5s, -webkit-flex-basis 0.5s;
+  transition: width 0.5s, -webkit-flex-basis 0.5s;
   transition: flex-basis 0.5s, width 0.5s;
+  transition: flex-basis 0.5s, width 0.5s, -webkit-flex-basis 0.5s, -ms-flex-preferred-size 0.5s;
 }
+
 .hero .hero-visual img {
   width: 369px; /* Figmaで測った数値そのまま */
   max-width: none;
@@ -180,9 +223,15 @@ a {
 .about__header {
   position: relative;
   z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 0 5rem;
   gap: 16px;
   margin: 0 0 24px;
@@ -201,8 +250,12 @@ a {
   height: 80px;
   display: inline-block;
   border-radius: 50%;
+  -webkit-transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
 }
+
 .about__to-top img {
   width: 100%;
   height: auto;
@@ -211,8 +264,10 @@ a {
 
 .about__to-top:hover,
 .about__to-top:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .about__profile {
@@ -220,8 +275,12 @@ a {
   display: grid;
   grid-template-columns: 32% 62%;
   gap: 1.2rem;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 4rem auto;
 }
 
@@ -229,7 +288,8 @@ a {
   width: 240px;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .profile__name {
@@ -242,7 +302,8 @@ a {
   max-width: 38ch;
   font-size: 16px;
   line-height: 1.7;
-  hyphens: auto;
+  -ms-hyphens: auto;
+      hyphens: auto;
   word-break: normal;
   overflow-wrap: anywhere;
   text-wrap: pretty;
@@ -260,21 +321,28 @@ a {
   }
 }
 .about__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 2rem;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-top: 2rem;
 }
+
 .about__section-title {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
   color: #245e62;
 }
+
 .about__strength-image {
   max-width: 100%;
   height: auto;
   display: block;
 }
+
 .about__skills-list {
   list-style: none;
   padding: 0;
@@ -283,6 +351,7 @@ a {
   gap: 0.75rem;
   color: #245e62;
 }
+
 .about__skills-item {
   text-align: center;
   padding: 0.6rem 0.9rem;
@@ -292,9 +361,11 @@ a {
   font-size: 0.5rem;
   font-family: sans-serif;
 }
+
 .about {
   /* 例：注目させたい時のmodifier */
 }
+
 .about__skills-item--highlight {
   outline: 2px solid #6aa38a;
   font-weight: 600;
@@ -302,8 +373,12 @@ a {
 }
 
 .about__cta {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   margin-top: 2rem;
   margin-bottom: 6rem;
   padding-right: 80px;
@@ -316,6 +391,7 @@ a {
   font-weight: 600;
   text-decoration: none;
   border-radius: 9999px;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -326,6 +402,7 @@ a {
   color: #f0c75e;
   background: transparent;
 }
+
 .btn--outline:hover {
   background: #f0c75e;
   color: #fff;
@@ -337,6 +414,7 @@ a {
   color: #fff;
   border: 1px solid #f0c75e;
 }
+
 .btn--contact:hover {
   background: #e0b24e;
   border-color: #e0b24e;
@@ -359,9 +437,15 @@ a {
 .works__header {
   position: relative;
   z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 0 5rem;
   gap: 16px;
   margin: 0 0 24px;
@@ -381,8 +465,12 @@ a {
   height: 80px;
   display: inline-block;
   border-radius: 50%;
+  -webkit-transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
 }
+
 .works__to-top img {
   width: 100%;
   height: auto;
@@ -391,8 +479,10 @@ a {
 
 .works__to-top:hover,
 .works__to-top:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 /* 汎用ボタン（前に作ったパターン） */
@@ -402,6 +492,7 @@ a {
   font-weight: 600;
   text-decoration: none;
   border-radius: 9999px;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
   cursor: pointer;
 }
@@ -441,6 +532,7 @@ a {
   /* ここに .works__footer が入っていれば自然に中央ど真ん中に */
   /* Worksフッター（中央・余白・区切り線で “終わり感”） */
 }
+
 .works__inner .works__footer {
   display: grid;
   place-items: center;
@@ -461,126 +553,121 @@ a {
     padding: 24px 0;
   }
 }
-/* Works無限ループ */
-.belt {
-  --belt-height: 180px; /* 高さ（画像の見せ幅） */
-  --belt-gap: 16px; /* アイテム間の隙間 */
-  --belt-speed: 40s; /* 流れる速さ（小さいほど速い） */
-}
-.belt .belt__item {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.belt .belt__item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-.belt .belt__link {
-  position: relative;
-  display: block;
-  height: 100%;
-}
-.belt .belt__link img {
-  display: block;
+.swiper.belt {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-}
-.belt .belt__link .belt__caption {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: 12px;
-}
-.belt .belt__link:hover .belt__caption {
-  opacity: 1;
-}
-.belt__viewport {
-  overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
-  margin-bottom: 8rem;
-}
-.belt__track {
-  display: flex;
-  gap: var(--belt-gap);
-  height: var(--belt-height);
-  /* 2周分=内容幅の200%を左へ流す */
-  width: max-content; /* 中身分だけの幅 */
-  animation: belt-scroll var(--belt-speed) linear infinite;
-}
-.belt__item {
-  flex: 0 0 auto;
-  height: 100%;
-  aspect-ratio: 4/3; /* サムネ比率。必要に応じて変更 */
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-}
-.belt__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.belt {
-  /* ホバーで一時停止（PC想定） */
-}
-.belt:hover .belt__track {
-  animation-play-state: paused;
+  padding: 32px 0;
+  background: transparent;
 }
 
-/* 無限ループのコア */
-@keyframes belt-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  } /* ちょうど2周の半分=つなぎ目なし */
+.swiper-wrapper {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-/* モバイルは高さ少し低めに */
-@media (max-width: 600px) {
-  .belt {
-    --belt-height: 140px;
-    --belt-gap: 10px;
+
+.swiper-pagination {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #245e62;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 2px 8px rgba(36, 94, 98, 0.1);
+          box-shadow: 0 2px 8px rgba(36, 94, 98, 0.1);
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: #f0c75e;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .swiper-slide img {
+    max-width: 140px;
+  }
+  .swiper-slide {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 12px 4px;
   }
 }
-/* 動きが苦手な人向け */
-@media (prefers-reduced-motion: reduce) {
-  .belt__track {
-    animation: none;
+@media (max-width: 480px) {
+  .swiper.belt {
+    padding: 16px 0;
+  }
+  .swiper-slide img {
+    max-width: 100%;
   }
 }
 /* ===== animation ===== */
 .animate-title {
-  transform: scale(5);
+  -webkit-transform: scale(5);
+          transform: scale(5);
   opacity: 0;
-  animation: titlePop 6s ease-out forwards;
+  -webkit-animation: titlePop 6s ease-out forwards;
+          animation: titlePop 6s ease-out forwards;
+}
+
+@-webkit-keyframes titlePop {
+  0% {
+    -webkit-transform: scale(5);
+            transform: scale(5);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes titlePop {
   0% {
-    transform: scale(5);
+    -webkit-transform: scale(5);
+            transform: scale(5);
     opacity: 0;
   }
   100% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
     opacity: 1;
   }
 }
 .animate-nav {
   opacity: 0;
-  animation: navFadeIn 0.8s ease-out forwards;
-  animation-delay: 3s;
+  -webkit-animation: navFadeIn 0.8s ease-out forwards;
+          animation: navFadeIn 0.8s ease-out forwards;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+
+@-webkit-keyframes navFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes navFadeIn {
@@ -603,17 +690,30 @@ a {
     padding-block: 40px;
   }
   .hero .hero-inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center gap 24px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center gap 24px;
+        -ms-flex-pack: center gap 24px;
+            justify-content: center gap 24px;
     text-align: center;
   }
   .hero .hero-visual {
-    flex-basis: auto;
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
     width: auto;
     min-width: none;
+    -webkit-transition: width 0.5s, -webkit-flex-basis 0.5s;
+    transition: width 0.5s, -webkit-flex-basis 0.5s;
     transition: flex-basis 0.5s, width 0.5s;
+    transition: flex-basis 0.5s, width 0.5s, -webkit-flex-basis 0.5s, -ms-flex-preferred-size 0.5s;
   }
   .hero .hero-visual img {
     width: min(72vw, 420px);
@@ -650,6 +750,7 @@ a {
     background: #333;
     margin-bottom: 6px;
     border-radius: 1px;
+    -webkit-transition: all 0.3s cubic-bezier(0.4, 2, 0.6, 1);
     transition: all 0.3s cubic-bezier(0.4, 2, 0.6, 1);
     position: relative;
   }
@@ -657,14 +758,17 @@ a {
     margin-bottom: 0;
   }
   .site-header.is-open .hamburger span:nth-child(1) {
-    transform: translateY(12px) rotate(45deg);
+    -webkit-transform: translateY(12px) rotate(45deg);
+            transform: translateY(12px) rotate(45deg);
   }
   .site-header.is-open .hamburger span:nth-child(2) {
     opacity: 0;
-    transform: scaleX(0.5);
+    -webkit-transform: scaleX(0.5);
+            transform: scaleX(0.5);
   }
   .site-header.is-open .hamburger span:nth-child(3) {
-    transform: translateY(-12px) rotate(-45deg);
+    -webkit-transform: translateY(-12px) rotate(-45deg);
+            transform: translateY(-12px) rotate(-45deg);
   }
   .site-header .site-nav {
     display: none;
@@ -672,63 +776,300 @@ a {
     top: 60px;
     right: 20px;
     background: #f9f7f1;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     padding: 1.5rem 2rem;
     border-radius: 8px;
     z-index: 100;
   }
   .site-header .site-nav ul {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     gap: 1.5rem;
   }
   .site-header .site-nav.is-open {
     display: block;
   }
   .site-header .about__head {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     text-align: center;
     padding: 0 1rem;
   }
 }
-/* --- 寿司ベルトのオーバーレイ最終形（上書き用） --- */
-.belt__item {
-  position: relative; /* ← これが土台。captionの基準にする */
-  overflow: hidden;
-  border-radius: 12px;
-  height: 100%;
-}
-
-.belt__item img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* Services */
+/* セクション外枠 */
+/* ========== Service Section (production) ========== */
+.services {
+  --circle-size: clamp(180px, 26vw, 260px); /* 丸を“元の大きめ”に */
   position: relative;
-  z-index: 1; /* 画像は下 */
+  overflow: hidden; /* 雲のはみ出し防止 */
+  background: #e8f0e9;
+  padding-top: clamp(56px, 10vw, 96px);
+  padding-bottom: clamp(32px, 8vw, 72px);
+  /* タイトル：右寄せ（フォント大きめに） */
+  /* 説明：左揃え＋中央配置 */
+  /* カードのグリッド（雲の基準） */
+  /* カード（丸） */
+  /* アクセント色 */
+  /* 雲（グリッド相対） */
+  /* レスポンシブ */
 }
-
-.belt__caption {
-  position: absolute;
-  inset: 0; /* 全面にかぶせる */
+.services .services__title-block {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 4vw, 40px);
+  text-align: right;
+}
+.services .services__title-block .section-title {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.5rem;
+  font-weight: 800;
+  font-size: clamp(22px, 2.8vw, 36px); /* ← 上限UPで効かせる */
+  line-height: 1.2;
+  margin: 0;
+}
+.services .services__title-block .section-title .section-icon {
+  height: 1.1em;
+  width: auto;
+}
+.services .services__description-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; /* ブロックを中央へ */
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.services .services__description-block .section-description {
+  text-align: left; /* 左揃え */
+  line-height: 1.7;
+  font-size: clamp(13px, 1.3vw, 15px);
+  color: #324a5b;
+  margin: 0;
+}
+.services .service-grid {
+  position: relative; /* 雲のposition基準 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  gap: clamp(24px, 5vw, 48px);
+  max-width: 1100px;
+  margin: 0 auto;
+  z-index: 1;
+}
+.services .card {
+  width: var(--circle-size);
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: #fff;
+  -webkit-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: clamp(16px, 2.4vw, 22px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
-  color: #fff;
-  font-weight: 700;
-  background: rgba(0, 0, 0, 0.45);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  z-index: 2; /* キャプションを前面に */
-  pointer-events: none; /* クリックは下の<a>に通す */
-  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  -webkit-transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
+}
+.services .card:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+.services .card .card-icon {
+  width: clamp(40px, 7vw, 56px);
+  height: auto;
+  margin-bottom: 0.4rem;
+}
+.services .card .card-title {
+  font-weight: 800;
+  font-size: clamp(15px, 1.6vw, 18px);
+  margin-bottom: 0.2rem;
+  min-height: 1.9em;
+}
+.services .card .card-text {
+  font-size: clamp(13px, 1.3vw, 15px);
+  line-height: 1.6;
+  color: #475569;
+  max-width: 32ch;
+}
+.services .card .card-more {
+  margin-top: auto;
+  font-size: 0.92rem;
+  text-decoration: none;
+  color: inherit;
+}
+@media (max-width: 900px) {
+  .services .card .services__title-block {
+    text-align: center;
+  }
+  .services .card .service-grid {
+    grid-template-columns: 1fr;
+  }
+  .services .card .section-title {
+    font-size: clamp(18px, 5vw, 28px);
+  }
+}
+@media (max-width: 600px) {
+  .services .card .card {
+    width: 80%;
+    margin-inline: auto;
+  }
+  .services .card .card-text {
+    font-size: clamp(11px, 3vw, 14px);
+  }
+}
+.services .is-design .card-title {
+  color: #2a8a84;
+}
+.services .is-coding .card-title {
+  color: #1673b1;
+}
+.services .is-training .card-title {
+  color: #0b8a6a;
+}
+.services .service-grid .cloud {
+  position: absolute;
+  opacity: 0.85;
+  pointer-events: none;
+  -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.05));
+          filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.05));
+  width: clamp(80px, 12vw, 160px);
+  height: auto;
+  z-index: 0; /* 背面 */
+}
+.services .service-grid .cloud--top {
+  left: 0;
+  top: -56px;
+  -webkit-transform: none;
+          transform: none; /* 端ピタ：ズレたら left:-6px; に */
+}
+.services .service-grid .cloud--bottom {
+  right: 0;
+  bottom: -56px;
+  -webkit-transform: scaleY(-1);
+          transform: scaleY(-1); /* 反転 */
+}
+@media (max-width: 900px) {
+  .services .services__title-block {
+    text-align: center;
+  }
+  .services .service-grid {
+    grid-template-columns: 1fr;
+  }
+  .services .service-grid .cloud {
+    width: clamp(90px, 30vw, 160px);
+    opacity: 0.28;
+  }
+  .services .service-grid .cloud--top {
+    left: 50%;
+    right: auto;
+    top: -40px;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  .services .service-grid .cloud--bottom {
+    right: auto;
+    left: 50%;
+    bottom: -40px;
+    -webkit-transform: translateX(-50%) scaleY(-1);
+            transform: translateX(-50%) scaleY(-1);
+  }
 }
 
-/* ホバー or キーボードフォーカスで表示 */
-.belt__item:hover .belt__caption,
-.belt__item:focus-within .belt__caption {
-  opacity: 1;
+/* Service cards: テキストを確実に小さくできるよう下限を下げる */
+.services .service-grid .card .card-title {
+  font-size: clamp(6px, 0.7vw, 12px);
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+  min-height: 1.5em;
 }
 
-/*# sourceMappingURL=style.css.map */
+.services .service-grid .card .card-text {
+  font-size: clamp(5px, 0.6vw, 10px);
+  line-height: 1.4;
+  margin-inline: auto;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-break: strict;
+}
+
+/* Contact */
+.contact {
+  padding: 80px 20px;
+  background: url("../img/bg-asanoha.png") repeat;
+  text-align: center;
+}
+.contact__title {
+  font-size: 2rem;
+  color: #134b4f;
+  margin-bottom: 1rem;
+}
+.contact__lead {
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.c-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+.c-form label {
+  text-align: left;
+  font-weight: 600;
+}
+.c-form input, .c-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  font: inherit;
+}
+.c-form input:focus, .c-form textarea:focus {
+  outline: 2px solid #6aa89b;
+  background: #fff;
+}
+.c-form button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 999px;
+  background: #ffeaa7;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.c-form button:hover {
+  opacity: 0.9;
+}/*# sourceMappingURL=style.css.map */
