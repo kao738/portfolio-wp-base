@@ -1,26 +1,29 @@
+// =======================
+// 🌟 ハンバーガーメニュー
+// =======================
 (() => {
   const header = document.querySelector('.site-header');
   const button = document.querySelector('.hamburger');
   const nav    = document.getElementById('site-menu');
-
   if (!header || !button || !nav) return;
 
   const open = () => {
     header.classList.add('is-open');
-    nav.classList.add('is-open'); // ←追加
+    nav.classList.add('is-open');
     document.body.classList.add('scroll-lock');
     button.setAttribute('aria-expanded', 'true');
   };
+
   const close = () => {
     header.classList.remove('is-open');
-    nav.classList.remove('is-open'); // ←追加
+    nav.classList.remove('is-open');
     document.body.classList.remove('scroll-lock');
     button.setAttribute('aria-expanded', 'false');
   };
+
   const toggle = () => header.classList.contains('is-open') ? close() : open();
 
   button.addEventListener('click', toggle);
-
   nav.addEventListener('click', e => {
     if (e.target.closest('a')) close();
   });
@@ -35,21 +38,38 @@
   });
 })();
 
+// =======================
+// ✨ タイトルアニメーション
+// =======================
 (() => {
-  // ...既存のヘッダー・メニューのコード...
+  const title = document.querySelector('.animate-title');
+  if (!title) return;
+
+  const text = title.textContent.trim();
+  title.textContent = '';
+
+  [...text].forEach((char, i) => {
+    const span = document.createElement('span');
+    span.textContent = char;
+    span.style.animationDelay = `${i * 0.05}s`;
+    title.appendChild(span);
+  });
 })();
 
-<script>
+// =======================
+// 🌀 Swiper（v8）
+// =======================
+(() => {
   const swiper = new Swiper('.swiper.belt', {
     loop: true,
     slidesPerView: 3,
     spaceBetween: 24,
-    speed: 6000, // スライドの移動速度（ms）を大きく
+    speed: 6000,
     autoplay: {
-      delay: 0, // 0で常に流れる
+      delay: 0,
       disableOnInteraction: false
     },
-    freeMode: true, // スライドを止めずに流す
+    freeMode: true,
     grabCursor: true,
     pagination: {
       el: '.swiper-pagination',
@@ -64,4 +84,4 @@
       1024: { slidesPerView: 6 }
     }
   });
-</script>
+})();

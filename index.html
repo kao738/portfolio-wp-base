@@ -4,356 +4,170 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KAO's portfolio</title>
-s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオサイトです。">
+  <meta name="description" content="Emojaponnaise/KAOのポートフォリオサイトです。">
   <meta name="keywords" content="KAO, portfolio, web developer, designer">
   <meta name="author" content="KAO">
   <link rel="icon" href="assets/imgs/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="assets/imgs/apple-touch-icon.png">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">  
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-  <!-- SCSSからコンパイルされたCSSを読み込み -->
   <link rel="stylesheet" href="assets/css/style.css">
-  <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="assets/js/main.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="assets/js/main.js"></script>
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 </head>
 <body id="top">
 
-  <!-- <header class="site-header">
-    <h1 class="logo animate-title">Emojaponnaise</h1>
-    <button class="hamburger" aria-controls="site-menu" aria-expanded="false" aria-label="メニューを開閉">
-      <span></span><span></span><span></span>
-    </button>
-    <nav id="site-menu" class="site-nav animate-nav">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#works">Works</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header> -->
- 
-<header class="site-header">
-  <div class="container header-inner">
-    <h1 class="logo animate-title">Emojaponnaise</h1>
-    <button class="hamburger" aria-controls="site-menu" aria-expanded="false" aria-label="メニューを開閉">
-      <span></span><span></span><span></span>
-    </button>
-    <nav id="site-menu" class="site-nav animate-nav">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#works">Works</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo animate-title">Emojaponnaise</h1>
+      <button class="hamburger" aria-controls="site-menu" aria-expanded="false" aria-label="メニューを開閉">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-menu" class="site-nav animate-nav">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#works">Works</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <main>
- <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <p class="hero-tagline">
-        感情×ロジック×和<br>
-        ふと＜イマココ＞に戻れるデザイン
-      </p>
-    </div>
-    <div class="hero-visual">
-      <img src="assets/imgs/hero-img.png" alt="木のイラスト">
-    </div>
-  </div>
-</section>
-
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="hero-tagline">
+            感情×ロジック×和<br>
+            ふと＜イマココ＞に戻れるデザイン
+          </p>
+        </div>
+        <div class="hero-visual">
+          <img src="assets/imgs/hero-img.png" alt="木のイラスト">
+        </div>
+      </div>
+    </section>
 
     <section id="about" class="about">
       <div class="about__inner">
-        <!--ヘッダー（見出し＋トップへ戻るボタン-->
         <div class="about__header">
           <h2 class="about__title">About</h2>
           <a href="#top" class="about__to-top" aria-label="ページ先頭へ">
-          <img src="assets/imgs/owl-button.png" alt="" loading="lazy" width="120" height="120"></a>
-        </div><!-- /.about__header -->
-
-        <!--プロフィール-->
-          <div class="about__profile profile">
-            <div class="profile__img">
-              <img src="assets/imgs/about-avatar.png" alt="kaori  ota プロフィール画像" loading="lazy" width="160" height="160">
-            </div>
-            <div class="profile__info">
-              <h3 class="profile__name">Kaori Ota</h3>
-              <p class="profile__desc">人や企業の『伝えたい・学びたい』を支える伴走クリエイターです。営業・制作補助・顧客対応など多様な現場で、相手の想いを引き出し成果につなげる力を磨いてきました。現在は Web制作・デザイン・Canva・GAS などのツールを活かしわかりやすく想いを伝える仕組みづくりに取り組んでいます。</p>
-            </div>
-          </div><!-- /.about__profile -->
-         
-  <div class="about">
-  <div class="about__content">
-    <section class="about__strength">
-      <h3 class="about__section-title">Strength</h3>
-      <img class="about__strength-image"
-           src="assets/imgs/about-strengthimg.png"
-           alt="ストレングスファインダーの図"
-           loading="lazy" width="360" height="280">
-    </section>
-
-    <section class="about__skills">
-      <h3 class="about__section-title">Skills</h3>
-      <ul class="about__skills-list">
-        <li class="about__skills-item">HTML</li>
-        <li class="about__skills-item">Canva</li>
-        <li class="about__skills-item">CSS</li>
-        <li class="about__skills-item">Illustrator</li>
-        <li class="about__skills-item">JavaScript</li>
-        <li class="about__skills-item">Photoshop</li>
-        <li class="about__skills-item">Figma</li>
-        <li class="about__skills-item">Google Workspace</li>
-        <li class="about__skills-item">WordPress</li>
-      </ul>
-    </section>
-  </div>
-</div>
-
+            <img src="assets/imgs/owl-button.png" alt="" loading="lazy" width="120" height="120">
+          </a>
+        </div>
+        <div class="about__profile profile">
+          <div class="profile__img">
+            <img src="assets/imgs/about-avatar.png" alt="kaori ota プロフィール画像" loading="lazy" width="160" height="160">
           </div>
-      <!-- /.about__inner -->
+          <div class="profile__info">
+            <h3 class="profile__name">Kaori Ota</h3>
+            <p class="profile__desc">人や企業の『伝えたい・学びたい』を支える伴走クリエイターです。営業・制作補助・顧客対応など多様な現場で、相手の想いを引き出し成果につなげる力を磨いてきました。現在は Web制作・デザイン・Canva・GAS などのツールを活かしわかりやすく想いを伝える仕組みづくりに取り組んでいます。</p>
+          </div>
+        </div>
+        <div class="about__content">
+          <section class="about__strength">
+            <h3 class="about__section-title">Strength</h3>
+            <img class="about__strength-image"
+                 src="assets/imgs/about-strengthimg.png"
+                 alt="ストレングスファインダーの図"
+                 loading="lazy" width="360" height="280">
+          </section>
+          <section class="about__skills">
+            <h3 class="about__section-title">Skills</h3>
+            <ul class="about__skills-list">
+              <li class="about__skills-item">HTML</li>
+              <li class="about__skills-item">Canva</li>
+              <li class="about__skills-item">CSS</li>
+              <li class="about__skills-item">Illustrator</li>
+              <li class="about__skills-item">JavaScript</li>
+              <li class="about__skills-item">Photoshop</li>
+              <li class="about__skills-item">Figma</li>
+              <li class="about__skills-item">Google Workspace</li>
+              <li class="about__skills-item">WordPress</li>
+            </ul>
+          </section>
+        </div>
+        <div class="about__cta">
+          <a href="#contact" class="btn btn--contact" aria-label="お問い合わせへ移動">Contact</a>
+        </div>
+      </div>
+    </section>
 
-    <!--cta-->
-    <div class="about__cta">
-     <a href="#contact" class="btn btn--contact" aria-label="お問い合わせへ移動">Contact</a>
-    </div>
-
-  <!-- /.about__inner -->
-</section>
-
-<section id="works" class="works">
+    <section id="works" class="works">
       <div class="works__inner">
-        <!--ヘッダー（見出し＋トップへ戻るボタン-->
         <div class="works__header">
           <h2 class="works__title">Works</h2>
           <a href="#top" class="works__to-top" aria-label="ページ先頭へ">
-          <img src="assets/imgs/owl-button.png" alt="" loading="lazy" width="120" height="120"></a>
+            <img src="assets/imgs/owl-button.png" alt="" loading="lazy" width="120" height="120">
+          </a>
         </div>
-      </div><!-- /.works__header -->
-      
-      <!-- /.works__header -->
-<!-- Worksセクション -->
-<!-- <section class="belt" aria-label="作品が横に流れるギャラリー">
-  <div class="belt__viewport">
-    <ul class="belt__track">
+        <section class="swiper belt" aria-label="作品が横に流れるギャラリー">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="/work-01.html"><img src="assets/imgs/works-ds01.png" alt="三つ折りチラシ"><span class="belt__caption">三つ折りチラシ</span></a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/work-01.html"><img src="assets/imgs/works-ds02.png" alt="デザイン作品2"></a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/work-01.html"><img src="assets/imgs/works-ds03.png" alt="デザイン作品3"></a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/work-01.html"><img src="assets/imgs/works-ds04.png" alt="デザイン作品4"></a>
+            </div>
+            <div class="swiper-slide">
+              <a href="/work-01.html"><img src="assets/imgs/works-ds05.png" alt="デザイン作品5"></a>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </section>
+        <div class="works__footer" aria-label="作品一覧のフッター">
+          <a href="/works.html" class="btn btn--outline works__view-more">View More</a>
+        </div>
+      </div>
+    </section>
 
-      <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds01.png" alt="三つ折りチラシ"> <span class="belt__caption">三つ折りチラシ</span></a></li>
+    <section class="services">
+      <!-- ...サービスセクションの内容... -->
+    </section>
 
-       <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds02.png" alt="デザイン作品2"></a></li>
-      <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds03.png" alt="デザイン作品3"></a></li>
-       <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds04.png" alt="デザイン作品4"></a></li>
- 
-      <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds05.png" alt="デザイン作品5"></a></li>
-       <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds01.png" alt="コーディング作品1"></a></li>
-      <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds01.png" alt="コーディング作品1"></a></li>
-      <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds01.png" alt="コーディング作品3"></a></li>
-    </ul>
-  </div>
-</section> -->  
-
-<section class="swiper belt" aria-label="作品が横に流れるギャラリー">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <a href="/work-01.html"><img src="assets/imgs/works-ds01.png" alt="三つ折りチラシ"><span class="belt__caption">三つ折りチラシ</span></a>
-    </div>
-    <div class="swiper-slide">
-      <a href="/work-01.html"><img src="assets/imgs/works-ds02.png" alt="デザイン作品2"></a>
-    </div>
-    <div class="swiper-slide">
-    <a href="/work-01.html"><img src="assets/imgs/works-ds03.png
-      " alt="デザイン作品2"></a>
-  </div>
-  <div class="swiper-slide">
-    <a href="/work-01.html"><img src="assets/imgs/works-ds04.png" alt="デザイン作品4"></a>
-  </div>
-
-  <div class="swiper-slide">
-    <a href="/work-01.html"><img src="assets/imgs/works-ds05.png" alt="デザイン作品5"></a>
-  </div>  
-</div>
-  <!-- <div class="swiper-slide">
-    <a href="/work-01.html"><img src="assets/imgs/works-ds02.png" alt="デザイン作品2"></a>
-  </div>
-  
-  <div class="swiper-slide"><a href="/work-01.html"><img src="assets/imgs/works-ds02.png" alt="デザイン作品2"></a>
-  </div>
- 
-  
-   <div class="swiper-slide">
-    <a href="/work-01.html"><img src="assets/imgs/works-ds02.png" alt="デザイン作品2"></a>
-  
- </div> -->
-  <!-- ページネーションやナビボタンを追加したい場合 -->
-  <!-- <div class="swiper-pagination"></div>
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div> -->
-  
-</section>
-
-<!--Serviceセクション -->
-<section class="services">
-  <!-- タイトル（右寄せ） -->
-  <div class="services__title-block">
-    <h2 class="section-title">
-      <img src="assets/imgs/icon-shippou.svg" alt="" class="section-icon" aria-hidden="true">
-      Service
-    </h2>
-  </div>
-
-  <!-- 説明（左揃えで中央配置） -->
-  <div class="services__description-block">
-    <p class="section-description">
-      あなたの想いをデザインとテクノロジーでカタチにします。
-    </p>
-  </div>
-
-  <!-- カード：雲はこのグリッドの相対配置 -->
-  <div class="service-grid">
-    <img src="assets/imgs/cloud.png" alt="" class="cloud cloud--top" aria-hidden="true">
-    <img src="assets/imgs/cloud.png" alt="" class="cloud cloud--bottom" aria-hidden="true">
-
-    <!-- 3カード（中身は今のままでOK） -->
-    <article class="card is-design">
-      <img src="assets/imgs/service-img01.png" alt="" class="card-icon">
-      <h3 class="card-title">デザイン</h3>
-      <p class="card-text">想いを形にするビジュアル設計。トーン＆マナーを揃え、伝わる世界観をつくります。</p>
-    </article>
-
-    <article class="card is-coding">
-      <img src="assets/imgs/service-img02.png" alt="" class="card-icon">
-      <h3 class="card-title">コーディング</h3>
-      <p class="card-text">デザインを正確かつ軽量に実装。アクセシビリティと表示速度も意識して仕上げます。</p>
-    </article>
-
-    <article class="card is-training">
-      <img src="assets/imgs/service-img03.png" alt="" class="card-icon">
-      <h3 class="card-title">伴走サポート</h3>
-      <p class="card-text">更新運用や内製化の支援でチームのスキルアップを支えます。</p>
-    </article>
-  </div>
-</section>
-
-<!--Contactセクション -->
- <section id="contact" class="contact">
+    <section id="contact" class="contact">
       <div class="contact__inner">
-        <!--ヘッダー（見出し＋トップへ戻るボタン-->
         <div class="contact__header">
           <h2 class="contact__title">Contact</h2>
-          <!--<a href="#top" class="contact__to-top" aria-label="ページ先頭へ">
-          <img src="assets/imgs/owl-button.png" alt="" loading="lazy" width="120" height="120"></a>-->
-        </div><!-- /.contact__header -->
-
-        <p class="contact__text">ご質問・ご相談など、お気軽にお問い合わせください。<br>2営
-業日以内に返信いたします。</p>
-
+        </div>
+        <p class="contact__text">ご質問・ご相談など、お気軽にお問い合わせください。<br>2営業日以内に返信いたします。</p>
       </div>
- <form class="c-form" action="#" method="post">
-    <label for="name">お名前</label>
-    <input type="text" id="name" name="name" required>
+      <form class="c-form" action="#" method="post">
+        <label for="name">お名前</label>
+        <input type="text" id="name" name="name" required>
+        <label for="kana">ふりがな</label>
+        <input type="text" id="kana" name="kana">
+        <label for="email">Emailアドレス</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">お問い合わせ内容</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+        <button type="submit">submit</button>
+      </form>
+    </section>
+  </main>
 
-    <label for="kana">ふりがな</label>
-    <input type="text" id="kana" name="kana">
+  <a href="#top" class="back-to-top" aria-label="ページ先頭へ戻る">
+    <img src="assets/imgs/owl-button.png" alt="" width="48" height="48" decoding="async">
+  </a>
 
-    <label for="email">Emailアドレス</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="message">お問い合わせ内容</label>
-    <textarea id="message" name="message" rows="6" required></textarea>
-
-    <button type="submit">submit</button>
-  </form>
-</section>
-<footer class="works__footer" aria-label="作品一覧のフッター">
-  <a href="/works.html" class="btn btn--outline btn--lg">View More</a>
-</footer>
-</section>
-
- <!--トップへ戻るボタン-->
-<a href="#top" class="back-to-top" aria-label="ページ先頭へ戻る">
-  <img src="assets/imgs/owl-button.png" alt="" width="48" height="48" decoding="async">
-</a>
-</main>
-
-  <footer>       
-    <p>&copy; Kao 2025</p>
+  <footer class="site-footer">    
+    <div class="container">
+      <p class="copyright">&copy; Kao 2025</p>
+    </div>   
   </footer>
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  const swiper = new Swiper('.swiper.belt', {
-    loop: true,
-    slidesPerView: 3, // 画面幅に応じて調整
-    spaceBetween: 24,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    },
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false
-    },
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 }
-    }
-  });
-</script>
-<script>
-(() => {
-  const btn  = document.querySelector('.back-to-top');
-  const hero = document.querySelector('.hero');
 
-  if (!btn) return; // ボタンが無ければ何もしない
-
-  // Heroが無いページ（下層など）は最初から表示
-  if (!hero) {
-    btn.classList.add('is-visible');
-    return;
-  }
-
-  // Heroが画面に映っている間は非表示、見えなくなったら表示
-  const io = new IntersectionObserver(
-    (entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        // Heroが見えてる → 隠す
-        btn.classList.remove('is-visible');
-      } else {
-        // Heroが見えなくなった → 出す
-        btn.classList.add('is-visible');
-      }
-    },
-    {
-      root: null,          // ビューポート
-      threshold: 0,        // 1pxでも見えてたら「見えてる」と判定
-      rootMargin: '0px'    // 固定ヘッダーがあるなら例えば '-80px 0px 0px 0px'
-    }
-  );
-
-  io.observe(hero);
-})();
-</script>
-
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+ 
 </body>
 </html>

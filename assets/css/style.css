@@ -40,7 +40,6 @@ a {
   padding: 120px 0;
 }
 
-/* ===== layout tokens ===== */
 :target {
   scroll-margin-top: calc(var(--header-h, 72px) + 16px);
 }
@@ -543,6 +542,7 @@ a {
     padding: 24px 0;
   }
 }
+/* ===== Swiper ===== */
 .swiper.belt {
   width: 100%;
   max-width: 100vw;
