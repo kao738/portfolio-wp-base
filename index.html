@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KAO's portfolio</title>
-s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオサイトです。">
+  <meta name="description" content="Emojaponnaise/KAOのポートフォリオサイトです。">
   <meta name="keywords" content="KAO, portfolio, web developer, designer">
   <meta name="author" content="KAO">
   <link rel="icon" href="assets/imgs/favicon.ico" type="image/x-icon">
@@ -17,7 +17,7 @@ s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオ�
   <!-- SCSSからコンパイルされたCSSを読み込み -->
   <link rel="stylesheet" href="assets/css/style.css">
   <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
   <script src="assets/js/main.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
@@ -204,7 +204,9 @@ s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオ�
   <!-- <div class="swiper-pagination"></div>
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div> -->
-  
+ <div class="works__footer" aria-label="作品一覧のフッター">
+  <a href="/works.html" class="btn btn--outline works__view-more">View More</a>
+</div>
 </section>
 
 <!--Serviceセクション -->
@@ -280,19 +282,18 @@ s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオ�
     <button type="submit">submit</button>
   </form>
 </section>
-<footer class="works__footer" aria-label="作品一覧のフッター">
-  <a href="/works.html" class="btn btn--outline btn--lg">View More</a>
-</footer>
-</section>
+
+
+  
 
  <!--トップへ戻るボタン-->
 <a href="#top" class="back-to-top" aria-label="ページ先頭へ戻る">
   <img src="assets/imgs/owl-button.png" alt="" width="48" height="48" decoding="async">
 </a>
-</main>
-
-  <footer>       
-    <p>&copy; Kao 2025</p>
+  <footer class="site-footer">    
+     <div class="container">
+    <p class="copyright">&copy; Kao 2025</p>
+    </div>   
   </footer>
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -354,6 +355,9 @@ s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオ�
   io.observe(hero);
 })();
 </script>
+</main>
 
+</section>
 </body>
 </html>
+

@@ -318,7 +318,7 @@ a {
 
 .about__cta {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 2rem;
   margin-bottom: 6rem;
   padding-right: 80px;
@@ -394,80 +394,67 @@ a {
   margin: 0;
 }
 
-.works__to-top {
-  width: 80px;
-  height: 80px;
-  display: inline-block;
-  border-radius: 50%;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.works__to-top img {
-  width: 100%;
-  height: auto;
-  display: block;
+// .works__to-top {
+//   width: 80px;
+//   height: 80px;
+//   display: inline-block;
+//   border-radius: 50%;
+//   transition: transform 0.2s ease, box-shadow 0.2s ease;
+// }
+// .works__to-top img {
+//   width: 100%;
+//   height: auto;
+//   display: block;
+// }
+
+// .works__to-top:hover,
+// .works__to-top:focus-visible {
+//   transform: translateY(-2px);
+//   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+// }
+.works__view-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 6rem;
 }
 
-.works__to-top:hover,
-.works__to-top:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+
+
+
+/* Works ボタン中央寄せ（親が何でも効く） */
+.works__footer{
+  display:flex;
+  justify-content:center;
+  margin:2rem 0 6rem;
+}
+.works__view-more{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:.6rem 1.4rem;
+  font-weight:600;
+  text-decoration:none;
+  border-radius:9999px;
+  transition:all .3s ease;
+  cursor:pointer;
+
+  border:2px solid #f0c75e;
+  color:#f0c75e;
+  background:transparent;
+
+  /* 親flexの影響で伸びない保険 */
+  flex:0 0 auto;
+}
+.works__view-more:hover{
+  background:#f0c75e;
+  color:#fff;
+}
+.works__view-more:focus-visible{
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px rgba(0,0,0,.08);
 }
 
-/* 汎用ボタン（前に作ったパターン） */
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.4rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 9999px;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-
-.btn--outline {
-  border: 2px solid #f0c75e;
-  color: #f0c75e;
-  background: transparent;
-}
-
-.btn--outline:hover {
-  background: #f0c75e;
-  color: #fff;
-}
-
-.btn--solid {
-  background: #f0c75e;
-  color: #fff;
-  border: 2px solid #f0c75e;
-}
-
-.btn--solid:hover {
-  background: #e0b24e;
-  border-color: #e0b24e;
-}
-
-.btn--lg {
-  padding: 0.8rem 1.6rem;
-  font-size: 1.05rem;
-}
-
-/* セクション全体の中央寄せは内側コンテナで */
-.works__inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding-inline: clamp(16px, 4vw, 32px);
-  /* ここに .works__footer が入っていれば自然に中央ど真ん中に */
-  /* Worksフッター（中央・余白・区切り線で “終わり感”） */
-}
-.works__inner .works__footer {
-  display: grid;
-  place-items: center;
-  margin-top: clamp(16px, 4vw, 40px);
-  padding: clamp(16px, 4vw, 32px) 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.08); /* 背景が暗いなら rgba(255,255,255,.15) などに変更 */
-  /* 背景があるセクションなら “帯” 感が欲しければ以下もあり */
-  /* background: rgba(255,255,255,.55); backdrop-filter: blur(2px); */
-}
 
 /* モバイルで余白を気持ち広めに */
 @media (max-width: 480px) {
@@ -476,7 +463,11 @@ a {
     padding: 0.75rem 1.4rem;
   }
   .works__footer {
+    display: flex;
+    justify-content: center;
     padding: 24px 0;
+    margin-top: 24px;
+    
   }
 }
 // /* Works無限ループ */
@@ -1035,4 +1026,36 @@ a {
       opacity: .9;
     }
   }
+}
+/* フォームのレスポンシブ */
+@media (max-width: 480px) {
+  .c-form {
+    gap: 16px;      /* 間隔を少し狭く */
+  }
+  .c-form input,
+  .c-form textarea {
+    padding: 10px 12px; /* 内側の余白を少し狭く */
+  }
+  .c-form button {
+    padding: 10px 16px; /* 内側の余白を少し狭く */
+  }
+} /* Footer */
+.site-footer {
+  color: #333;
+  padding: 2rem 1rem;
+  border-top: 1px solid rgba(0,0,0,.08);
+}
+.site-footer .container {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+.site-footer .links { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; }
+.site-footer a { text-decoration: none; color: inherit; opacity: .9; }
+.site-footer a:hover { opacity: 1; text-decoration: underline; }
+.site-footer .copyright { font-size: .875rem; opacity: .7; margin-top: .5rem; }
+@media (min-width: 768px) {
+  .site-footer .container { grid-template-columns: 1fr auto; align-items: center; }
+  .site-footer .copyright { text-align: center; margin-top: 0; }
 }
