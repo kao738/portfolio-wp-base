@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KAO's portfolio</title>
-s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオサイトです。">
+  <meta name="description" content="Emojaponnaise/KAOのポートフォリオサイトです。">
   <meta name="keywords" content="KAO, portfolio, web developer, designer">
   <meta name="author" content="KAO">
   <link rel="icon" href="assets/imgs/favicon.ico" type="image/x-icon">
@@ -17,27 +17,15 @@ s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオ�
   <!-- SCSSからコンパイルされたCSSを読み込み -->
   <link rel="stylesheet" href="assets/css/style.css">
   <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="assets/js/main.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="assets/js/main.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+ 
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script src="assets/js/main.js" defer></script>
 
 </head>
 <body id="top">
 
-  <!-- <header class="site-header">
-    <h1 class="logo animate-title">Emojaponnaise</h1>
-    <button class="hamburger" aria-controls="site-menu" aria-expanded="false" aria-label="メニューを開閉">
-      <span></span><span></span><span></span>
-    </button>
-    <nav id="site-menu" class="site-nav animate-nav">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#works">Works</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header> -->
+  
  
 <header class="site-header">
   <div class="container header-inner">
@@ -57,7 +45,7 @@ s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオ�
 
 
   <main>
- <section class="hero">
+ <!-- <section class="hero">
   <div class="hero-inner">
     <div class="hero-copy">
       <p class="hero-tagline">
@@ -69,7 +57,21 @@ s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオ�
       <img src="assets/imgs/hero-img.png" alt="木のイラスト">
     </div>
   </div>
+</section> -->
+
+<section class="hero">
+  <div class="hero-inner">
+    
+      <p class="hero-tagline">
+        感情×ロジック×和<br>
+        ふと＜イマココ＞に戻れるデザイン
+      </p>
+    <div class="hero-visual">
+      <img src="assets/imgs/hero-img.png" alt="木のイラスト">
+    </div>
+  </div>
 </section>
+
 
 
     <section id="about" class="about">
@@ -140,33 +142,7 @@ s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオ�
         </div>
       </div><!-- /.works__header -->
       
-      <!-- /.works__header -->
-<!-- Worksセクション -->
-<!-- <section class="belt" aria-label="作品が横に流れるギャラリー">
-  <div class="belt__viewport">
-    <ul class="belt__track">
-
-      <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds01.png" alt="三つ折りチラシ"> <span class="belt__caption">三つ折りチラシ</span></a></li>
-
-       <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds02.png" alt="デザイン作品2"></a></li>
-      <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds03.png" alt="デザイン作品3"></a></li>
-       <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds04.png" alt="デザイン作品4"></a></li>
- 
-      <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds05.png" alt="デザイン作品5"></a></li>
-       <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds01.png" alt="コーディング作品1"></a></li>
-      <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds01.png" alt="コーディング作品1"></a></li>
-      <li class="belt__item">
-  <a href="/work-01.html"><img src="assets/imgs/works-ds01.png" alt="コーディング作品3"></a></li>
-    </ul>
-  </div>
-</section> -->  
+    </section>
 
 <section class="swiper belt" aria-label="作品が横に流れるギャラリー">
   <div class="swiper-wrapper">
@@ -204,8 +180,11 @@ s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオ�
   <!-- <div class="swiper-pagination"></div>
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div> -->
-  
+  <div class="works__footer" aria-label="作品一覧のフッター">
+  <a href="/works.html" class="btn btn--outline btn--lg">View More</a>
+</div>
 </section>
+
 
 <!--Serviceセクション -->
 <section class="services">
@@ -280,80 +259,17 @@ s  <meta name="description" content="Emojaponnaise/KAOのポートフォリオ�
     <button type="submit">submit</button>
   </form>
 </section>
-<footer class="works__footer" aria-label="作品一覧のフッター">
-  <a href="/works.html" class="btn btn--outline btn--lg">View More</a>
-</footer>
-</section>
+
 
  <!--トップへ戻るボタン-->
 <a href="#top" class="back-to-top" aria-label="ページ先頭へ戻る">
   <img src="assets/imgs/owl-button.png" alt="" width="48" height="48" decoding="async">
 </a>
 </main>
-
-  <footer>       
-    <p>&copy; Kao 2025</p>
+ <footer class="site-footer">       
+    <p class="copyright">&copy; Kao 2025</p>
   </footer>
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  const swiper = new Swiper('.swiper.belt', {
-    loop: true,
-    slidesPerView: 3, // 画面幅に応じて調整
-    spaceBetween: 24,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    },
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false
-    },
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 }
-    }
-  });
-</script>
-<script>
-(() => {
-  const btn  = document.querySelector('.back-to-top');
-  const hero = document.querySelector('.hero');
 
-  if (!btn) return; // ボタンが無ければ何もしない
-
-  // Heroが無いページ（下層など）は最初から表示
-  if (!hero) {
-    btn.classList.add('is-visible');
-    return;
-  }
-
-  // Heroが画面に映っている間は非表示、見えなくなったら表示
-  const io = new IntersectionObserver(
-    (entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        // Heroが見えてる → 隠す
-        btn.classList.remove('is-visible');
-      } else {
-        // Heroが見えなくなった → 出す
-        btn.classList.add('is-visible');
-      }
-    },
-    {
-      root: null,          // ビューポート
-      threshold: 0,        // 1pxでも見えてたら「見えてる」と判定
-      rootMargin: '0px'    // 固定ヘッダーがあるなら例えば '-80px 0px 0px 0px'
-    }
-  );
-
-  io.observe(hero);
-})();
-</script>
 
 </body>
 </html>
