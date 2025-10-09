@@ -32,46 +32,23 @@ a {
 .container {
   max-width: min(1200px, 92vw);
   margin: 0 auto;
-  // padding-inline: 20px;        /* 横だけに統一 */
+
 }
 
 .section {
   padding: 120px 0;
 }
 
-/* ===== layout tokens ===== */
-// :root{
-//   /* ===== 調整ノブ ===== */
-//   --container: min(1200px, 92vw);
-//   --header-h: 72px;
 
-//   --hero-pad-y: 64px;                 /* ヒーロー上下余白 */
-//   --hero-gap: clamp(16px, 4vw, 40px); /* 左右ブロックの間隔 */
-//   --band-h: clamp(200px, 28vw, 360px);/* 背景帯の高さ */
-//   --copy-col: 1.1fr;                  /* 左カラムの比率（テキスト側）*/
-//   --visual-col: 0.9fr;                /* 右カラムの比率（木側）*/
-//   --tree-w: 200px;                    /* 木の幅（px か vw 推奨）*/
-// }
 
 :target {
   scroll-margin-top: calc(var(--header-h, 72px) + 16px);
 }
 
-/* ===== header ===== */
-// .site-header {
-//   position: relative;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   padding: 12px 20px;
-//   background: #f9f7f1;
-// }
 
 .site-header {
   background: #f9f7f1;
-  // position: sticky;  /* fixedでもOK */
-  // top: 0;
-  // z-index: 1000;
+
 
   
 }
@@ -146,32 +123,25 @@ a {
 
 /* ===== hero ===== */
 .hero {
-  // background-color: #f9f7f1;
-  // background-image: url("../imgs/bg-line.png");
-  // background-repeat: repeat-x;
-  // background-position: bottom center;
-  // background-size: auto 300px;  /* 帯の高さはここ */
+
   min-height: 60vh;           /* セクション全体の高さ */
-  // padding: 40px 20px;
+
   display: flex;
   align-items: center;
 }
 
 .hero-inner {
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: flex-end;
+
   width: 100%;
   background-image: url("../imgs/bg-line.png");
-  // height: auto;
-  // margin: 0 auto;
+
 }
 
 .hero-copy {
   max-width: 900px;}
 
 .hero-tagline {
-  // background-image: url("../imgs/bg-line.png");
+
   font-size: 1.8rem;
   line-height: 1.4;
   color: #245e62;
@@ -334,34 +304,9 @@ a {
 /* 2) ヒーローの枠 */
 .hero { min-height: 60vh; display: flex; align-items: center; overflow: hidden; height: 880px;}
 
-// .hero-inner {
-//   display: grid;
-//   grid-template-columns: 1fr auto;   /* 左テキスト / 右ビジュアル */
-//   align-items: end;
-//   gap: clamp(16px, 4vw, 40px);
-// }
 
 /* 3) タイトルとコピーの“でかくなり過ぎ”を抑える */
-.logo { font-size: clamp(28px, 3.2vw, 40px); }   /* ヘッダのロゴ */
-// .hero-tagline { 
-//   font-size: clamp(20px, 2.6vw, 32px);
-//   line-height: 1.4;
-//   max-width: 40ch;
-//   margin: 0;
-//   position: relative;
-//   z-index: 1;
-// }
-
-// /* 4) 麻の葉は擬似要素1枚だけ（位置も控えめ） */
-// .hero-tagline::after{
- 
-  
-//   position:absolute; 
-//   right:-8px; top:50%; transform: translateY(-50%);
-//   width: clamp(180px, 26vw, 320px);
-//   height: clamp(200px, 30vw, 380px);
-//   background: url("../imgs/bg-line.png") no-repeat center/contain;
-// }
+.logo { font-size: clamp(28px, 3.2vw, 40px); }   /* ヘッダのロゴ 
 
 /* ===== about ===== */
 /* About 見出し行：タイトル＋フクロウを横並び */
@@ -463,6 +408,7 @@ a {
   max-width: 100%;
   height: auto;
   display: block;
+  padding-top: 16px;
 }
 .about__skills-list {
   list-style: none;
@@ -546,8 +492,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // padding: 0 5rem;
-    // gap: 16px;
+ 
     margin-bottom: 8rem;
   }
   .works__title {
@@ -614,7 +559,7 @@ a {
 .works__inner {
   max-width: 1200px;
   margin: 0 auto;
-  // padding-inline: clamp(16px, 4vw, 32px);
+
   /* ここに .works__footer が入っていれば自然に中央ど真ん中に */
   /* Worksフッター（中央・余白・区切り線で “終わり感”） */
 }
@@ -623,9 +568,7 @@ a {
   place-items: center;
   margin-top: clamp(16px, 4vw, 40px);
   padding: clamp(16px, 4vw, 32px) 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.08); /* 背景が暗いなら rgba(255,255,255,.15) などに変更 */
-  /* 背景があるセクションなら “帯” 感が欲しければ以下もあり */
-  /* background: rgba(255,255,255,.55); backdrop-filter: blur(2px); */
+  border-top: 1px solid rgba(0, 0, 0, 0.08); /* 背景が暗いなら 
 }
 
 /* モバイルで余白を気持ち広めに */
@@ -826,7 +769,7 @@ a {
     max-width: 1200px;
     height: 100px;
     margin: 0 auto;
-    // padding-inline: clamp(16px, 4vw, 40px);
+  
     text-align: left;
 
     .section-title{
@@ -951,13 +894,13 @@ a {
     
   }
 }
-/* Service cards: テキストを確実に小さくできるよう下限を下げる */
-// .services .service-grid .card .card-title {
-//   font-size: clamp(6px, 0.7vw, 12px); // 下限を6pxに
-//   line-height: 1.2;
-//   margin-bottom: .15rem;
-//   min-height: 1.5em;
-// }
+ /*Service cards: テキストを確実に小さくできるよう下限を下げる */
+ .services .service-grid .card .card-title {
+  font-size: clamp(6px, 0.7vw, 12px); // 下限を6pxに
+  line-height: 1.2;
+  margin-bottom: .15rem;
+  min-height: 1.5em;
+ }
 .services .service-grid .card .card-text {
   color: #245e62;
   font-size: clamp(5px, 0.6vw, 10px); // 下限を5pxに
@@ -977,7 +920,7 @@ a {
   text-align: center;
 
   &__title {
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: #245e62; // 濃いめ青緑
     margin-bottom: 1rem;
   }

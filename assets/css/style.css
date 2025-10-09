@@ -502,6 +502,7 @@ a {
   max-width: 100%;
   height: auto;
   display: block;
+  padding-top: 16px;
 }
 
 .about__skills-list {
@@ -1150,7 +1151,14 @@ a {
   }
 }
 
-/* Service cards: テキストを確実に小さくできるよう下限を下げる */
+/*Service cards: テキストを確実に小さくできるよう下限を下げる */
+.services .service-grid .card .card-title {
+  font-size: clamp(6px, 0.7vw, 12px);
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+  min-height: 1.5em;
+}
+
 .services .service-grid .card .card-text {
   color: #245e62;
   font-size: clamp(5px, 0.6vw, 10px);
