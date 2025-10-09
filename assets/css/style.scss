@@ -72,7 +72,7 @@ a {
 }
 
 .header-inner {
-  max-width: var(--container);
+  // max-width: var(--container);
   max-width: 1200px;
   margin: 0 auto;
   padding-inline: 20px;
@@ -156,14 +156,15 @@ a {
   // display: flex;
   // justify-content: space-between;
   // align-items: flex-end;
-  // background-image: url("../imgs/bg-line.png");
+  background-image: url("../imgs/bg-line.png");
   width: 100%;
   max-width: 1200px;
+  height: auto;
   // margin: 0 auto;
 }
 
 .hero-copy {
-  max-width: 40ch;
+  max-width: 40ch;}
 
 .hero-tagline {
   font-size: 1.8rem;
@@ -177,8 +178,8 @@ a {
   padding: 18px 0;
   &::after {
     content: "";
-   background-image: url("../imgs/bg-line.png");
-   width: 370px;
+   background-image: url("../imgs/hero-img.png");
+   width: 1200px;
    height: 440px;
    display: block;
    background-size: contain;
@@ -349,12 +350,14 @@ a {
 /* 4) 麻の葉は擬似要素1枚だけ（位置も控えめ） */
 .hero-tagline::after{
   content:"";
-  position:absolute; right:-8px; top:50%; transform: translateY(-50%);
+  position:absolute; 
+  right:-8px; top:50%; transform: translateY(-50%);
   width: clamp(180px, 26vw, 320px);
   height: clamp(200px, 30vw, 380px);
-  background: url("../imgs/bg-line.png") no-repeat ce
+  background: url("../imgs/bg-line.png") no-repeat center/contain;
+}
 
-/* ===== about ===== */ß
+/* ===== about ===== */
 /* About 見出し行：タイトル＋フクロウを横並び */
 .about__header {
   position: relative;
@@ -430,7 +433,7 @@ a {
 }
 
 @media (max-width: 640px) {
-  .about_profile {
+  .about__profile {
     grid-template-columns: 72px 1fr;
     gap: 12px 16px;
   }
