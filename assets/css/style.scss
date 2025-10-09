@@ -72,7 +72,7 @@ a {
 }
 
 .header-inner {
-  // max-width: var(--container);
+  max-width: var(--container);
   max-width: 1200px;
   margin: 0 auto;
   padding-inline: 20px;
@@ -156,17 +156,17 @@ a {
   // display: flex;
   // justify-content: space-between;
   // align-items: flex-end;
-  background-image: url("../imgs/bg-line.png");
   width: 100%;
-  max-width: 1200px;
-  height: auto;
+  background-image: url("../imgs/bg-line.png");
+  // height: auto;
   // margin: 0 auto;
-}
+
 
 .hero-copy {
-  max-width: 40ch;}
+  max-width: 900px;}
 
 .hero-tagline {
+  // background-image: url("../imgs/bg-line.png");
   font-size: 1.8rem;
   line-height: 1.4;
   color: #245e62;
@@ -177,9 +177,9 @@ a {
   align-items: center;
   padding: 18px 0;
   &::after {
-    content: "";
+   content:""; 
    background-image: url("../imgs/hero-img.png");
-   width: 1200px;
+   width: 370px;
    height: 440px;
    display: block;
    background-size: contain;
@@ -187,7 +187,7 @@ a {
    right: 0;
    top: 50%;
    position: absolute;
-   bottom: 0;
+   bottom: 50%;
   }
 
 }
@@ -338,24 +338,25 @@ a {
 
 /* 3) タイトルとコピーの“でかくなり過ぎ”を抑える */
 .logo { font-size: clamp(28px, 3.2vw, 40px); }   /* ヘッダのロゴ */
-.hero-tagline { 
-  font-size: clamp(20px, 2.6vw, 32px);
-  line-height: 1.4;
-  max-width: 40ch;
-  margin: 0;
-  position: relative;
-  z-index: 1;
-}
+// .hero-tagline { 
+//   font-size: clamp(20px, 2.6vw, 32px);
+//   line-height: 1.4;
+//   max-width: 40ch;
+//   margin: 0;
+//   position: relative;
+//   z-index: 1;
+// }
 
-/* 4) 麻の葉は擬似要素1枚だけ（位置も控えめ） */
-.hero-tagline::after{
-  content:"";
-  position:absolute; 
-  right:-8px; top:50%; transform: translateY(-50%);
-  width: clamp(180px, 26vw, 320px);
-  height: clamp(200px, 30vw, 380px);
-  background: url("../imgs/bg-line.png") no-repeat center/contain;
-}
+// /* 4) 麻の葉は擬似要素1枚だけ（位置も控えめ） */
+// .hero-tagline::after{
+ 
+  
+//   position:absolute; 
+//   right:-8px; top:50%; transform: translateY(-50%);
+//   width: clamp(180px, 26vw, 320px);
+//   height: clamp(200px, 30vw, 380px);
+//   background: url("../imgs/bg-line.png") no-repeat center/contain;
+// }
 
 /* ===== about ===== */
 /* About 見出し行：タイトル＋フクロウを横並び */
