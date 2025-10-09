@@ -263,12 +263,32 @@
 
 
  <!--トップへ戻るボタン-->
-<!-- <a href="#top" class="back-to-top" aria-label="ページ先頭へ戻る">
-  <img src="assets/imgs/owl-button.png" alt="" width="48" height="48" decoding="async">
-</a> -->
+<a href="#top" class="to-top" aria-label="トップへ戻る">
+  <img src="assets/imgs/owl-button.png" alt="トップへ" />
+</a>
+<script>
+  const toTopBtn = document.querySelector('.to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      toTopBtn.classList.add('is-visible');
+    } else {
+      toTopBtn.classList.remove('is-visible');
+    }
+  });
+</script><script>
+  const toTopBtn = document.querySelector('.to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      toTopBtn.classList.add('is-visible');
+    } else {
+      toTopBtn.classList.remove('is-visible');
+    }
+  });
+</script>
 </main>
  <footer class="site-footer">       
-    <p class="copyright">&copy; Kao 2025</p>
+    <p class="copyright">&copy; Emojaponnaise
+       2025</p>
   </footer>
 
 

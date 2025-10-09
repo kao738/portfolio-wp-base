@@ -371,6 +371,7 @@ a {
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
+  height: 880px;
 }
 
 /* 3) タイトルとコピーの“でかくなり過ぎ”を抑える */
@@ -536,9 +537,9 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-top: 2rem;
   margin-bottom: 6rem;
   padding-right: 80px;
@@ -617,7 +618,7 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 2rem 0 6rem;
+  margin: 100px auto;
 }
 .works .works__footer .works__view-more {
   display: -webkit-inline-box;
@@ -1231,7 +1232,7 @@ a {
           align-items: center;
   color: #245e62;
   padding: 2rem 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(244, 222, 160, 0.08);
 }
 
 .site-footer .container {
@@ -1251,4 +1252,48 @@ a {
   .site-footer .container {
     text-align: center;
   }
+}
+.to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity 0.4s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.4s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.4s ease, transform 0.3s ease;
+  transition: opacity 0.4s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
+  z-index: 1000;
+}
+
+.to-top img {
+  width: 100%;
+  height: auto;
+}
+
+.to-top:hover {
+  -webkit-transform: translateY(-4px);
+          transform: translateY(-4px);
+  -webkit-box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
 }/*# sourceMappingURL=style.css.map */

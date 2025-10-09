@@ -332,7 +332,7 @@ a {
 .hero-inner { margin: 0 auto; padding-inline: 20px; }
 
 /* 2) ヒーローの枠 */
-.hero { min-height: 60vh; display: flex; align-items: center; overflow: hidden; }
+.hero { min-height: 60vh; display: flex; align-items: center; overflow: hidden; height: 880px;}
 
 // .hero-inner {
 //   display: grid;
@@ -492,7 +492,8 @@ a {
 
 .about__cta {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center
+  ;
   margin-top: 2rem;
   margin-bottom: 6rem;
   padding-right: 80px;
@@ -559,7 +560,7 @@ a {
   .works__footer {
     display: flex;
     justify-content: center;
-    margin: 2rem 0 6rem;
+    margin: 100px auto;
     .works__view-more {
       @extend .btn;
       @extend .btn--outline;
@@ -1039,7 +1040,7 @@ a {
   align-items: center;
   color: #245e62;
   padding: 2rem 1rem;
-  border-top: 1px solid rgba(0,0,0,.08);
+  border-top: 1px solid rgba(244, 222, 160, 0.08);
 }
   .site-footer .container {
     max-width: 1120px;
@@ -1054,4 +1055,37 @@ a {
   .site-footer .container {
     text-align: center;
   }
+}
+
+.to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.to-top img {
+  width: 100%;
+  height: auto;
+}
+
+.to-top:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
 }
