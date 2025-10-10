@@ -30,21 +30,15 @@ a {
 }
 
 /* ===== layout helpers ===== */
-.container {
-  max-width: min(1200px, 92vw);
-  margin: 0 auto;
-}
-
 .section {
   padding: 120px 0;
 }
 
-/* ===== layout tokens ===== */
 :target {
   scroll-margin-top: calc(var(--header-h, 72px) + 16px);
 }
 
-/* ===== header ===== */
+/* ===== ヘッダー ===== */
 .site-header {
   background: #f9f7f1;
 }
@@ -142,7 +136,6 @@ a {
 
 /* ===== hero ===== */
 .hero {
-  min-height: 60vh; /* セクション全体の高さ */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -194,99 +187,10 @@ a {
 }
 
 /* モバイル */
-@media (max-width: 768px) {
-  :root {
-    --hero-pad-y: 40px;
-    --band-h: clamp(160px, 40vw, 240px);
-    --tree-w: min(68vw, 320px); /* 木の幅を自動で少し小さく */
-  }
-  .hero {
-    padding-block: 32px;
-    min-height: 56svh; /* モバイルのアドレスバー対策 */
-  }
-  .hero-inner {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    gap: 24px;
-    text-align: center;
-  }
-  .hero-visual img {
-    width: min(72vw, 360px);
-  }
-}
 @media (max-width: 1024px) {
   .hero {
     min-height: 80vh;
   }
-}
-@media (max-width: 768px) {
-  .hero {
-    min-height: 60svh; /* モバイルのアドレスバー対策 */
-    padding-block: 40px;
-  }
-  .hero .hero-inner {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    gap: 24px;
-    text-align: center;
-  }
-  .hero .hero-visual {
-    -ms-flex-preferred-size: auto;
-        flex-basis: auto;
-    width: auto;
-    min-width: none;
-    -webkit-transition: width 0.5s, -webkit-flex-basis 0.5s;
-    transition: width 0.5s, -webkit-flex-basis 0.5s;
-    transition: flex-basis 0.5s, width 0.5s;
-    transition: flex-basis 0.5s, width 0.5s, -webkit-flex-basis 0.5s, -ms-flex-preferred-size 0.5s;
-  }
-  .hero .hero-visual img {
-    width: min(72vw, 370px);
-    margin-inline: auto;
-  }
-  .hero .hero-copy {
-    text-align: center;
-    max-width: 28ch; /* 行長を締めて読みやすく（お好みで） */
-    margin: 0 auto;
-  }
-  .hero .hero-tagline {
-    font-size: clamp(22px, 6vw, 32px);
-    max-width: none;
-    text-align: center;
-    margin: 0 auto;
-  }
-  .hero::before {
-    top: 9rem;
-    height: 120px;
-    background-size: auto 72px;
-  }
-  .hero-tagline::after {
-    width: 220px;
-    height: 260px;
-    right: -4px;
-  } /* モバイル縮小 */
 }
 @media (max-width: 600px) {
   .site-header .hamburger {
@@ -353,17 +257,24 @@ a {
     padding: 0 1rem;
   }
 }
-/* 1) コンテナ幅を固定（変数使わない版） */
-.container,
-.header-inner,
-.hero-inner {
+/* OK: 役割ごとに分離 */
+.container {
   margin: 0 auto;
   padding-inline: 20px;
 }
 
+.header-inner {
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
+.hero-inner {
+  margin: 0 auto;
+  padding-inline: 20px;
+} /* ←必要ならここだけ */
 /* 2) ヒーローの枠 */
 .hero {
-  min-height: 60vh;
+  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -371,13 +282,13 @@ a {
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
-  height: 880px;
 }
 
 /* 3) タイトルとコピーの“でかくなり過ぎ”を抑える */
 .logo {
   font-size: clamp(28px, 3.2vw, 40px);
-} /* ヘッダのロゴ */
+}
+
 /* ===== about ===== */
 /* About 見出し行：タイトル＋フクロウを横並び */
 .about__header {
@@ -541,7 +452,7 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 2rem;
+  margin-top: 4rem;
   margin-bottom: 6rem;
   padding-right: 80px;
 }
@@ -688,9 +599,7 @@ a {
   place-items: center;
   margin-top: clamp(16px, 4vw, 40px);
   padding: clamp(16px, 4vw, 32px) 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.08); /* 背景が暗いなら rgba(255,255,255,.15) などに変更 */
-  /* 背景があるセクションなら “帯” 感が欲しければ以下もあり */
-  /* background: rgba(255,255,255,.55); backdrop-filter: blur(2px); */
+  border-top: 1px solid rgba(0, 0, 0, 0.08); /* 背景が暗いなら */
 }
 
 /* モバイルで余白を気持ち広めに */
@@ -954,26 +863,24 @@ a {
 .services {
   height: 900px;
   --circle-size: clamp(180px, 26vw, 260px); /* 丸を“元の大きめ”に */
+  padding: 80px 20px;
+  max-width: var(--container);
+  margin: 0 auto;
   position: relative;
   overflow: hidden; /* 雲のはみ出し防止 */
   background: #e8f0e9;
   padding-top: clamp(56px, 10vw, 96px);
   padding-bottom: clamp(32px, 8vw, 72px);
-  /* タイトル：右寄せ（フォント大きめに） */
-  /* 説明：左揃え＋中央配置 */
-  /* カードのグリッド（雲の基準） */
-  /* カード（丸） */
-  /* アクセント色 */
-  /* 雲（グリッド相対） */
-  /* レスポンシブ */
 }
-.services .services__title-block {
+
+/* タイトル：右寄せ（フォント大きめに） */
+.services__title-block {
   max-width: 1200px;
   height: 100px;
   margin: 0 auto;
   text-align: left;
 }
-.services .services__title-block .section-title {
+.services__title-block .section-title {
   color: #245e62;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -987,11 +894,13 @@ a {
   line-height: 1.2;
   margin: 0;
 }
-.services .services__title-block .section-title .section-icon {
+.services__title-block .section-title .section-icon {
   height: 1.1em;
   width: auto;
 }
-.services .services__description-block {
+
+/* 説明：左揃え＋中央配置 */
+.services__description-block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1001,14 +910,16 @@ a {
   margin-top: 6rem;
   margin-bottom: 2rem;
 }
-.services .services__description-block .section-description {
+.services__description-block .section-description {
   text-align: left; /* 左揃え */
   line-height: 1.7;
   font-size: clamp(13px, 1.3vw, 15px);
   color: #245e62;
   margin: 0;
 }
-.services .service-grid {
+
+/* カードのグリッド（雲の基準） */
+.service-grid {
   position: relative; /* 雲のposition基準 */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1018,7 +929,9 @@ a {
   margin: 0 auto;
   z-index: 1;
 }
-.services .card {
+
+/* カード（丸） */
+.card {
   width: var(--circle-size);
   aspect-ratio: 1/1;
   border-radius: 50%;
@@ -1044,65 +957,71 @@ a {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   transition: transform 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
 }
-.services .card:hover {
+.card:hover {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
   -webkit-box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
           box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
-.services .card .card-icon {
+.card .card-icon {
   width: clamp(40px, 7vw, 56px);
   height: auto;
   margin-bottom: 0.4rem;
 }
-.services .card .card-title {
+.card .card-title {
   font-weight: 800;
   font-size: clamp(15px, 1.6vw, 18px);
   margin-bottom: 0.2rem;
   min-height: 1.9em;
 }
-.services .card .card-text {
+.card .card-text {
   font-size: clamp(13px, 1.3vw, 15px);
   line-height: 1.6;
   color: #245e62;
   max-width: 32ch;
 }
-.services .card .card-more {
+.card .card-more {
   margin-top: auto;
   font-size: 0.92rem;
   text-decoration: none;
   color: inherit;
 }
 @media (max-width: 900px) {
-  .services .card .services__title-block {
+  .card .services__title-block {
     text-align: center;
   }
-  .services .card .service-grid {
+  .card .service-grid {
     grid-template-columns: 1fr;
   }
-  .services .card .section-title {
+  .card .section-title {
     font-size: clamp(18px, 5vw, 28px);
   }
 }
 @media (max-width: 600px) {
-  .services .card .card {
+  .card .card {
     width: 80%;
     margin-inline: auto;
   }
-  .services .card .card-text {
+  .card .card-text {
     font-size: clamp(11px, 3vw, 14px);
   }
 }
-.services .is-design .card-title {
+
+/* アクセント色 */
+.is-design .card-title {
   color: #2a8a84;
 }
-.services .is-coding .card-title {
+
+.is-coding .card-title {
   color: #1673b1;
 }
-.services .is-training .card-title {
+
+.is-training .card-title {
   color: #0b8a6a;
 }
-.services .service-grid .cloud {
+
+/* 雲（グリッド相対） */
+.service-grid .cloud {
   position: absolute;
   opacity: 0.85;
   pointer-events: none;
@@ -1112,37 +1031,41 @@ a {
   height: auto;
   z-index: 0; /* 背面 */
 }
-.services .service-grid .cloud--top {
+
+.service-grid .cloud--top {
   left: 0;
   top: -56px;
   -webkit-transform: none;
           transform: none; /* 端ピタ：ズレたら left:-6px; に */
 }
-.services .service-grid .cloud--bottom {
+
+.service-grid .cloud--bottom {
   right: 0;
   bottom: -56px;
   -webkit-transform: scaleY(-1);
           transform: scaleY(-1); /* 反転 */
 }
+
+/* レスポンシブ */
 @media (max-width: 900px) {
-  .services .services__title-block {
+  .services__title-block {
     text-align: center;
   }
-  .services .service-grid {
+  .service-grid {
     grid-template-columns: 1fr;
   }
-  .services .service-grid .cloud {
+  .service-grid .cloud {
     width: clamp(90px, 30vw, 160px);
     opacity: 0.28;
   }
-  .services .service-grid .cloud--top {
+  .service-grid .cloud--top {
     left: 50%;
     right: auto;
     top: -40px;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
   }
-  .services .service-grid .cloud--bottom {
+  .service-grid .cloud--bottom {
     right: auto;
     left: 50%;
     bottom: -40px;
@@ -1150,7 +1073,6 @@ a {
             transform: translateX(-50%) scaleY(-1);
   }
 }
-
 /*Service cards: テキストを確実に小さくできるよう下限を下げる */
 .services .service-grid .card .card-title {
   font-size: clamp(6px, 0.7vw, 12px);
@@ -1171,12 +1093,14 @@ a {
 
 /* Contact */
 .contact {
+  max-width: var(--container);
+  margin: 0 auto;
   padding: 80px 20px;
   background: url("../img/bg-asanoha.png") repeat;
   text-align: center;
 }
 .contact__title {
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: #245e62;
   margin-bottom: 1rem;
 }
@@ -1187,7 +1111,7 @@ a {
 }
 
 .c-form {
-  max-width: 600px;
+  max-width: 720px;
   margin: 0 auto;
   display: grid;
   gap: 20px;
@@ -1243,8 +1167,7 @@ a {
   border-top: 1px solid rgba(244, 222, 160, 0.08);
 }
 
-.site-footer .container {
-  max-width: 1120px;
+.site-footer {
   margin: 0 auto;
   display: grid;
   gap: 1rem;
@@ -1257,7 +1180,7 @@ a {
 }
 
 @media (max-width: 480px) {
-  .site-footer .container {
+  .site-footer {
     text-align: center;
   }
 }

@@ -29,11 +29,11 @@ a {
 }
 
 /* ===== layout helpers ===== */
-.container {
-  max-width: min(1200px, 92vw);
-  margin: 0 auto;
+// .container {
+//   max-width: min(1200px, 92vw);
+//   margin: 0 auto;
 
-}
+// }
 
 .section {
   padding: 120px 0;
@@ -45,12 +45,9 @@ a {
   scroll-margin-top: calc(var(--header-h, 72px) + 16px);
 }
 
-
+/* ===== ヘッダー ===== */
 .site-header {
-  background: #f9f7f1;
-
-
-  
+  background: #f9f7f1;  
 }
 
 .header-inner {
@@ -123,15 +120,11 @@ a {
 
 /* ===== hero ===== */
 .hero {
-
-  min-height: 60vh;           /* セクション全体の高さ */
-
   display: flex;
   align-items: center;
 }
 
 .hero-inner {
-
   width: 100%;
   background-image: url("../imgs/bg-line.png");
 
@@ -173,75 +166,75 @@ a {
   display: block;
 }
 /* モバイル */
-@media (max-width: 768px){
-  :root{
-    --hero-pad-y: 40px;
-    --band-h: clamp(160px, 40vw, 240px);
-    --tree-w: min(68vw, 320px);    /* 木の幅を自動で少し小さく */
-  }
-  .hero {
-    padding-block: 32px;
-    min-height: 56svh; /* モバイルのアドレスバー対策 */
-  }
+// @media (max-width: 768px){
+//   :root{
+//     --hero-pad-y: 40px;
+//     --band-h: clamp(160px, 40vw, 240px);
+//     --tree-w: min(68vw, 320px);    /* 木の幅を自動で少し小さく */
+//   }
+//   .hero {
+//     padding-block: 32px;
+//     min-height: 56svh; /* モバイルのアドレスバー対策 */
+//   }
 
-  .hero-inner{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 24px;
-    text-align: center;
-  }
-  .hero-visual img{
-   width: min(72vw, 360px);
-  }
-}
+//   .hero-inner{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     flex-direction: column;
+//     gap: 24px;
+//     text-align: center;
+//   }
+//   .hero-visual img{
+//    width: min(72vw, 360px);
+//   }
+// }
 @media (max-width: 1024px) {
   .hero {
     min-height: 80vh;
   }
 }
-@media (max-width: 768px) {
-  .hero {
-    min-height: 60svh; /* モバイルのアドレスバー対策 */
-    padding-block: 40px;
-  }
-  .hero .hero-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    text-align: center;
-  }
-  .hero .hero-visual {
-    flex-basis: auto;
-    width: auto;
-    min-width: none;
-    transition: flex-basis 0.5s, width 0.5s;
-  }
-  .hero .hero-visual img {
-    width: min(72vw, 370px);
-    margin-inline: auto;
-  }
-  .hero .hero-copy {
-    text-align: center;
-    max-width: 28ch; /* 行長を締めて読みやすく（お好みで） */
-    margin: 0 auto;
-  }
-  .hero .hero-tagline {
-    font-size: clamp(22px, 6vw, 32px);
-    max-width: none;
-    text-align: center;
-    margin: 0 auto;
-  }
-  .hero::before {
-    top: 9rem;
-    height: 120px;
-    background-size: auto 72px;
-  }
-   .hero-tagline::after { width: 220px; height: 260px; right: -4px; } /* モバイル縮小 */
-}
+// @media (max-width: 768px) {
+//   .hero {
+//     min-height: 100vh; /* モバイルのアドレスバー対策 */
+//     padding-block: 40px;
+//   }
+//   .hero .hero-inner {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//     gap: 24px;
+//     text-align: center;
+//   }
+//   .hero .hero-visual {
+//     flex-basis: auto;
+//     width: auto;
+//     min-width: none;
+//     transition: flex-basis 0.5s, width 0.5s;
+//   }
+//   .hero .hero-visual img {
+//     width: min(72vw, 370px);
+//     margin-inline: auto;
+//   }
+//   .hero .hero-copy {
+//     text-align: center;
+//     max-width: 28ch; /* 行長を締めて読みやすく（お好みで） */
+//     margin: 0 auto;
+//   }
+//   .hero .hero-tagline {
+//     font-size: clamp(22px, 6vw, 32px);
+//     max-width: none;
+//     text-align: center;
+//     margin: 0 auto;
+//   }
+//   .hero::before {
+//     top: 9rem;
+//     height: 120px;
+//     background-size: auto 72px;
+//   }
+//    .hero-tagline::after { width: 220px; height: 260px; right: -4px; } /* モバイル縮小 */
+// }
 @media (max-width: 600px) {
   .site-header .hamburger {
     display: inline-grid;
@@ -296,17 +289,21 @@ a {
     padding: 0 1rem;
   }
 }
-/* 1) コンテナ幅を固定（変数使わない版） */
-.container,
-.header-inner,
-.hero-inner { margin: 0 auto; padding-inline: 20px; }
+// /* 1) コンテナ幅を固定（変数使わない版） */
+// .container,
+// .header-inner,
+// .hero-inner { margin: 0 auto; padding-inline: 20px; }
+/* OK: 役割ごとに分離 */
+.container     { margin: 0 auto; padding-inline: 20px; }
+.header-inner  { margin: 0 auto; padding-inline: 20px; }
+.hero-inner    { margin: 0 auto; padding-inline: 20px; } /* ←必要ならここだけ */
 
 /* 2) ヒーローの枠 */
-.hero { min-height: 60vh; display: flex; align-items: center; overflow: hidden; height: 880px;}
+.hero { min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
 
 
 /* 3) タイトルとコピーの“でかくなり過ぎ”を抑える */
-.logo { font-size: clamp(28px, 3.2vw, 40px); }   /* ヘッダのロゴ 
+.logo { font-size: clamp(28px, 3.2vw, 40px); }  
 
 /* ===== about ===== */
 /* About 見出し行：タイトル＋フクロウを横並び */
@@ -440,7 +437,7 @@ a {
   display: flex;
   justify-content: center
   ;
-  margin-top: 2rem;
+  margin-top: 4rem;
   margin-bottom: 6rem;
   padding-right: 80px;
 }
@@ -568,8 +565,9 @@ a {
   place-items: center;
   margin-top: clamp(16px, 4vw, 40px);
   padding: clamp(16px, 4vw, 32px) 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.08); /* 背景が暗いなら 
+  border-top: 1px solid rgba(0, 0, 0, 0.08); /* 背景が暗いなら */
 }
+  
 
 /* モバイルで余白を気持ち広めに */
 @media (max-width: 480px) {
@@ -758,12 +756,15 @@ a {
 .services {
   height: 900px;
   --circle-size: clamp(180px, 26vw, 260px); /* 丸を“元の大きめ”に */
+  padding: 80px 20px;
+  max-width: var(--container);
+  margin: 0 auto;
   position: relative;
   overflow: hidden; /* 雲のはみ出し防止 */
   background: #e8f0e9;
   padding-top: clamp(56px, 10vw, 96px);
   padding-bottom: clamp(32px, 8vw, 72px);
-
+}
   /* タイトル：右寄せ（フォント大きめに） */
   .services__title-block {
     max-width: 1200px;
@@ -893,7 +894,7 @@ a {
     }
     
   }
-}
+
  /*Service cards: テキストを確実に小さくできるよう下限を下げる */
  .services .service-grid .card .card-title {
   font-size: clamp(6px, 0.7vw, 12px); // 下限を6pxに
@@ -915,6 +916,8 @@ a {
 /* Contact */
 
 .contact {
+  max-width: var(--container);
+  margin: 0 auto;
   padding: 80px 20px;
   background: url('../img/bg-asanoha.png') repeat; // 麻の葉模様
   text-align: center;
@@ -933,7 +936,7 @@ a {
 }
 
 .c-form {
-  max-width: 600px;
+  max-width: 720px;
   margin: 0 auto;
   display: grid;
   gap: 20px;
@@ -985,8 +988,8 @@ a {
   padding: 2rem 1rem;
   border-top: 1px solid rgba(244, 222, 160, 0.08);
 }
-  .site-footer .container {
-    max-width: 1120px;
+  .site-footer  {
+    
     margin: 0 auto;
     display: grid;
     gap: 1rem;
@@ -995,7 +998,7 @@ a {
 
 
 @media (max-width: 480px) {
-  .site-footer .container {
+  .site-footer {
     text-align: center;
   }
 }
@@ -1032,3 +1035,180 @@ a {
   opacity: 1;
   pointer-events: auto;
 }
+
+// /* Service safe frame */
+// .service{ max-width: min(1200px,92vw); margin:0 auto; padding: 80px 20px; }
+// .service__grid{ display:grid; grid-template-columns: repeat(12,1fr); gap:24px; }
+// @media (max-width:1024px){ .service__grid{ grid-template-columns:1fr; } }
+
+// /* Contact safe frame */
+// .contact{ max-width: min(1200px,92vw); margin:0 auto; padding: 80px 20px; }
+// .contact form{ max-width:720px; margin:0 auto; }
+
+
+
+//  .container    { max-width: min(1200px, 92vw); margin: 0 auto; padding-inline: 20px; }
+// .header-inner { max-width: min(1200px, 92vw); margin: 0 auto; padding-inline: 20px; }
+// .hero-inner   { max-width: min(1200px, 92vw); margin: 0 auto; padding-inline: 20px; } 
+// /* ==========================
+//    HERO (isolated)
+// ========================== */
+// :root{
+//   --container: min(1200px, 92vw);
+//   --gap-lg: 32px;
+//   --gap-sm: 24px;
+//   --brand: #245e62;
+// }
+
+// .hero{
+//   min-height: clamp(520px, 70svh, 880px);
+//   display: flex;
+//   align-items: center;
+//   overflow: hidden;
+//   background: #f9f7f1;
+// }
+// .hero-inner{
+//   width: 100%;
+//   max-width: min(1200px, 92vw);
+//   margin: 0 auto;
+//   padding-inline: 20px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   gap: var(--gap-lg);
+//   background: url("../imgs/bg-line.png") center / cover no-repeat;
+// }
+// .hero-copy{ max-width: 680px; }
+// .hero-tagline{
+//   position: relative;
+//   color: var(--brand);
+//   line-height: 1.6;
+//   font-size: clamp(20px, 2.4vw, 28px);
+//   padding: 18px 0;
+//   /* 右擬似要素ぶんの余白（PC時） */
+//   padding-right: clamp(260px, 28vw, 370px);
+//   &::after{
+//     content:"";
+//     position: absolute;
+//     right: 0; top: 50%;
+//     transform: translateY(-50%);
+//     width: clamp(220px, 28vw, 370px);
+//     aspect-ratio: 370 / 440;
+//     background: url("../imgs/hero-img.png") center / contain no-repeat;
+//     pointer-events: none;
+//   }
+// }
+// /* 他の画像要素 .hero-visual があるならPCでは使わない */
+// .hero-visual{ display: none !important; }
+
+// /* 📱 タブレット以下で縦並び（カラム） */
+// @media (max-width: 1024px) {
+//   .hero-inner {
+//     flex-direction: column;     /* ←縦並び */
+//     justify-content: center;
+//     align-items: center;
+//     text-align: center;
+//     gap: 24px;
+//   }
+
+//   .hero-copy {
+//     max-width: 90%;
+//   }
+
+//   .hero-visual img {
+//     width: min(72vw, 400px);   /* 画像も少し大きめに */
+//     margin-top: 12px;
+//   }
+// }
+
+// /* 📱 スマホでフォントも縮小 */
+// @media (max-width: 600px) {
+//   .hero .hero-tagline {
+//     font-size: clamp(16px, 4.8vw, 22px);
+//     line-height: 1.6;
+//   }
+// }
+// /* ====== タブレット以下：縦並び＋::after を下に回す ====== */
+// @media (max-width: 1024px){
+//   .hero .hero-inner{
+//     display: flex;
+//     flex-direction: column;   /* ←縦カラム */
+//     justify-content: center;
+//     align-items: center;
+//     text-align: center;
+//     gap: 24px;
+//   }
+
+//   /* PCで付けた右余白を消す（画像は下へ回すので不要） */
+//   .hero-tagline{
+//     padding-right: 0 !important;         /* ←残留対策 */
+//     writing-mode: horizontal-tb !important; /* ←縦書き化対策（もし当たってたら無効化） */
+//     &::after{
+  
+//       transform: none !important;
+//       display: block !important;
+//       margin: 12px auto 0 !important;    /* テキストの下に画像 */
+//       width: clamp(220px, 56vw, 420px);
+//       aspect-ratio: 370 / 440;
+//     }
+//   }
+// }
+
+// /* ====== スマホ：フォント縮小を確実に通す ====== */
+// @media (max-width: 600px){
+//   .hero{ min-height: 60svh; padding-block: 40px; }
+//   .hero .hero-tagline{
+//     font-size: clamp(16px, 4.8vw, 22px) !important;
+//     line-height: 1.7;
+//   }
+// }
+// /* PC幅では横のガター（左右の20px）を殺す */
+// @media (min-width: 1025px){
+//   .container,
+//   .header-inner,
+//   .hero-inner,
+//   .service,
+//   .contact {
+//     padding-left: 0 !important;
+//     padding-right: 0 !important;
+//   }
+// }
+
+// /* スマホ/タブレットではガター復活（読みにくくならないように） */
+// @media (max-width: 1024px){
+//   .container,
+//   .header-inner,
+//   .hero-inner,
+//   .service,
+//   .contact {
+//     padding-inline: 20px;
+//   }
+// }
+// /* PC幅は横ガターをゼロに（Worksだけは例外） */
+// @media (min-width: 1025px){
+//   .container,
+//   .header-inner,
+//   .hero-inner {
+//     padding-left: 0 !important;
+//     padding-right: 0 !important;
+//   }
+
+//   /* ←ここがポイント：複数形 .services をゼロに */
+//   .services,
+//   .contact {
+//     padding-left: 0 !important;
+//     padding-right: 0 !important;
+//   }
+
+//   /* Works は今のまま中央に 20px 欲しいなら維持 */
+//   .works {
+//     padding-left: 20px;
+//     padding-right: 20px;
+//   }
+// }
+// @media (min-width: 1025px){
+//   .hero-tagline{
+//     max-width: none;
+//     margin: 0;         /* 中央寄せを解除＝全幅に */
+//   }
+// }
