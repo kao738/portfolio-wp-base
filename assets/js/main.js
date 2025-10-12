@@ -48,20 +48,34 @@
 
   // =============================
   // ✅ Swiper（スライダー）の初期設定
-  // =============================
-  const mySwiper = new Swiper('.swiper', {
-    loop: true,               // 無限ループでスライドを繰り返す
-    slidesPerView: 'auto',    // 自動でスライド数を調整（※下で4に上書きされている）
-    slidesPerView: 4,         // 一度に表示するスライドの枚数（上の設定を上書き）
-    speed: speed,             // スライドアニメーションにかかる時間（5000ms = 5秒）
-    spaceBetween: 10,         // スライド間の余白（10px）
-    allowTouchMove: false,    // ユーザーによるスワイプ操作を無効化
 
-    autoplay: {
-      delay: 0,               // 次のスライドまでの待ち時間（0にすると常に動き続ける）
-      disableOnInteraction: false, // ユーザーが触れても自動再生を止めない
-    },
-  });
+  new Swiper('.swiper.belt', {
+  slidesPerView: 'auto',          // 画像幅に追随（固定値にしない）
+  spaceBetween: 8,
+  loop: true,
+  loopAdditionalSlides: 12,        // 余分に複製 → 継ぎ目でガクッとしない
+  speed: 7000,                     // ゆっくり連続スクロール
+  autoplay: { delay: 0, disableOnInteraction: false, pauseOnMouseEnter: false },
+  allowTouchMove: false,           // 自動で流しっぱにするならオフ
+  freeMode: true,
+  freeModeMomentum: false,         // 惰性スクロールを切る＝一定速度
+  // preloadImages: true,          // Lazy使ってないなら既定のままでOK
+});
+
+  // // =============================
+  // const mySwiper = new Swiper('.swiper', {
+  //   loop: true,               // 無限ループでスライドを繰り返す
+  //   slidesPerView: 'auto',    // 自動でスライド数を調整（※下で4に上書きされている）
+  //   slidesPerView: 4,         // 一度に表示するスライドの枚数（上の設定を上書き）
+  //   speed: speed,             // スライドアニメーションにかかる時間（5000ms = 5秒）
+  //   spaceBetween: 10,         // スライド間の余白（10px）
+  //   allowTouchMove: false,    // ユーザーによるスワイプ操作を無効化
+
+  //   autoplay: {
+  //     delay: 0,               // 次のスライドまでの待ち時間（0にすると常に動き続ける）
+  //     disableOnInteraction: false, // ユーザーが触れても自動再生を止めない
+  //   },
+  // });
 
   // 現在のスライド位置（translate値）を一時的に保存するための変数
   let getTranslate;
@@ -123,3 +137,4 @@
   });
 
 })(); // 即時実行してスクリプトを完了
+
