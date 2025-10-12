@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAO's portfolio</title>
+  <meta name="description" content="Emojaponnaise/KAOのポートフォリオサイトです。">
+  <meta name="keywords" content="KAO, portfolio, web developer, designer">
+  <meta name="author" content="KAO">
+  <link rel="icon" href="assets/imgs/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/imgs/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+ 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js" defer></script>
+
+</head>
+<body id="top">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <h1 class="logo animate-title">Emojaponnaise</h1>
+    <button class="hamburger" aria-controls="site-menu" aria-expanded="false" aria-label="メニューを開閉">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="site-menu" class="site-nav animate-nav">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-tagline">
+        感情×ロジック×和<br>
+        ふと＜イマココ＞に戻れるデザイン
+      </p>  
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="about__inner">
+    <div class="about__header">
+      <h2 class="about__title">About</h2>
+    </div>
+    <div class="about__profile profile">
+      <div class="profile__img">
+        <img src="assets/imgs/about-avatar.png" alt="kaori  ota プロフィール画像" loading="lazy" width="160" height="160">
+      </div>
+      <div class="profile__info">
+        <h3 class="profile__name">Kaori Ota</h3>
+        <p class="profile__desc">人や企業の『伝えたい・学びたい』を支える伴走クリエイターです。営業・制作補助・顧客対応など多様な現場で、相手の想いを引き出し成果につなげる力を磨いてきました。現在は Web制作・デザイン・Canva・GAS などのツールを活かしわかりやすく想いを伝える仕組みづくりに取り組んでいます。</p>
+      </div>
+    </div>
+    <div class="about__content">
+      <section class="about__strength">
+        <h3 class="about__section-title">Strength</h3>
+        <img class="about__strength-image" src="assets/imgs/about-strengthimg.png" alt="ストレングスファインダーの図" loading="lazy" width="360" height="280">
+      </section>
+      <section class="about__skills">
+        <h3 class="about__section-title">Skills</h3>
+        <ul class="about__skills-list">
+          <li class="about__skills-item">HTML</li>
+          <li class="about__skills-item">Canva</li>
+          <li class="about__skills-item">CSS</li>
+          <li class="about__skills-item">Illustrator</li>
+          <li class="about__skills-item">JavaScript</li>
+          <li class="about__skills-item">Photoshop</li>
+          <li class="about__skills-item">Figma</li>
+          <li class="about__skills-item">Google Workspace</li>
+          <li class="about__skills-item">WordPress</li>
+        </ul>
+      </section>
+    </div>
+    <div class="about__cta">
+      <a href="#contact" class="btn btn--contact" aria-label="お問い合わせへ移動">Contact</a>
+    </div>
+  </div>
+</section>
+
+<section id="works" class="works">
+  <div class="works__inner">
+    <div class="works__header">
+      <h2 class="works__title">Works</h2>
+    </div>
+  </div>
+  <section class="swiper belt" aria-label="作品が横に流れるギャラリー">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <a class="belt__item" href="/work-01.html"><img src="assets/imgs/works-ds01.png" alt="三つ折りチラシ"><span class="belt__caption">三つ折りチラシ</span></a>
+      </div>
+      <div class="swiper-slide">
+        <a class="belt__item" href="/work-01.html"><img src="assets/imgs/works-ds02.png" alt="デザイン作品2"><span class="belt__caption">デザイン作品2</span></a>
+      </div>
+      <div class="swiper-slide">
+        <a class="belt__item" href="/work-01.html"><img src="assets/imgs/works-ds03.png" alt="デザイン作品3"><span class="belt__caption">デザイン作品3</span></a>
+      </div>
+      <div class="swiper-slide">
+        <a class="belt__item" href="/work-01.html"><img src="assets/imgs/works-ds04.png" alt="デザイン作品4"><span class="belt__caption">デザイン作品4</span></a>
+      </div>
+      <div class="swiper-slide">
+        <a class="belt__item" href="/work-01.html"><img src="assets/imgs/works-ds05.png" alt="デザイン作品5"><span class="belt__caption">デザイン作品5</span></a>
+      </div>  
+    </div>
+  </section>
+  <div class="works__footer" aria-label="作品一覧のフッター">
+    <a href="/works.html" class="btn btn--outline btn--lg">View More</a>
+  </div>
+</section>
+
+<section class="services">
+  <div class="services__title-block">
+    <h2 class="section-title">
+      <img src="assets/imgs/icon-shippou.svg" alt="" class="section-icon" aria-hidden="true">
+      Service
+    </h2>
+  </div>
+  <div class="services__description-block">
+    <p class="section-description">
+      あなたの想いをデザインとテクノロジーでカタチにします。
+    </p>
+  </div>
+  <div class="service-grid">
+    <img src="assets/imgs/cloud.png" alt="" class="cloud cloud--top" aria-hidden="true">
+    <img src="assets/imgs/cloud.png" alt="" class="cloud cloud--bottom" aria-hidden="true">
+    <article class="card is-design">
+      <img src="assets/imgs/service-img01.png" alt="" class="card-icon">
+      <h3 class="card-title">デザイン</h3>
+      <p class="card-text">想いを形にするビジュアル設計。トーン＆マナーを揃え、伝わる世界観をつくります。</p>
+    </article>
+    <article class="card is-coding">
+      <img src="assets/imgs/service-img02.png" alt="" class="card-icon">
+      <h3 class="card-title">コーディング</h3>
+      <p class="card-text">デザインを正確かつ軽量に実装。アクセシビリティと表示速度も意識して仕上げます。</p>
+    </article>
+    <article class="card is-training">
+      <img src="assets/imgs/service-img03.png" alt="" class="card-icon">
+      <h3 class="card-title">伴走サポート</h3>
+      <p class="card-text">更新運用や内製化の支援でチームのスキルアップを支えます。</p>
+    </article>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="contact__inner">
+    <div class="contact__header">
+      <h2 class="contact__title">Contact</h2>
+    </div>
+    <p class="contact__text">ご質問・ご相談など、お気軽にお問い合わせください。</p>
+  </div>
+  <form class="c-form" action="#" method="post">
+    <label for="name">お名前</label>
+    <input type="text" id="name" name="name" required>
+    <label for="kana">ふりがな</label>
+    <input type="text" id="kana" name="kana">
+    <label for="email">Emailアドレス</label>
+    <input type="email" id="email" name="email" required>
+    <label for="message">お問い合わせ内容</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
+    <button type="submit">submit</button>
+  </form>
+</section>
+
+<a href="#top" class="to-top" aria-label="トップへ戻る">
+  <img src="assets/imgs/owl-button.png" alt="トップへ" />
+</a>
+<script>
+  const toTopBtn = document.querySelector('.to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      toTopBtn.classList.add('is-visible');
+    } else {
+      toTopBtn.classList.remove('is-visible');
+    }
+  });
+</script>
+
+</main>
+<footer class="site-footer">       
+  <p class="copyright">&copy; Emojaponnaise 2025</p>
+</footer>
+
+</body>
+</html>
