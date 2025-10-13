@@ -1623,7 +1623,8 @@ a {
 }
 /* Headerだけはガター無し */
 .site-header .header-inner {
-  padding-left: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* ==== mid幅(約1000px)の整形：PC→タブレットの穴埋め ==== */
