@@ -56,18 +56,44 @@ table {
 }
 
 /* ===== variables ===== */
+/* ===== base ===== */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: #245e62;
+  background: #f9f7f1;
+  font-family: "Noto Serif JP", system-ui, noto-serif;
+  font-weight: 600;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 :root {
   --container: min(1200px, 92vw);
-  --space: clamp(64px, 6vw, 120px);
-  --gutter: 20px;
+  --space: clamp(64px, 6vw, 120px); /* セクション余白 */
+  --gutter: 20px; /* 横の内側余白 */
   --brand: #245e62;
   --bg: #f9f7f1;
   --text: #245e62;
-  --gap-lg: 32px;
-  --gap-sm: 24px;
 }
 
-/* ===== base ===== */
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -112,11 +138,31 @@ a {
   scroll-margin-top: calc(var(--header-h, 72px) + 16px);
 }
 
+:target {
+  scroll-margin-top: calc(var(--header-h, 72px) + 16px);
+}
+
+.container {
+  max-width: min(1200px, 92vw);
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
+.header-inner {
+  max-width: min(1200px, 92vw);
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
+.hero-inner {
+  max-width: min(1200px, 92vw);
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
 /* ===== ヘッダー ===== */
 .site-header {
   background: #f9f7f1;
-  position: relative;
-  z-index: 10;
 }
 
 .header-inner {
@@ -132,8 +178,6 @@ a {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-  padding-left: 0;
-  padding-right: 0;
 }
 
 .site-header .logo {
@@ -210,21 +254,27 @@ a {
   gap: 1.5rem;
 }
 
+/* Headerだけはガター無し */
+.site-header .header-inner {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 /* ==== mid幅(約1000px)の整形：PC→タブレットの穴埋め ==== */
 @media (max-width: 1024px) {
+  /* ヘッダー：左余白 & タイトル縮小 & ナビ間隔 */
   .site-header .header-inner {
     min-height: var(--header-h, 64px);
   }
   .site-header .logo {
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: clamp(24px, 3vw, 32px); /* タイトルを素直に小さく */
     line-height: 1.1;
     margin: 0;
   }
   .site-header .site-nav ul {
     gap: 1.25rem;
-  }
+  } /* 文字が詰まるなら間隔を控えめに */
 }
-/* ハンバーガーメニュー（スマホ） */
 @media (max-width: 600px) {
   .site-header .hamburger {
     display: inline-grid;
@@ -233,12 +283,18 @@ a {
     height: 32px;
   }
   .site-header .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
     background: #245e62;
     margin-bottom: 6px;
     border-radius: 1px;
     -webkit-transition: all 0.3s cubic-bezier(0.4, 2, 0.6, 1);
     transition: all 0.3s cubic-bezier(0.4, 2, 0.6, 1);
     position: relative;
+  }
+  .site-header .hamburger span:last-child {
+    margin-bottom: 0;
   }
   .site-header.is-open .hamburger span:nth-child(1) {
     -webkit-transform: translateY(12px) rotate(45deg);
@@ -275,8 +331,107 @@ a {
   .site-header .site-nav.is-open {
     display: block;
   }
+  .site-header .about__head {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+    padding: 0 1rem;
+  }
 }
 /* ===== hero ===== */
+.hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.hero-inner {
+  width: 100%;
+  background-image: url("../imgs/bg-line.png");
+}
+
+.hero-copy {
+  max-width: 900px;
+}
+
+.hero-tagline {
+  font-size: 1.8rem;
+  line-height: 1.4;
+  color: #245e62;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 18px 0;
+}
+.hero-tagline::after {
+  content: "";
+  width: 370px;
+  height: 440px;
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  right: 0;
+  top: 50%;
+  position: absolute;
+  bottom: 50%;
+}
+
+.hero-visual img {
+  width: min(30vw, 260px); /* 木のサイズはここ */
+  height: auto;
+  display: block;
+}
+
+/* 3) タイトルとコピーの“でかくなり過ぎ”を抑える */
+.logo {
+  font-size: clamp(28px, 3.2vw, 40px);
+}
+
+/* ==== Hero 余白を詰める・モバイル優先 ==== */
+@media (max-width: 600px) {
+  .hero {
+    /* ... */
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .hero-inner {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .hero > *:first-child,
+  .hero-inner > *:first-child {
+    margin-top: 0;
+  }
+  /* 見出し直指定の保険 */
+  .hero h1, .hero h2, .hero p {
+    margin-top: 0;
+  }
+}
+/* タブレットでも少し詰めたいなら */
+@media (max-width: 1024px) {
+  .hero {
+    min-height: auto;
+    padding-block: 16px;
+  }
+  .hero-inner {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
 .hero {
   min-height: clamp(520px, 70svh, 880px);
   display: -webkit-box;
@@ -285,15 +440,384 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  overflow: hidden;
+  overflow: visible;
   background: #f9f7f1;
-  padding-block: 16px;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-block: 16px;
+  } /* ここはお好みで微調整 */
+}
+/* ===== Hero: 最小パッチ（他に影響しない） ===== */
+/* モバイル：木をテキストの“下”に回して余白を少しだけ確保 */
+@media (max-width: 600px) {
+  .hero {
+    padding-block: 16px; /* 40px → 16px（上の空きが広すぎる対策） */
+  }
+  .hero-tagline {
+    padding-right: 0; /* 右の余白を解除（画像を下へ回すので不要） */
+    position: relative; /* 念のため（既に付いてるならOK） */
+  }
+}
+/* 念のため：ヘッダーが常に前面（重なって見える時の保険） */
+.site-header {
   position: relative;
+  z-index: 10;
+}
+
+/* ========= ヒーロー：擬似要素版に統一 ========= */
+/* 実画像が残っていても出ないよう封印（保険） */
+.hero-visual {
+  display: none;
+}
+
+/* ベース（共通） */
+.hero-tagline {
+  position: relative;
+}
+
+.hero-tagline::after {
+  content: "";
+  position: absolute;
+  background: url("../imgs/hero-img.png") center/contain no-repeat;
+  pointer-events: none;
+  aspect-ratio: 370/440; /* 縦横比キープ */
+}
+
+/* ===== スマホ（～600px）：テキストの“下・中央”に置く ===== */
+@media (max-width: 600px) {
+  .hero {
+    min-height: 100svh; /* ファーストビュー占有＝Aboutを隠す */
+    overflow: visible;
+    padding-block: 16px;
+    padding-bottom: clamp(140px, 28vw, 260px); /* 木のぶん下に余白を確保 */
+  }
+  .hero-tagline {
+    width: 100%;
+    text-align: center;
+    padding-right: 0;
+  }
+  .hero-tagline::after {
+    top: calc(100% + 12px); /* テキスト直下に12pxあける */
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: clamp(260px, 62vw, 420px); /* ★木の大きさ（スマホ用つまみ） */
+  }
+}
+/* ===== 中間（601–1200px）：縦並び・中央下配置 ===== */
+@media (min-width: 601px) and (max-width: 1200px) {
+  .hero {
+    min-height: 80svh; /* 75–85svhで好みに */
+    overflow: visible;
+    margin-bottom: clamp(140px, 30vw, 320px); /* 下セクション食い込み防止 */
+    padding-block: 16px;
+  }
+  .hero-tagline {
+    width: 100%;
+    text-align: center;
+    padding-right: 0;
+  }
+  .hero-tagline::after {
+    top: calc(100% + 14px);
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: clamp(300px, 46vw, 500px); /* ★木の大きさ（中間用つまみ） */
+  }
+}
+/* ===== PC（1201px～）：テキスト右側・縦中央 ===== */
+@media (min-width: 1400px) {
+  .hero {
+    min-height: calc(100vh - var(--header-h, 72px)); /* ★高さつまみ：About見えない */
+    overflow: visible;
+    padding-block: 32px; /* 24–40pxで微調整 */
+  }
+  .hero-tagline {
+    text-align: left;
+    padding-right: clamp(260px, 28vw, 370px); /* 右に木のスペースを確保 */
+  }
+  .hero-tagline::after {
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); /* 上下位置のつまみはここを±pxに */
+    width: clamp(480px, 36vw, 620px); /* ★木の大きさ（PC用つまみ） */
+  }
+}
+/* PCだけ擬似要素に統一（1201px〜） */
+@media (min-width: 1400px) {
+  /* 実画像は消す */
+  .hero-visual {
+    display: none;
+  }
+  /* 擬似要素の土台 */
+  .hero-tagline {
+    position: relative;
+    padding-right: clamp(300px, 32vw, 420px);
+  }
+  /* ★擬似要素（木） */
+  .hero-tagline::after {
+    content: "";
+    position: absolute;
+    right: 0; /* 右端に基準 */
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); /* 縦中央。横はこれでOK */
+    width: clamp(480px, 36vw, 620px); /* 木の大きさ（つまみ） */
+    aspect-ratio: 370/440;
+    background: url("../imgs/hero-img.png") center/contain no-repeat;
+    pointer-events: none;
+  }
+  /* はみ出し見せたくないなら hidden、見せたいなら visible */
+  .hero {
+    overflow: visible;
+    min-height: calc(100vh - var(--header-h, 72px));
+  }
+}
+/* ===== PC（1201px〜）だけ：擬似要素で木を表示＆少し右へ ===== */
+@media (min-width: 1400px) {
+  .hero-visual {
+    display: none;
+  }
+  .hero {
+    min-height: calc(100vh - var(--header-h, 72px));
+    overflow: visible;
+    padding-block: 32px;
+  }
+  .hero-tagline {
+    position: relative;
+    text-align: left;
+    padding-right: clamp(300px, 32vw, 420px);
+  }
+  .hero-tagline::after {
+    content: "";
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    width: clamp(480px, 36vw, 620px);
+    aspect-ratio: 370/440;
+    background: url("../imgs/hero-img.png") center/contain no-repeat;
+    pointer-events: none;
+    z-index: 2;
+  }
+}
+/* PC（1201px〜）：赤箱→本物の木に置き換え＆右寄せ調整 */
+@media (min-width: 1400px) {
+  .hero-visual {
+    display: none;
+  }
+  .hero {
+    min-height: calc(100vh - var(--header-h, 72px));
+    overflow: visible;
+    padding-block: 32px;
+  }
+  .hero-tagline {
+    position: relative;
+    text-align: left;
+    padding-right: clamp(300px, 32vw, 420px);
+  }
+  .hero-tagline::after {
+    content: "";
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    width: clamp(480px, 36vw, 620px);
+    aspect-ratio: 370/440;
+    background: url("../imgs/hero-img.png") center/contain no-repeat;
+    pointer-events: none;
+    z-index: 2;
+  }
+}
+/* === DESKTOP HARD OVERRIDE (最後尾) === */
+@media (min-width: 1201px) {
+  /* コンテナ基準を広げる */
+  .hero-inner {
+    position: relative;
+  }
+  /* テキスト側の“中央寄せ/狭さ”を殺す */
+  .hero-tagline {
+    display: block;
+    max-width: none;
+    margin: 0;
+    text-align: left;
+    padding-right: clamp(320px, 34vw, 480px); /* 木の居場所を広く取る */
+    position: relative;
+  }
+  /* 木（擬似要素）を右端に固定。中央化の名残を完全リセット */
+  .hero-tagline::after {
+    content: "";
+    position: absolute;
+    /* 中央寄せ系の残骸を無効化 */
+    left: auto;
+    margin: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    /* 右寄せ＋微調整 */
+    right: -168px; /* もっと右へ → -40 / -56 など */
+    top: 50%;
+    width: clamp(500px, 38vw, 680px); /* 大きさつまみ */
+    aspect-ratio: 370/440;
+    pointer-events: none;
+    z-index: 2;
+  }
+  /* 枠の高さ・はみ出し */
+  .hero {
+    min-height: calc(100vh - var(--header-h, 72px));
+    overflow: visible; /* 切れるなら visible に変更OK */
+    padding-block: 32px;
+  }
+  /* 実画像は封印のまま */
+  .hero-visual {
+    display: none;
+  }
+}
+/* === RESPONSIVE CENTER FIX (〜1200px) === */
+@media (max-width: 1400px) {
+  .hero {
+    overflow: visible; /* 切れ防止 */
+    padding-bottom: clamp(140px, 28vw, 260px);
+  }
+  .hero-tagline {
+    padding-right: 0; /* PCの右スペースを解除 */
+    text-align: center;
+    position: relative;
+    width: 100%;
+  }
+  .hero-tagline::after {
+    content: "";
+    position: absolute;
+    /* 右寄せの名残を完全リセット */
+    right: auto;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    top: calc(100% + 12px); /* テキストの下に配置 */
+    width: clamp(260px, 46vw, 500px); /* ←大きさつまみ（必要なら調整） */
+    aspect-ratio: 370/440;
+    background: url("../imgs/hero-img.png") center/contain no-repeat;
+    pointer-events: none;
+  }
+}
+/* ===== HERO タイトル帯：最終フル幅パッチ ===== */
+.hero {
+  position: relative;
+  overflow: visible;
+}
+
+.hero-tagline {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  color: #245e62;
+  line-height: 1.6;
+  padding: 1.2em 0;
+  max-width: none;
+  margin: 0;
+  display: block;
+}
+
+.hero-tagline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  background: url("../imgs/bg-line.png") center/cover repeat;
+  z-index: -1;
+}
+
+.hero-inner {
+  background: none;
+}
+
+/* ===== Hero（スマホ）— 木のサイズ＆位置、Aboutを隠す ===== */
+@media (max-width: 600px) {
+  .hero {
+    min-height: 100svh; /* 画面いっぱい確保＝Aboutを押し下げ */
+    padding-block: 16px; /* 上下の余白はお好みで 12–24px */
+    overflow: visible; /* 木が切れないように */
+  }
+  .hero-inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; /* 縦並び */
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+}
+/* ===== PC幅だけ調整（1025px〜） ===== */
+@media (min-width: 1025px) {
+  /* 1) ヒーローの高さ（Aboutを隠す用） */
+  .hero {
+    min-height: calc(100vh - var(--header-h, 72px)); /* ←高さつまみ */
+    padding-block: 32px; /* 上下の余白。24〜40で好み調整 */
+    overflow: visible; /* 木が切れるなら visible のまま */
+  }
+  /* 2) 横並び&中央寄せ（安定） */
+  .hero-inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    gap: 32px;
+  }
+  /* 3) ★木（画像）のサイズ＆位置つまみ */
+  .hero-visual img {
+    width: clamp(480px, 36vw, 620px); /* ←大きさつまみ（小→32vw / 大→40vw） */
+    height: auto;
+    display: block;
+    translate: 0 8px; /* ←上下位置つまみ。下げる: 12px / 上げる: -4px */
+    /* 横位置をもっと右に寄せたいなら👇を追加
+       margin-left: auto;
+    */
+  }
+}
+/* ==========================
+   HERO (isolated)
+========================== */
+:root {
+  --container: min(1200px, 92vw);
+  --gap-lg: 32px;
+  --gap-sm: 24px;
+  --brand: #245e62;
+}
+
+.hero {
+  min-height: clamp(520px, 70svh, 880px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: visible;
+  background: #f9f7f1;
+  /* ヒーロー：上の余白と木の被り回避（mid幅） */
+  min-height: 72svh; /* 100vhやautoを避けて安定化 */
+  padding-block: 16px;
 }
 
 .hero-inner {
   width: 100%;
-  max-width: var(--container);
+  max-width: min(1200px, 92vw);
   margin: 0 auto;
   padding-inline: 20px;
   display: -webkit-box;
@@ -306,7 +830,6 @@ a {
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: var(--gap-lg);
-  background: url("../imgs/bg-line.png") center/cover no-repeat;
 }
 
 .hero-copy {
@@ -319,14 +842,9 @@ a {
   line-height: 1.6;
   font-size: clamp(20px, 2.4vw, 28px);
   padding: 18px 0;
+  /* 右擬似要素ぶんの余白（PC時） */
   padding-right: clamp(260px, 28vw, 370px);
-  max-width: none;
-  margin: 0;
-  display: block;
-  text-align: left;
-  z-index: 1;
 }
-
 .hero-tagline::after {
   content: "";
   position: absolute;
@@ -340,105 +858,260 @@ a {
   pointer-events: none;
 }
 
-.hero-tagline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  top: 0;
-  bottom: 0;
-  width: 100vw;
-  z-index: -1;
-}
-
+/* 他の画像要素 .hero-visual があるならPCでは使わない */
 .hero-visual {
   display: none;
 }
 
-/* タブレット以下で縦並び・中央配置・フォント縮小 */
+/* 📱 タブレット以下で縦並び（カラム） */
 @media (max-width: 1024px) {
   .hero-inner {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
-            flex-direction: column;
+            flex-direction: column; /* ←縦並び */
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    text-align: center;
+    text-align: left;
     gap: 24px;
-    height: 100%;
   }
   .hero-copy {
     max-width: 90%;
   }
+  .hero-visual img {
+    width: min(72vw, 400px); /* 画像も少し大きめに */
+    margin-top: 12px;
+  }
+}
+/* 📱 スマホでフォントも縮小 */
+@media (max-width: 600px) {
+  .hero .hero-tagline {
+    font-size: clamp(16px, 4.8vw, 22px);
+    line-height: 1.6;
+  }
+}
+/* ====== タブレット以下：縦並び＋::after を下に回す ====== */
+@media (max-width: 1024px) {
+  .hero .hero-inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; /* ←縦カラム */
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: left;
+    gap: 24px;
+  }
+  /* PCで付けた右余白を消す（画像は下へ回すので不要） */
   .hero-tagline {
-    text-align: center;
-    padding-right: 0;
-    width: 100%;
-    font-size: clamp(18px, 4vw, 28px);
+    padding-right: 0; /* ←残留対策 */
+    -webkit-writing-mode: horizontal-tb;
+        -ms-writing-mode: lr-tb;
+            writing-mode: horizontal-tb; /* ←縦書き化対策（もし当たってたら無効化） */
   }
   .hero-tagline::after {
+    -webkit-transform: none;
+            transform: none;
+    display: block;
+    margin: 12px auto 0; /* テキストの下に画像 */
+    width: clamp(220px, 56vw, 420px);
+    aspect-ratio: 370/440;
+  }
+}
+/* ====== スマホ：フォント縮小を確実に通す ====== */
+@media (max-width: 600px) {
+  .hero {
+    min-height: 60svh;
+    padding-block: 40px;
+  }
+  .hero .hero-tagline {
+    font-size: clamp(16px, 4.8vw, 22px);
+    line-height: 1.7;
+  }
+}
+/* PC幅では横のガター（左右の20px）を殺す */
+@media (min-width: 1025px) {
+  .container,
+  .header-inner,
+  .hero-inner,
+  .service,
+  .contact {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+/* スマホ/タブレットではガター復活（読みにくくならないように） */
+@media (max-width: 1024px) {
+  .container,
+  .header-inner,
+  .hero-inner,
+  .service,
+  .contact {
+    padding-inline: 20px;
+  }
+}
+/* PC幅は横ガターをゼロに（Worksだけは例外） */
+@media (min-width: 1025px) {
+  .container,
+  .header-inner,
+  .hero-inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* ←ここがポイント：複数形 .services をゼロに */
+  .services,
+  .contact {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Works は今のまま中央に 20px 欲しいなら維持 */
+  .works {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (min-width: 1025px) {
+  .hero-tagline {
+    max-width: none;
+    margin: 0; /* 中央寄せを解除＝全幅に */
+  }
+}
+@media (max-width: 1024px) {
+  .hero-inner,
+  .about__content,
+  .works__header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 24px;
+    text-align: left;
+  }
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+/* === HERO 最終上書き（後勝ち＆最低限だけ） === */
+@media (max-width: 600px) {
+  .hero {
+    min-height: 72svh; /* 60svh → 72svhに。もっと欲しければ80svh */
+    padding-block: 16px; /* 40px を上書きして詰める */
+  }
+  .hero-tagline {
+    padding-right: 0; /* 右余白を無効化（画像を下に逃がす前提なら） */
+  }
+}
+.hero-inner {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; /* 1000px付近で縦並びに切替 */
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+  gap: 16px;
+}
+
+.hero-tagline {
+  padding-right: 0; /* 右の余白（木のスペース）を解除 */
+}
+
+/* ==== 1000px前後で木が切れる対策（最小） ==== */
+@media (max-width: 1400px) and (min-width: 720px) {
+  .hero {
+    overflow: visible; /* 木のはみ出しを切らない */
+    min-height: 80svh; /* 枠を少し高く確保（75〜85で好み調整） */
+    padding-block: 16px;
+  }
+  .hero-inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; /* この帯域は縦並びにして安全に */
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: left;
+    gap: 16px;
+  }
+  .hero-tagline {
+    padding-right: 0;
+  }
+}
+/* PC幅で横並びに戻す時は overflow を元に */
+@media (min-width: 1401px) {
+  .hero {
+    overflow: visible;
+  }
+}
+/* 720〜1200px帯：木の分だけ下にスペースを確保 */
+@media (max-width: 1400px) and (min-width: 720px) {
+  .hero {
+    overflow: visible;
+    margin-bottom: clamp(140px, 30vw, 320px); /* ★コレで木の分の余白を保証 */
+  }
+  .hero-tagline {
+    padding-right: 0;
+  }
+}
+/* 1000px前後〜スマホ：テキスト幅に影響されない安定中央 */
+@media (max-width: 1024px) {
+  .hero-tagline {
+    width: 100%; /* ← 基準を固定 */
+    text-align: left;
+    padding-right: 0; /* 右余白はいらない */
+    position: relative;
+  }
+  .hero-tagline::after {
+    position: absolute;
+    top: calc(100% + 12px); /* テキストの下に配置 */
+    left: 50%; /* ← right基準をやめて */
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); /* ← 左右どっちにもブレない中央 */
+    width: clamp(240px, 40vw, 380px);
+    aspect-ratio: 370/440;
+  }
+}
+/* 木が右に飛ぶ問題の強制修正（～1024px帯） */
+@media (max-width: 1024px) {
+  .hero {
+    overflow: visible;
+  } /* 切れ防止（必要なら） */
+  .hero-tagline {
+    width: 100%;
+    position: relative;
+    padding-right: 0;
+    text-align: left;
+  }
+  .hero-tagline::after {
+    /* 右寄せ系を完全リセットして中央固定に */
     right: auto;
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
+    width: clamp(220px, 56vw, 360px);
+    aspect-ratio: 370/440;
     top: calc(100% + 12px);
-    width: clamp(220px, 56vw, 420px);
-    height: 100%;
-  }
-}
-/* スマホでさらにフォント縮小 */
-@media (max-width: 600px) {
-  .hero-tagline {
-    font-size: clamp(16px, 4.8vw, 22px);
-    line-height: 1.7;
-  }
-  .hero-inner {
-    gap: 16px;
-  }
-}
-/* PC幅で横並びに戻す時は overflow を元に */
-@media (min-width: 1201px) {
-  .hero {
-    overflow: hidden;
-    min-height: calc(100vh - var(--header-h, 72px));
-    padding-block: 32px;
-  }
-  .hero-inner {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    gap: 32px;
-    position: relative;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .hero-tagline {
-    text-align: left;
-    padding-right: clamp(320px, 34vw, 480px);
-    font-size: clamp(20px, 2.4vw, 28px);
-  }
-  .hero-tagline::after {
-    right: -168px;
-    left: auto;
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-    top: 50%;
-    width: clamp(500px, 38vw, 680px);
   }
 }
 /* ===== about ===== */
+/* About 見出し行：タイトル＋フクロウを横並び */
 .about__header {
   position: relative;
   z-index: 1;
@@ -474,6 +1147,31 @@ a {
   margin: 0;
 }
 
+.about__to-top {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  border-radius: 50%;
+  -webkit-transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+}
+
+.about__to-top img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.about__to-top:hover,
+.about__to-top:focus-visible {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
 .about__profile {
   max-width: 960px;
   display: grid;
@@ -490,8 +1188,16 @@ a {
 
 @media (max-width: 640px) {
   .about__profile {
+    display: grid;
     grid-template-columns: 100%;
     gap: 1rem;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 4rem auto;
     margin-left: 8px;
     margin-right: 8px;
   }
@@ -556,19 +1262,6 @@ a {
   margin-top: 2rem;
 }
 
-@media (max-width: 1024px) {
-  .about__content {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    gap: 24px;
-    text-align: center;
-  }
-}
 .about__section-title {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
@@ -601,6 +1294,10 @@ a {
   font-family: sans-serif;
 }
 
+.about {
+  /* 例：注目させたい時のmodifier */
+}
+
 .about__skills-item--highlight {
   outline: 2px solid #6aa38a;
   font-weight: 600;
@@ -618,8 +1315,8 @@ a {
   margin-bottom: 6rem;
 }
 
-/* ===== ボタン ===== */
-.btn, .works__view-more {
+/* ベースのボタン */
+.btn, .works .works__footer .works__view-more {
   display: inline-block;
   padding: 0.6rem 1.4rem;
   font-weight: 600;
@@ -630,17 +1327,19 @@ a {
   cursor: pointer;
 }
 
-.btn--outline, .works__view-more {
+/* バリエーション: アウトラインボタン */
+.btn--outline, .works .works__footer .works__view-more {
   border: 2px solid #f0c75e;
   color: #f0c75e;
   background: transparent;
 }
 
-.btn--outline:hover, .works__view-more:hover {
+.btn--outline:hover, .works .works__footer .works__view-more:hover {
   background: #f0c75e;
   color: #fff;
 }
 
+/* バリエーション: 塗りつぶしボタン */
 .btn--contact {
   background: #f0c75e;
   color: #fff;
@@ -650,6 +1349,83 @@ a {
 .btn--contact:hover {
   background: #e0b24e;
   border-color: #e0b24e;
+}
+
+/* Works */
+.works {
+  position: relative;
+  padding: 80px 20px;
+  background: url("../imgs/bg-full.png") no-repeat center/cover;
+  height: 900px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.works .works__header {
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 8rem;
+}
+.works .works__title {
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: bold;
+  color: #245e62;
+  margin: 0;
+}
+.works .works__footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 100px auto;
+}
+.works .works__footer .works__view-more {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+/* 汎用ボタン（前に作ったパターン） */
+.btn, .works .works__footer .works__view-more {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 9999px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btn--outline, .works .works__footer .works__view-more {
+  border: 2px solid #f0c75e;
+  color: #f0c75e;
+  background: transparent;
+}
+
+.btn--outline:hover, .works .works__footer .works__view-more:hover {
+  background: #f0c75e;
+  color: #fff;
 }
 
 .btn--solid {
@@ -668,86 +1444,12 @@ a {
   font-size: 1.05rem;
 }
 
-@media (max-width: 480px) {
-  .btn--lg {
-    font-size: 1rem;
-    padding: 0.75rem 1.4rem;
-  }
-}
-/* ===== Works ===== */
-.works {
-  position: relative;
-  padding: 80px 20px;
-  background: url("../imgs/bg-full.png") no-repeat center/cover;
-  height: 900px;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.works__header {
-  position: relative;
-  z-index: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-bottom: 8rem;
-}
-
-@media (max-width: 1024px) {
-  .works__header {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    gap: 24px;
-    text-align: center;
-  }
-}
-.works__title {
-  font-family: "Noto Serif JP", serif;
-  font-size: clamp(28px, 3vw, 40px);
-  font-weight: bold;
-  color: #245e62;
-  margin: 0;
-}
-
-.works__footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 100px auto;
-}
-
-.works__view-more {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-}
-
+/* セクション全体の中央寄せは内側コンテナで */
 .works__inner {
   max-width: 1200px;
   margin: 0 auto;
+  /* ここに .works__footer が入っていれば自然に中央ど真ん中に */
+  /* Worksフッター（中央・余白・区切り線で “終わり感”） */
 }
 
 .works__inner .works__footer {
@@ -755,10 +1457,15 @@ a {
   place-items: center;
   margin-top: clamp(16px, 4vw, 40px);
   padding: clamp(16px, 4vw, 32px) 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.08); /* 背景が暗いなら */
 }
 
+/* モバイルで余白を気持ち広めに */
 @media (max-width: 480px) {
+  .btn--lg {
+    font-size: 1rem;
+    padding: 0.75rem 1.4rem;
+  }
   .works__footer {
     padding: 24px 0;
   }
@@ -767,9 +1474,6 @@ a {
 .swiper-wrapper {
   -webkit-transition-timing-function: linear;
           transition-timing-function: linear;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .swiper.belt {
@@ -779,6 +1483,12 @@ a {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 16px 0;
+}
+
+.swiper-wrapper {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .swiper-slide {
@@ -799,27 +1509,11 @@ a {
 }
 
 .swiper-slide img {
-  max-width: clamp(180px, 36vw, 260px);
+  max-width: 200px;
   height: auto;
   border-radius: 8px;
 }
 
-@media (max-width: 768px) {
-  .swiper-slide img {
-    max-width: clamp(160px, 44vw, 240px);
-  }
-}
-@media (max-width: 480px) {
-  .swiper.belt {
-    padding: 16px 0;
-  }
-  .swiper-slide img {
-    max-width: clamp(150px, 56vw, 220px);
-  }
-  .swiper-slide {
-    padding: 8px 2px;
-  }
-}
 .swiper-pagination {
   margin-top: 6px;
   text-align: center;
@@ -845,11 +1539,40 @@ a {
   color: #fff;
 }
 
-/* あなたのstyle.scss */
-.works .swiper {
-  overflow: visible;
+@media (max-width: 768px) {
+  .swiper-slide img {
+    max-width: 140px;
+  }
+  .swiper-slide {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    padding: 8px 2px;
+  }
 }
-
+@media (max-width: 480px) {
+  .swiper.belt {
+    padding: 16px 0;
+  }
+  .swiper-slide img {
+    max-width: 120px;
+    height: auto;
+    border-radius: 8px;
+  }
+  .swiper-slide {
+    padding: 8px 2px;
+  }
+}
 /* ===== animation ===== */
 .animate-title {
   -webkit-transform: scale(5);
@@ -911,8 +1634,8 @@ a {
 }
 /* --- 寿司ベルトのオーバーレイ最終形（上書き用） --- */
 .belt__item {
-  position: relative;
-  overflow: hidden;
+  position: relative; /* ← これが土台。captionの基準にする */
+  overflow: visible;
   border-radius: 12px;
   display: block;
   -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
@@ -931,12 +1654,12 @@ a {
   -o-object-fit: cover;
      object-fit: cover;
   position: relative;
-  z-index: 1;
+  z-index: 1; /* 画像は下 */
 }
 
 .belt__caption {
   position: absolute;
-  inset: 0;
+  inset: 0; /* 全面にかぶせる */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -954,11 +1677,12 @@ a {
   opacity: 0;
   -webkit-transition: opacity 0.25s ease;
   transition: opacity 0.25s ease;
-  z-index: 2;
-  pointer-events: none;
+  z-index: 2; /* キャプションを前面に */
+  pointer-events: none; /* クリックは下の<a>に通す */
   border-radius: 12px;
 }
 
+/* ホバー or キーボードフォーカスで表示 */
 .belt__item:hover .belt__caption,
 .belt__item:focus-visible .belt__caption,
 .belt__item:focus-within .belt__caption {
@@ -967,19 +1691,22 @@ a {
 
 .belt__item:hover {
   -webkit-box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
-          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18); /* 影を足す */
 }
 
+/* キーボード操作でも分かるように */
 .belt__item:focus-visible {
   outline: 3px solid #f0c75e;
   outline-offset: 2px;
 }
 
+/* モバイル（hover無い環境）は常時うっすら表示 or タップでJS制御に切替もOK */
 @media (hover: none) {
   .belt__caption {
     opacity: 0.9;
-  }
+  } /* 迷ったら常時表示にするとUX安定 */
 }
+/* 低モーション設定に優しく */
 @media (prefers-reduced-motion: reduce) {
   .belt__item,
   .belt__caption {
@@ -987,27 +1714,46 @@ a {
     transition: none;
   }
 }
+/* まずは全体でひと回りUP */
+.swiper-slide img {
+  max-width: clamp(180px, 36vw, 260px); /* 真ん中(36vw)で調整感を出す */
+  height: auto;
+}
+
+/* タブレット以下で少し抑える */
+@media (max-width: 768px) {
+  .swiper-slide img {
+    max-width: clamp(160px, 44vw, 240px);
+  }
+}
+/* スマホで大きめに見せたいなら */
+@media (max-width: 480px) {
+  .swiper-slide img {
+    max-width: clamp(150px, 56vw, 220px);
+  }
+}
 /* Services */
+/* セクション外枠 */
+/* ========== Service Section (production) ========== */
 .services {
   height: 1300px;
-  --circle-size: clamp(240px, 26vw, 260px);
+  --circle-size: clamp(240px, 26vw, 260px); /* 丸を“元の大きめ”に */
   padding: 80px 20px;
   max-width: var(--container);
   margin: 0 auto;
   position: relative;
-  overflow: hidden;
-  background: #e8f0e9;
+  overflow: hidden; /* 雲のはみ出し防止 */
   padding-top: clamp(56px, 10vw, 96px);
   padding-bottom: clamp(32px, 8vw, 72px);
 }
 
+/* タイトル：右寄せ（フォント大きめに） */
 .services__title-block {
   max-width: 1200px;
   margin: 0 auto;
   text-align: left;
 }
-
-.section-title {
+.services__title-block .section-title {
   color: #245e62;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -1017,37 +1763,37 @@ a {
           align-items: center;
   gap: 0.5rem;
   font-weight: 800;
-  font-size: clamp(22px, 2.8vw, 36px);
+  font-size: clamp(22px, 2.8vw, 36px); /* ← 上限UPで効かせる */
   line-height: 1.2;
   margin: 0;
 }
-
-.section-icon {
+.services__title-block .section-title .section-icon {
   height: 1.1em;
   width: auto;
 }
 
+/* 説明：左揃え＋中央配置 */
 .services__description-block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center;
+          justify-content: center; /* ブロックを中央へ */
   margin-top: 6rem;
   margin-bottom: 2rem;
 }
-
-.section-description {
-  text-align: left;
+.services__description-block .section-description {
+  text-align: left; /* 左揃え */
   line-height: 1.7;
   font-size: clamp(13px, 1.3vw, 15px);
   color: #245e62;
   margin: 0;
 }
 
+/* カードのグリッド（雲の基準） */
 .service-grid {
-  position: relative;
+  position: relative; /* 雲のposition基準 */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   place-items: center;
@@ -1057,32 +1803,7 @@ a {
   z-index: 1;
 }
 
-@media (max-width: 900px) {
-  .services__title-block {
-    text-align: center;
-  }
-  .service-grid {
-    grid-template-columns: 1fr;
-  }
-  .service-grid .cloud {
-    width: clamp(90px, 30vw, 160px);
-    opacity: 0.28;
-  }
-  .service-grid .cloud--top {
-    left: 50%;
-    right: auto;
-    top: -40px;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-  }
-  .service-grid .cloud--bottom {
-    right: auto;
-    left: 50%;
-    bottom: -40px;
-    -webkit-transform: translateX(-50%) scaleY(-1);
-            transform: translateX(-50%) scaleY(-1);
-  }
-}
+/* カード（丸） */
 .card {
   width: var(--circle-size);
   aspect-ratio: 1/1;
@@ -1109,50 +1830,57 @@ a {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   transition: transform 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.25s ease, -webkit-box-shadow 0.25s ease;
 }
-
 .card:hover {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
   -webkit-box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
           box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
-
-.card-icon {
+.card .card-icon {
   width: clamp(40px, 7vw, 56px);
   height: auto;
   margin-bottom: 0.4rem;
 }
-
-.card-title {
+.card .card-title {
   font-weight: 800;
   font-size: clamp(15px, 1.6vw, 18px);
   margin-bottom: 0.2rem;
   min-height: 1.9em;
 }
-
-.card-text {
+.card .card-text {
   font-size: clamp(13px, 1.3vw, 15px);
   line-height: 1.6;
   color: #245e62;
   max-width: 32ch;
 }
-
-.card-more {
+.card .card-more {
   margin-top: auto;
   font-size: 0.92rem;
   text-decoration: none;
   color: inherit;
 }
-
+@media (max-width: 900px) {
+  .card .services__title-block {
+    text-align: center;
+  }
+  .card .service-grid {
+    grid-template-columns: 1fr;
+  }
+  .card .section-title {
+    font-size: clamp(18px, 5vw, 28px);
+  }
+}
 @media (max-width: 600px) {
-  .card {
+  .card .card {
     width: 80%;
     margin-inline: auto;
   }
-  .card-text {
+  .card .card-text {
     font-size: clamp(11px, 3vw, 14px);
   }
 }
+
+/* アクセント色 */
 .is-design .card-title {
   color: #2a8a84;
 }
@@ -1165,6 +1893,7 @@ a {
   color: #0b8a6a;
 }
 
+/* 雲（グリッド相対） */
 .service-grid .cloud {
   position: absolute;
   opacity: 0.85;
@@ -1173,21 +1902,66 @@ a {
           filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.05));
   width: clamp(80px, 12vw, 160px);
   height: auto;
-  z-index: 0;
+  z-index: 0; /* 背面 */
 }
 
 .service-grid .cloud--top {
   left: 0;
   top: -56px;
   -webkit-transform: none;
-          transform: none;
+          transform: none; /* 端ピタ：ズレたら left:-6px; に */
 }
 
 .service-grid .cloud--bottom {
   right: 0;
   bottom: -56px;
   -webkit-transform: scaleY(-1);
-          transform: scaleY(-1);
+          transform: scaleY(-1); /* 反転 */
+}
+
+/* レスポンシブ */
+@media (max-width: 900px) {
+  .services__title-block {
+    text-align: center;
+  }
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-grid .cloud {
+    width: clamp(90px, 30vw, 160px);
+    opacity: 0.28;
+  }
+  .service-grid .cloud--top {
+    left: 50%;
+    right: auto;
+    top: -40px;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  .service-grid .cloud--bottom {
+    right: auto;
+    left: 50%;
+    bottom: -40px;
+    -webkit-transform: translateX(-50%) scaleY(-1);
+            transform: translateX(-50%) scaleY(-1);
+  }
+}
+/*Service cards: テキストを確実に小さくできるよう下限を下げる */
+.services .service-grid .card .card-title {
+  font-size: clamp(6px, 0.7vw, 12px);
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+  min-height: 1.5em;
+}
+
+.services .service-grid .card .card-text {
+  color: #245e62;
+  font-size: clamp(5px, 0.6vw, 10px);
+  line-height: 1.4;
+  margin-inline: auto;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-break: strict;
 }
 
 /* Contact */
@@ -1198,13 +1972,11 @@ a {
   background: url("../img/bg-asanoha.png") repeat;
   text-align: center;
 }
-
 .contact__title {
   font-size: 1.6rem;
   color: #245e62;
   margin-bottom: 1rem;
 }
-
 .contact__lead {
   margin-bottom: 2rem;
   font-size: 0.95rem;
@@ -1217,14 +1989,11 @@ a {
   display: grid;
   gap: 20px;
 }
-
 .c-form label {
   text-align: left;
   font-weight: 600;
 }
-
-.c-form input,
-.c-form textarea {
+.c-form input, .c-form textarea {
   width: 100%;
   padding: 12px 14px;
   border: none;
@@ -1233,13 +2002,10 @@ a {
   backdrop-filter: blur(4px);
   font: inherit;
 }
-
-.c-form input:focus,
-.c-form textarea:focus {
+.c-form input:focus, .c-form textarea:focus {
   outline: 2px solid #6aa89b;
   background: #fff;
 }
-
 .c-form button {
   padding: 12px 20px;
   border: none;
@@ -1251,7 +2017,6 @@ a {
   -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s;
 }
-
 .c-form button:hover {
   opacity: 0.9;
 }
@@ -1273,6 +2038,9 @@ a {
   color: #245e62;
   padding: 2rem 1rem;
   border-top: 1px solid rgba(244, 222, 160, 0.08);
+}
+
+.site-footer {
   margin: 0 auto;
   display: grid;
   gap: 1rem;
@@ -1289,7 +2057,6 @@ a {
     text-align: center;
   }
 }
-/* トップへ戻るボタン */
 .to-top {
   position: fixed;
   bottom: 32px;
@@ -1337,9 +2104,17 @@ a {
 
 /* Swiper のスライド幅をCSSで強制上書き（JS設定に勝つ） */
 .works .swiper.belt .swiper-slide {
-  width: 280px;
+  width: 280px; /* 好みで 300〜340 に上げてOK */
 }
 
+/* 画像も追随して広げる */
+.works .swiper.belt .swiper-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 画面幅で段階調整したい場合（任意） */
 @media (max-width: 768px) {
   .works .swiper.belt .swiper-slide {
     width: 220px;
@@ -1350,18 +2125,28 @@ a {
     width: 180px;
   }
 }
-.works .swiper.belt .swiper-slide img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
+/* 等速でぬるっと流す */
 .swiper.belt .swiper-wrapper {
   -webkit-transition-timing-function: linear;
           transition-timing-function: linear;
   will-change: transform;
 }
 
+/* 画像に合わせてスライド幅を自動化（固定px指定は外す） */
 .swiper.belt .swiper-slide {
   width: auto;
+}
+
+/* ==== HERO: Desktop locks (最後に置く) ==== */
+@media (min-width: 1025px) {
+  .hero .hero-inner {
+    text-align: left;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start; /* 念のためレイアウトも左寄せに */
+  }
+  .hero .hero-tagline {
+    text-align: left;
+    margin-left: 0;
+  }
 }/*# sourceMappingURL=style.css.map */
