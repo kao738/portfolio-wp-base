@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Works｜Emojaponnaise</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="works-page">
+  
+<header class="site-header">
+  <div class="container header-inner">
+    <h1 class="site-logo"><a href="../index.html">Emojaponnaise</a></h1>
+
+    <!-- これを追加：ハンバーガー -->
+    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- これも追加（id=site-nav が超重要） -->
+    <nav class="site-nav" id="site-nav">
+      <!-- ULでもOKだけど、シンプルにA直列推奨 -->
+      <a href="../about.html">About</a>
+      <a href="./index.html" aria-current="page">Works</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+
+
+
+  <!-- main -->
+<main class="container">
+  <section class="works-hero">
+  <h2 class="works-title">Works</h2>
+  <p class="works-sub">実績一覧ページ</p>
+</section>
+
+
+  <section class="works-list">
+    <!-- デザイン -->
+    <div class="section-block" data-watermark="Design">
+      <h3 class="category" data-text="Design">デザイン</h3>
+      <ul class="works-grid">
+        <li><img src="../assets/imgs/works-ds01.png" alt="宿の３つ折りチラシ"><p>宿の３つ折りチラシ</p></li>
+        <li><img src="../assets/imgs/works-ds02.png" alt="ブログバナー"><p>ブログバナー</p></li>
+        <li><img src="../assets/imgs/works-ds03.png" alt="A4チラシ"><p>A4チラシ</p></li>
+      </ul>
+</div>
+     <!-- コーディング -->
+    <div class="section-block" data-watermark="Coding">
+      <h3 class="category" data-text="Coding">コーディング</h3>
+      <ul class="works-grid">
+        <li><img src="../assets/imgs/works-coding01.png" alt="ポートフォリオサイト"><p>Portfolio</p></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+  <!-- footer -->
+   <footer class="site-footer">       
+    <p class="copyright">&copy; Emojaponnaise
+       2025</p>
+  </footer>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
+
