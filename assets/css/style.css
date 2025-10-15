@@ -113,7 +113,7 @@ body {
 
 img {
   max-width: 100%;
-  height: auto;
+  height: 1.6rem;
   display: block;
 }
 
@@ -1121,9 +1121,6 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   padding: 0 5rem;
   gap: 16px;
   margin: 0 0 24px;
@@ -1184,6 +1181,9 @@ a {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 4rem auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 @media (max-width: 640px) {
@@ -1206,9 +1206,10 @@ a {
   width: 240px;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
   margin-left: 200px;
+  height: 100%;
 }
 
 @media (max-width: 640px) {
@@ -1369,9 +1370,10 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   margin-bottom: 8rem;
 }
 .works .works__title {
@@ -1749,9 +1751,21 @@ a {
 
 /* タイトル：右寄せ（フォント大きめに） */
 .services__title-block {
-  max-width: 1200px;
-  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-align: left;
+  gap: 24px;
 }
 .services__title-block .section-title {
   color: #245e62;
@@ -2153,7 +2167,7 @@ a {
 /* hero全体の箱 */
 .hero {
   position: relative;
-  overflow: hidden; /* はみ出しで崩れるのを防ぐ */
+  overflow: visible; /* はみ出しで崩れるのを防ぐ */
   min-height: min(76svh, 860px); /* お好みで */
 }
 
@@ -2178,7 +2192,10 @@ a {
 /* 小さめ画面でさらに縮める */
 @media (max-width: 768px) {
   .hero {
-    min-height: 66svh;
+    min-height: 80svh;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
   }
   .hero-visual {
     width: min(640px, 92vw);
@@ -2440,41 +2457,4 @@ a {
   .works-page .site-header .site-nav a {
     padding: 10px 12px;
   }
-/* ===== Header visibility patch (override) ===== */
-
-/* PCの基本：ハンバーガー隠す／ナビは横並びで表示 */
-.works-page .nav-toggle{ display: none; }
-.works-page .site-nav{
-  display: flex;
-  position: static;
-  padding: 0; border: 0; box-shadow: none; background: transparent;
-}
-
-/* SP(<=900px)：ハンバーガー表示／ナビをドロップダウン化 */
-@media (max-width: 900px){
-  .works-page .nav-toggle{
-    display: inline-flex;           /* ← ここで初めて出す */
-    align-items: center; justify-content: center;
-    width: 44px; height: 44px; padding: 8px;
-    background: transparent; border: 0; border-radius: 10px;
-  }
-  .works-page .site-header .header-inner{ position: relative; }
-
-  .works-page .site-nav{
-    position: absolute; right: 20px; top: calc(100% + 8px);
-    display: none;                  /* ← ここで隠す（初期） */
-    flex-direction: column; gap: 8px;
-    background: rgba(255,255,255,.96); backdrop-filter: blur(8px);
-    border: 1px solid #e7eceb; border-radius: 12px; padding: 10px 12px;
-    box-shadow: 0 10px 24px rgba(0,0,0,.08);
-  }
-  .works-page .site-nav.is-open{ display: flex; } /* ← JSで開くクラス */
-}
-
-/* デバッグのピンク枠を完全オフ（万一残ってても消す） */
-.works-page .nav-toggle{
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-}
+}/*# sourceMappingURL=style.css.map */
