@@ -1,30 +1,44 @@
 @charset "UTF-8";
-/* assets/scss/common.scss */
-/* reset / base */
+/* === Common (base & layout) === */
+/* Tokens */
+:root {
+  --brand:#245e62;
+  --ink:#243a3a;
+  --bg:#f9f7f1;
+  --line:#e9e7e2;
+  --serif:"Noto Serif JP", serif;
+}
+
+/* Reset / Base */
 *,
 *::before,
 *::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
+html, body {
+  height: 100%;
 }
 
 body {
-  margin: 0;
-  color: #245e62;
-  background: #f9f7f1;
-  font-family: "Noto Serif JP", system-ui, "Noto Serif";
-  font-weight: 600;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
   line-height: 1.7;
+  letter-spacing: 0.03em;
+  -webkit-font-smoothing: antialiased;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+img, picture, video, canvas, svg {
   display: block;
+  max-width: 100%;
+}
+
+ul, ol {
+  list-style: none;
 }
 
 a {
@@ -32,7 +46,18 @@ a {
   text-decoration: none;
 }
 
-/* helpers */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  border: none;
+  background: none;
+}
+
+/* Helpers */
 .container {
   max-width: min(1200px, 92vw);
   margin: 0 auto;
@@ -40,7 +65,122 @@ a {
 }
 
 .section {
-  padding: clamp(64px, 8vw, 120px) 0;
+  padding: clamp(48px, 6vw, 96px) 0;
 }
 
-/* 共通ヘッダー/フッターの箱だけ先に *//*# sourceMappingURL=common.css.map */
+/* Header / Nav (共通) */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(140%) blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .header-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 24px;
+  min-height: 64px;
+  position: relative;
+}
+
+.site-logo a {
+  font: 700 clamp(20px, 2.4vw, 28px)/1 var(--serif);
+  color: var(--brand);
+}
+
+.site-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 16px;
+}
+
+.site-nav a {
+  font: 500 clamp(14px, 1.6vw, 16px)/1 var(--serif);
+  padding: 8px 10px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.site-nav a.is-active,
+.site-nav a[aria-current=page] {
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Mobile Nav（ハンバーガー想定） */
+.nav-toggle {
+  display: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0;
+  background: transparent;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--ink);
+  margin: 6px 0;
+  border-radius: 2px;
+}
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .site-nav {
+    position: absolute;
+    right: 20px;
+    top: calc(100% + 8px);
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    border: 1px solid #e7eceb;
+    border-radius: 12px;
+    padding: 10px 12px;
+    -webkit-box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  }
+  .site-nav.is-open {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+/* Footer */
+.site-footer {
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}/*# sourceMappingURL=common.css.map */
