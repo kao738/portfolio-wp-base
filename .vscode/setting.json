@@ -8,3 +8,7 @@
   ],
   "liveSassCompile.settings.generateMap": false
 }
+"scripts": {
+  "sass": "sass assets/scss:assets/css",
+  "sass:watch": "sass --watch assets/scss:assets/css"
+}

@@ -1,12 +1,11 @@
 {
-  "name": "kao-portfolio",
+  "name": "portfolio-wp-base",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "sass --watch assets/css/style.scss assets/css/style.css",
-    "build": "sass --no-source-map assets/css/style.scss assets/css/style.css"
+    "sass": "sass --no-source-map assets/scss:assets/css",
+    "sass:watch": "sass --no-source-map --watch assets/scss:assets/css"
   },
   "repository": {
     "type": "git",
@@ -15,7 +14,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/kao738/kao-portfolio/issues"
   },
@@ -24,3 +22,4 @@
     "sass": "^1.93.2"
   }
 }
+
