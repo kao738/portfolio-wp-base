@@ -138,7 +138,7 @@
   content: attr(data-text);
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 25%;
   transform: translate(var(--wm-shift-x), var(--wm-shift-y)) scale(var(--wm-scale));
   font: 700 var(--wm-size)/1 var(--serif);
   color: rgba(36, 94, 98, var(--wm-alpha));
