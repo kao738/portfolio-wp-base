@@ -138,7 +138,7 @@
   content: attr(data-text);
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 25%;
   transform: translate(var(--wm-shift-x), var(--wm-shift-y)) scale(var(--wm-scale));
   font: 700 var(--wm-size)/1 var(--serif);
   color: rgba(36, 94, 98, var(--wm-alpha));
@@ -244,4 +244,160 @@
     --wm-size: clamp(36px, 9vw, 72px);
     --wm-alpha: .05;
   }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ページ全体を軽くフェードイン（空気感重視） */
+main {
+  opacity: 0;
+  animation: fadeInUp 1.4s ease-out forwards;
+}
+
+/* お好みで共通トークン */
+:root {
+  --ease: cubic-bezier(.25,.1,.25,1);
+  --dur: 1.4s;
+  --shift: 40px;
+}
+
+/* main の“緩めエモ”フェード（共通） */
+main {
+  opacity: 0;
+  transform: translateY(var(--shift));
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+body.is-ready main {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ハンバーガー本体 */
+.hamburger {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  z-index: 1001;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger-box {
+  width: 26px;
+  height: 18px;
+  position: relative;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #245e62;
+  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease), top 0.25s var(--ease);
+}
+
+.hamburger-inner {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger-inner::before {
+  top: -8px;
+}
+
+.hamburger-inner::after {
+  top: 8px;
+}
+
+/* ← ここが“バッテン”の条件：body.menu-open でOK（共通） */
+body.menu-open .hamburger-inner {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+body.menu-open .hamburger-inner::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+body.menu-open .hamburger-inner::after {
+  opacity: 0;
+}
+
+/* メニュー（右スライド） */
+#site-menu[hidden] {
+  display: none;
+} /* hidden対策 */
+#site-menu {
+  position: fixed;
+  inset: 0 0 0 auto; /* 右側全高 */
+  width: min(320px, 90vw);
+  background: rgba(249, 247, 241, 0.98);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.08);
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.35s var(--ease), opacity 0.35s var(--ease);
+  padding: 80px 24px 24px;
+  z-index: 1000;
+}
+
+#site-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+#site-menu a {
+  color: #245e62;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* 開いたときの表示（共通） */
+body.menu-open #site-menu {
+  transform: translateX(0);
+  opacity: 1;
+  /* 背景スクロールロック */
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+/* PCでは通常ナビに切替（必要なら） */
+@media (min-width: 1024px) {
+  .hamburger {
+    display: none;
+  }
+  #site-menu {
+    position: static;
+    width: auto;
+    transform: none;
+    opacity: 1;
+    box-shadow: none;
+    display: block !important;
+    padding: 0;
+    background: transparent;
+  }
+  body {
+    overflow: auto;
+  } /* ロック解除 */
 }

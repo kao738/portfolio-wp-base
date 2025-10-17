@@ -27,23 +27,22 @@
 <body class="works-page">
   
 <header class="site-header">
-  <div class="container header-inner">
-    <h1 class="site-logo"><a href="../index.html">Emojaponnaise</a></h1>
-
-    <!-- これを追加：ハンバーガー -->
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="メニュー">
-      <span></span><span></span><span></span>
-    </button>
-
-    <!-- これも追加（id=site-nav が超重要） -->
-    <nav class="site-nav" id="site-nav">
-      <!-- ULでもOKだけど、シンプルにA直列推奨 -->
-      <a href="../about.html">About</a>
-      <a href="./index.html" aria-current="page">Works</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
-  </div>
+  <a class="logo" href="/">Emojapannaise</a>
+  <button class="hamburger" aria-controls="site-menu" aria-expanded="false" aria-label="メニュー">
+    <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+  </button>
 </header>
+
+<nav id="site-menu" hidden>
+  <ul>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
 
 
 
@@ -82,7 +81,8 @@
     <p class="copyright">&copy; Emojaponnaise
        2025</p>
   </footer>
-  <script src="assets/js/main.js" defer></script>
+ <!-- JSは必ず body 終了直前か、<script defer> で読み込む -->
+<script src="/assets/js/menu.js" defer></script>
 </body>
 </html>
 

@@ -88,3 +88,33 @@
     el.addEventListener('mouseleave', () => s.autoplay.start());
   });
 })();
+// 1) ページ準備完了で main フェード（共通）
+window.addEventListener('load', () => {
+  document.body.classList.add('is-ready'); // ← main用
+});
+
+// 2) ハンバーガー開閉（共通）
+(() => {
+  const btn = document.querySelector('.hamburger');
+  const nav = document.getElementById('site-menu');
+  if (!btn || !nav) return;
+
+  const openMenu  = () => {
+    document.body.classList.add('menu-open');
+    btn.setAttribute('aria-expanded', 'true');
+    nav.removeAttribute('hidden'); // ← hidden解除が超大事
+  };
+  const closeMenu = () => {
+    document.body.classList.remove('menu-open');
+    btn.setAttribute('aria-expanded', 'false');
+    // スライドアニメ後にhiddenを戻す
+    setTimeout(() => nav.setAttribute('hidden', ''), 350);
+  };
+
+  btn.addEventListener('click', () => {
+    document.body.classList.contains('menu-open') ? closeMenu() : openMenu();
+  });
+  nav.addEventListener('click', (e) => { if (e.target.matches('a')) closeMenu(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+})();
+
