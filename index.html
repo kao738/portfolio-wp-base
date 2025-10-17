@@ -14,13 +14,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">  
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
- 
+  <!-- SCSSからコンパイルされたCSSを読み込み -->
+ <link rel="stylesheet" href="assets/css/common.css">
+<link rel="stylesheet" href="assets/css/style.css">
   <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-  <!-- SCSSからコンパイルされたCSSを読み込み -->
-  <link rel="stylesheet" href="../assets/css/common.css">
-<link rel="stylesheet" href="../assets/css/style.css">
-
+ 
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script src="assets/js/main.js" defer></script>
 
@@ -47,7 +46,19 @@
 
 
   <main>
- 
+ <!-- <section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="hero-tagline">
+        感情×ロジック×和<br>
+        ふと＜イマココ＞に戻れるデザイン
+      </p>
+    </div>
+    <div class="hero-visual">
+      <img src="assets/imgs/hero-img.png" alt="木のイラスト">
+    </div>
+  </div>
+</section> -->
 
 <section class="hero">
   <div class="hero-inner">
@@ -55,7 +66,11 @@
       <p class="hero-tagline">
         感情×ロジック×和<br>
         ふと＜イマココ＞に戻れるデザイン
+
       </p>
+    <!-- <div class="hero-visual">
+      <img src="assets/imgs/hero-img.png" alt="木のイラスト">
+    </div> -->
   </div>
 </section>
 
@@ -64,8 +79,10 @@
     <section id="about" class="about">
       <div class="about__inner">
         <!--ヘッダー（見出し＋トップへ戻るボタン-->
-        <div class="about__header"><img src="assets/imgs/icon-shippou.svg" alt="" class="section-icon" aria-hidden="true">
+        <div class="about__header">
           <h2 class="about__title">About</h2>
+          <!-- <a href="#top" class="about__to-top" aria-label="ページ先頭へ">
+          <img src="assets/imgs/owl-button.png" alt="" loading="lazy" width="120" height="120"></a> -->
         </div><!-- /.about__header -->
 
         <!--プロフィール-->
@@ -75,9 +92,7 @@
             </div>
             <div class="profile__info">
               <h3 class="profile__name">Kaori Ota</h3>
-              <p class="profile__desc"> 人見えないものを、見える形に。
-想いを、届く言葉に。
-多様な現場で培った傾聴力と技術力で、貴方様の「伝えたい」に寄り添う。陰から支える、伴走クリエイターです。</p>
+              <p class="profile__desc">人や企業の『伝えたい・学びたい』を支える伴走クリエイターです。営業・制作補助・顧客対応など多様な現場で、相手の想いを引き出し成果につなげる力を磨いてきました。現在は Web制作・デザイン・Canva・GAS などのツールを活かしわかりやすく想いを伝える仕組みづくりに取り組んでいます。</p>
             </div>
           </div><!-- /.about__profile -->
          
@@ -122,13 +137,12 @@
 <section id="works" class="works">
       <div class="works__inner">
         <!--ヘッダー（見出し＋トップへ戻るボタン-->
-        <div class="works__header"><img src="assets/imgs/icon-shippou.svg" alt="" class="section-icon" aria-hidden="true">
-          <h2 class="works__title">
-             Works</h2>
-      
+        <div class="works__header">
+          <h2 class="works__title">Works</h2>
+          <!-- <a href="#top" class="works__to-top" aria-label="ページ先頭へ">
+          <img src="assets/imgs/owl-button.png" alt="" loading="lazy" width="120" height="120"></a> -->
         </div>
-      </div>
-      <!-- /.works__header -->
+      </div><!-- /.works__header -->
       
    
 
@@ -151,7 +165,22 @@
     <a class="belt__item" href="/work-01.html"><img src="assets/imgs/works-ds05.png" alt="デザイン作品5"><span class="belt__caption">デザイン作品5</span></a>
   </div>  
 </div>
-
+  <!-- <div class="swiper-slide">
+    <a href="/work-01.html"><img src="assets/imgs/works-ds02.png" alt="デザイン作品2"></a>
+  </div>
+  
+  <div class="swiper-slide"><a href="/work-01.html"><img src="assets/imgs/works-ds02.png" alt="デザイン作品2"></a>
+  </div>
+ 
+  
+   <div class="swiper-slide">
+    <a href="/work-01.html"><img src="assets/imgs/works-ds02.png" alt="デザイン作品2"></a>
+  
+ </div> -->
+  <!-- ページネーションやナビボタンを追加したい場合 -->
+  <!-- <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div> -->
 
 
 </section>
@@ -165,15 +194,16 @@
 <section class="services">
   <!-- タイトル（右寄せ） -->
   <div class="services__title-block">
-    <img src="assets/imgs/icon-shippou.svg" alt="" class="section-icon" aria-hidden="true">
-    <h2 class="section-title">Service</h2>
+    <h2 class="section-title">
+      <img src="assets/imgs/icon-shippou.svg" alt="" class="section-icon" aria-hidden="true">
+      Service
+    </h2>
   </div>
 
   <!-- 説明（左揃えで中央配置） -->
   <div class="services__description-block">
     <p class="section-description">
-      見えない想いを、見えるデザインに
-
+      あなたの想いをデザインとテクノロジーでカタチにします。
     </p>
   </div>
 
@@ -186,19 +216,19 @@
     <article class="card is-design">
       <img src="assets/imgs/service-img01.png" alt="" class="card-icon">
       <h3 class="card-title">デザイン</h3>
-      <p class="card-text">丁寧なヒアリングで<br>「本当に伝えたいこと」<br>を引き出し、見える形にします。</p>
+      <p class="card-text">想いを形にするビジュアル設計。トーン＆マナーを揃え、伝わる世界観をつくります。</p>
     </article>
 
     <article class="card is-coding">
       <img src="assets/imgs/service-img02.png" alt="" class="card-icon">
       <h3 class="card-title">コーディング</h3>
-      <p class="card-text">リズム感を大切にして<br>コーディングでデザインを<br>実装します。</p>
+      <p class="card-text">デザインを正確かつ軽量に実装。アクセシビリティと表示速度も意識して仕上げます。</p>
     </article>
 
     <article class="card is-training">
       <img src="assets/imgs/service-img03.png" alt="" class="card-icon">
       <h3 class="card-title">伴走サポート</h3>
-      <p class="card-text">企画から公開後まで。<br>二人三脚で進める、安心の伴走サポート。</p>
+      <p class="card-text">更新運用や内製化の支援でチームのスキルアップを支えます。</p>
     </article>
   </div>
 </section>
@@ -209,7 +239,8 @@
         <!--ヘッダー（見出し＋トップへ戻るボタン-->
         <div class="contact__header">
           <h2 class="contact__title">Contact</h2>
-  
+          <!--<a href="#top" class="contact__to-top" aria-label="ページ先頭へ">
+          <img src="assets/imgs/owl-button.png" alt="" loading="lazy" width="120" height="120"></a>-->
         </div><!-- /.contact__header -->
 
         <p class="contact__text">ご質問・ご相談など、お気軽にお問い合わせください。</p>
@@ -246,8 +277,16 @@
       toTopBtn.classList.remove('is-visible');
     }
   });
+</script><script>
+  const toTopBtn = document.querySelector('.to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      toTopBtn.classList.add('is-visible');
+    } else {
+      toTopBtn.classList.remove('is-visible');
+    }
+  });
 </script>
-
 </main>
  <footer class="site-footer">       
     <p class="copyright">&copy; Emojaponnaise
