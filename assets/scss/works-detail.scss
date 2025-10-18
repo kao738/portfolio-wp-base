@@ -12,7 +12,7 @@
   --container:min(1200px,92vw); --radius:18px;
 
   /* 麻の葉サイズ（全ページ共通） */
-  --asanoha-size:360px;
+  --asanoha-size:120px;
 
   /* 透かし既定（全ページ共通） */
   --wm-size:clamp(44px,9vw,110px);
@@ -208,7 +208,7 @@ h3.category{
   top: 50%;
   left: 25%;
   /* 元の translate に「さらに上へ」一段足す */
-  transform: translate(-70%, -20%) translateY(-0.35em); /* ←上下はここで */
+  transform: translate(-50%, -56%) translateY(-1em); /* ←上下はここで */
   font: 700 clamp(60px, 9vw, 128px) / 1 var(--serif);
   color: rgba(36, 94, 98, .06);
   z-index: -1;
@@ -226,7 +226,7 @@ h3.category{
   content: attr(data-watermark);
   position: absolute;
   left: 0; right: 0;
-  top: -0.35em;             /* ←上下はここで調整 */
+  top: -1em;             /* ←上下はここで調整 */
   text-align: left;
   font-family: var(--serif);
   font-weight: 700;

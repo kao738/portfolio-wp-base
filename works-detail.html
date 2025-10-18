@@ -1,17 +1,110 @@
-cat > works-detail.html <<'HTML'
 <!DOCTYPE html>
-<html lang="ja"><head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Work Detail｜Emojaponnaise</title>
-  <link rel="stylesheet" href="assets/css/common.css" />
-  <link rel="stylesheet" href="assets/css/works.css" />
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Works｜Emojaponnaise</title>
+  
+<link rel="stylesheet" href="../assets/css/common.css">
+<link rel="stylesheet" href="../assets/css/works-detail.css">
+  <meta name="description" content="Emojaponnaise/KAOのポートフォリオサイトです。">
+  <meta name="keywords" content="KAO, portfolio, web developer, designer">
+  <meta name="author" content="KAO">
+  <link rel="icon" href="../assets/imgs/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../assets/imgs/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">          
+ <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script src="../assets/js/main.js" defer></script>
 </head>
-<body class="works-page">
-  <main class="container work-detail">
-    <nav class="breadcrumb"><a href="works.html">Works</a> / <span>案件タイトル</span></nav>
-    <h1 class="work-detail__title">案件タイトル</h1>
-    <p class="work-detail__meta">2025 / Role: Design &amp; Coding</p>
-  </main>
-</body></html>
-HTML
+<body class="works-detail-page">
+  
+<header class="site-header">
+  <div class="header-inner">
+    <h1 class="site-logo"><a href="/">Emojaponnaise</a></h1>
+    <button class="nav-toggle" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="site-nav" class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="works.html">Works</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+
+
+
+
+  <!-- main -->
+<main class="container">
+  <section class="works-hero">
+  <h2 class="works-title">Works</h2>
+  <p class="works-sub">実績詳細ページ</p>
+</section>
+
+
+  <!-- <section class="works-list"> -->
+    <!-- デザイン
+    <div class="section-block" data-watermark="Design">
+      <h3 class="category" data-text="Design">デザイン</h3>
+      <ul class="works-grid">
+        <li><img src="../assets/imgs/works-ds01.png" alt="宿の３つ折りチラシ"><p>宿の３つ折りチラシ</p></li>
+        <li><img src="../assets/imgs/works-ds02.png" alt="ブログバナー"><p>ブログバナー</p></li>
+        <li><img src="../assets/imgs/works-ds03.png" alt="A4チラシ"><p>A4チラシ</p></li>
+      </ul>
+</div> -->
+    <!-- コーディング -->
+    <div class="section-block">
+      <h3 class="category" data-text="Coding">コーディング</h3>
+      <!-- <ul class="works-grid">
+        <li><img src="../assets/imgs/works-coding01.png" alt="ポートフォリオサイト"><p>Portfolio</p></li>
+      </ul> -->
+    </div>
+  </section>
+  <section class="works-detail section-block" data-watermark="Coding">
+      <!-- <span class="category-badge">コーディング</span> -->
+
+      <article class="detail-card">
+        <figure class="mockup">
+          <img src="../assets/imgs/works-coding01.png" alt="ポートフォリオ サムネイル">
+        </figure>
+
+        <div class="spec">
+          <h3>作品名：ポートフォリオ</h3>
+          <ul class="meta">
+            <li><b>制作期間：</b>4週間</li>
+            <li><b>担当：</b>デザイン・コーディング</li>
+          </ul>
+
+          <h4>コンセプト</h4>
+          <p>自分の軸＝「アート×サイト」</p>
+
+          <h4>デザイン</h4>
+          <p>
+            フォントは Noto Serif JP を軸に…（以下本文）
+          </p>
+        </div>
+      </article>
+    </section>
+
+</main>
+
+  <!-- footer -->
+   <footer class="site-footer">       
+    <p class="copyright">&copy; Emojaponnaise
+       2025</p>
+  </footer>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
+

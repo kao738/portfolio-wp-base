@@ -1,15 +1,34 @@
 @charset "UTF-8";
-/* === Common (base & layout) === */
-/* Tokens */
+/* =========================================
+   Common SCSS (最新版 2025-10-17)
+   - Tokens / Reset / Helpers
+   - Global main fade-in
+   - Header + nav-toggle (mobile)
+   - Header enter animation (logo/nav)
+   - To-top owl button
+   ========================================= */
+/* === Tokens === */
 :root {
   --brand:#245e62;
   --ink:#243a3a;
   --bg:#f9f7f1;
   --line:#e9e7e2;
   --serif:"Noto Serif JP", serif;
+  --container:min(1200px,92vw);
+  --header-h:64px;
+  /* motion tokens */
+  --ease:cubic-bezier(.25,.1,.25,1);
+  --dur:1.4s;
+  --dist:40px;
 }
 
-/* Reset / Base */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur:0s;
+    --dist:0;
+  }
+}
+/* === Reset / Base === */
 *,
 *::before,
 *::after {
@@ -56,9 +75,9 @@ input, button, textarea, select {
   background: none;
 }
 
-/* Helpers */
+/* === Helpers === */
 .container {
-  max-width: min(1200px, 92vw);
+  max-width: var(--container);
   margin: 0 auto;
   padding-inline: 20px;
 }
@@ -67,7 +86,20 @@ input, button, textarea, select {
   padding: clamp(48px, 6vw, 96px) 0;
 }
 
-/* Header / Nav (共通) */
+/* === Global Motion: main fade-in === */
+main {
+  opacity: 0;
+  transform: translateY(var(--dist));
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  will-change: opacity, transform;
+}
+
+body.is-ready main {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Header / Nav === */
 .site-header {
   position: sticky;
   top: 0;
@@ -91,6 +123,7 @@ input, button, textarea, select {
   color: var(--brand);
 }
 
+/* PCナビ */
 .site-nav {
   display: flex;
   gap: 16px;
@@ -110,7 +143,7 @@ input, button, textarea, select {
   text-underline-offset: 4px;
 }
 
-/* Mobile Nav（ハンバーガー想定） */
+/* === ハンバーガー === */
 .nav-toggle {
   display: none;
   appearance: none;
@@ -121,16 +154,51 @@ input, button, textarea, select {
   padding: 8px;
   border-radius: 10px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav-toggle span {
   display: block;
+  width: 26px;
   height: 2px;
   background: var(--ink);
   margin: 6px 0;
   border-radius: 2px;
+  position: relative;
+  transition: transform 0.28s var(--ease), opacity 0.28s var(--ease), top 0.28s var(--ease);
 }
 
+.nav-toggle span:nth-child(1) {
+  top: -6px;
+}
+
+.nav-toggle span:nth-child(2) {
+  top: 0;
+}
+
+.nav-toggle span:nth-child(3) {
+  top: 6px;
+}
+
+/* ✕変形 */
+.nav-toggle[aria-expanded=true] span:nth-child(1),
+body.menu-open .nav-toggle span:nth-child(1) {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded=true] span:nth-child(2),
+body.menu-open .nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded=true] span:nth-child(3),
+body.menu-open .nav-toggle span:nth-child(3) {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* === モバイルナビ === */
 @media (max-width: 900px) {
   .nav-toggle {
     display: inline-flex;
@@ -150,14 +218,87 @@ input, button, textarea, select {
     border-radius: 12px;
     padding: 10px 12px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    transform: translateY(var(--dist));
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+    z-index: 1000;
   }
   .site-nav.is-open {
     display: flex;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
-/* Footer */
+/* === Footer === */
 .site-footer {
   padding: 24px 0;
   border-top: 1px solid var(--line);
   text-align: center;
+  color: var(--brand);
+}
+
+.copyright {
+  font-size: 0.875rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}
+
+/* === To-Top Owl Button === */
+.to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  width: 56px;
+  height: 56px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+  pointer-events: auto;
+}
+
+@media (min-width: 640px) {
+  .to-top.is-near-footer {
+    bottom: 96px;
+  }
+}
+/* === Animation (Logo / Nav fade-in) === */
+.animate-title {
+  transform: scale(5);
+  opacity: 0;
+  animation: titlePop 6s ease-out forwards;
+}
+
+@keyframes titlePop {
+  0% {
+    transform: scale(5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.animate-nav {
+  opacity: 0;
+  animation: navFadeIn 0.8s ease-out forwards;
+  animation-delay: 3s;
+}
+
+@keyframes navFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
