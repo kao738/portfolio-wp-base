@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="owl-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 171.4 280.52">
+  <g id="owl-top-wing">
+    <g id="owl-top-static">
+      <path d="M65.91,212.04h.54v-54.92h-11.87v50.05c-4.2.02-8.37,1.73-11.4,5.11-5.67,6.33-5.13,16.06,1.2,21.73,1.37,1.23,2.91,2.15,4.53,2.8-.57-.69-1.08-1.44-1.51-2.26-3.44-6.48-1.74-19.17,5.51-17.97,4.49.74,4.27.74,11.5-.46,4.09-1.65,3.75-1.66,1.5-4.07Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <path d="M83.13,213.23l-3.28-4.31v-51.81h-11.87v50.05c-4.58.02-9.13,2.06-12.19,6.07-4.16,5.46-4.11,13.21.05,18.66,1.78,2.34,4.04,3.93,6.47,4.9-.57-.69-1.08-1.44-1.51-2.26-3.44-6.48-.89-14.37,5.51-17.97,3.62-2.04,6.18-3.09,12.8-1.63.93.2,6.32,1.8,4.34-1.41-.08-.13-.22-.19-.32-.3Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <path d="M94.19,56.23l4.49,137.65S11.57,185.75,7.72,135.59C-4.59-24.73,94.19,56.23,94.19,56.23Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <path d="M52.02,78.6l32.31,100.97s-29.59,2.47-42.07-34.11C2.37,28.55,52.02,78.6,52.02,78.6Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <path d="M78.14,78.6l32.31,100.97s-29.59,2.47-42.07-34.11c-39.88-116.91,9.76-66.85,9.76-66.85Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <path d="M99.15,68.87l32.31,100.97s-29.59,2.47-42.07-34.11c-39.88-116.91,9.76-66.85,9.76-66.85Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <circle cx="52.67" cy="51" r="50" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <path d="M100.14,23.65c-7.15-3.62-16-6.88-23.69-5.53-16.6,2.91-16.49,25.3-23.78,25.3s-7.18-22.39-23.78-25.3c-7.69-1.35-16.54,1.91-23.69,5.53,28.37,9.34,47.47,26.79,47.47,46.78,0-19.99,19.1-37.44,47.47-46.78Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="4"/>
+      <circle cx="27.67" cy="44.12" r="5.93" fill="#231815" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <circle cx="77.67" cy="44.12" r="5.93" fill="#231815" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+    </g>
+    <rect id="top-botton-bg" x="22.93" y="216.75" width="147.47" height="62.77" rx="10" ry="10" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+    <text id="top-botton-text" transform="translate(71.74 262.11)" font-family="SourceSansRoman-Regular, &apos;Source Sans Variable&apos;" font-size="48" font-variation-settings="&apos;wght&apos; 400"><tspan x="0" y="0" letter-spacing="-.02em">T</tspan><tspan x="24.58" y="0">OP</tspan></text>
+  </g>
+  <g id="owl-top-wingup">
+    <path d="M53.75,88.45l71.48,78.28s-25.86,14.59-52.47-13.45C-12.25,63.67,53.75,88.45,53.75,88.45Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+    <path d="M77.49,77.55l71.48,78.28s-25.86,14.59-52.47-13.45c-85.02-89.61-19.02-64.83-19.02-64.83Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+    <path d="M92.52,59.94l71.48,78.28s-25.86,14.59-52.47-13.45C26.53,35.16,92.52,59.94,92.52,59.94Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>

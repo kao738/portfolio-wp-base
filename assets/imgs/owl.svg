@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="owl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150.22 239.2">
+  <g id="owl-wing-open">
+    <path d="M50.32,78.12l54.79,90.75s-28.22,9.25-48.82-23.45c-65.84-104.51-5.97-67.3-5.97-67.3Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+    <path d="M75.74,72.08l54.79,90.75s-28.22,9.25-48.82-23.45c-65.84-104.51-5.97-67.3-5.97-67.3Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+    <path d="M93.93,57.75l54.79,90.75s-28.22,9.25-48.82-23.45c-65.84-104.51-5.97-67.3-5.97-67.3Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+  <g id="owl-leg">
+    <path d="M65.91,212.04h.54v-54.92h-11.87v50.05c-4.2.02-8.37,1.73-11.4,5.11-5.67,6.33-5.13,16.06,1.2,21.73,1.37,1.23,2.91,2.15,4.53,2.8-.57-.69-1.08-1.44-1.51-2.26-3.44-6.48-.98-14.53,5.51-17.97,5.93-3.15,13.16-1.34,16.99,3.95-.41-3.09-1.74-6.07-3.99-8.48Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+    <path d="M79.31,212.04h.54v-54.92h-11.87v50.05c-4.2.02-8.37,1.73-11.4,5.11-5.67,6.33-5.13,16.06,1.2,21.73,1.37,1.23,2.91,2.15,4.53,2.8-.57-.69-1.08-1.44-1.51-2.26-3.44-6.48-.98-14.53,5.51-17.97,5.93-3.15,13.16-1.34,16.99,3.95-.41-3.09-1.74-6.07-3.99-8.48Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+  <path id="owl-body" d="M94.19,56.23l4.49,137.65S11.57,185.75,7.72,135.59C-4.59-24.73,94.19,56.23,94.19,56.23Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+  <g id="owl-wing">
+    <path d="M52.02,78.6l32.31,100.97s-29.59,2.47-42.07-34.11C2.37,28.55,52.02,78.6,52.02,78.6Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+    <path d="M78.14,78.6l32.31,100.97s-29.59,2.47-42.07-34.11c-39.88-116.91,9.76-66.85,9.76-66.85Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+    <path d="M99.15,68.87l32.31,100.97s-29.59,2.47-42.07-34.11c-39.88-116.91,9.76-66.85,9.76-66.85Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+  <circle id="owl-face" cx="53.22" cy="51" r="50" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+  <line id="owl-closedeye-right" x1="21.55" y1="44.12" x2="34.88" y2="44.12" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+  <line id="owl-closedeye-left" x1="84.88" y1="44.12" x2="71.55" y2="44.12" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+  <circle id="owl-eye-right" cx="28.22" cy="44.12" r="5.93" fill="#231815" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+  <circle id="owl-eye-left" cx="78.22" cy="44.12" r="5.93" fill="#231815" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+  <path id="owl-brow" d="M100.68,23.65c-7.15-3.62-16-6.88-23.69-5.53-16.6,2.91-16.49,25.3-23.78,25.3s-7.18-22.39-23.78-25.3c-7.69-1.35-16.54,1.91-23.69,5.53,28.37,9.34,47.47,26.79,47.47,46.78,0-19.99,19.1-37.44,47.47-46.78Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="4"/>
+  <path id="owl-brow-up" d="M100.14,15.65c-7.15-3.62-16-6.88-23.69-5.53-16.6,2.91-16.49,25.3-23.78,25.3s-7.18-22.39-23.78-25.3c-7.69-1.35-16.54,1.91-23.69,5.53,28.37,9.34,47.47,26.79,47.47,46.78,0-19.99,19.1-37.44,47.47-46.78Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="4"/>
+  <path id="owl-brow-down" d="M100.14,28.23c-7.15-3.62-16-6.88-23.69-5.53-16.6,2.91-16.49,25.3-23.78,25.3s-7.18-22.39-23.78-25.3c-7.69-1.35-16.54,1.91-23.69,5.53,28.37,9.34,47.47,26.79,47.47,46.78,0-19.99,19.1-37.44,47.47-46.78Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="4"/>
+</svg>

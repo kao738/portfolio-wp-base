@@ -15,7 +15,7 @@
   --container:min(1200px,92vw);
   --radius:18px;
   /* 麻の葉サイズ（全ページ共通） */
-  --asanoha-size:120px;
+  --asanoha-size:640px;
   /* 透かし既定（全ページ共通） */
   --wm-size:clamp(44px,9vw,110px);
   --wm-alpha:.035;
@@ -347,3 +347,5 @@ h3.category {
   transform: translateY(-0.25em);
   margin: 0 0 16px;
 }
+
+/*# sourceMappingURL=works-detail.css.map */

@@ -20,6 +20,7 @@ body {
 /* テキストタグ */
 p, h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
+
 }
 
 /* リスト系 */
@@ -56,11 +57,13 @@ table {
 
 /* ===== ヘッダー ===== */
 .site-header {
-  background: #f9f7f1;
+  background: #f9f7f1;  
 }
 
 .header-inner {
   max-width: var(--container);
+  // margin: 0 auto;
+  // padding-inline: 20px;
   min-height: var(--header-h);
   display: flex;
   justify-content: space-between;
@@ -75,7 +78,6 @@ table {
   color: #245e62;
   margin: 0;
 }
-
 .site-header .hamburger {
   display: none;
   background: none;
@@ -83,7 +85,6 @@ table {
   cursor: pointer;
   z-index: 200;
 }
-
 .site-header .hamburger span {
   display: block;
   width: 24px;
@@ -91,16 +92,13 @@ table {
   background: #2f3a3a;
   margin-bottom: 4px;
 }
-
 .site-header .hamburger span:last-child {
   margin-bottom: 0;
 }
-
 .site-header .site-nav {
   display: flex;
   align-items: center;
 }
-
 .site-header .site-nav ul {
   display: flex;
   gap: 2rem;
@@ -108,13 +106,11 @@ table {
   margin: 0;
   padding: 0;
 }
-
 .site-header .site-nav ul li a {
   text-decoration: none;
   color: #245e62;
   font-weight: 700;
 }
-
 .site-header .site-nav.is-open {
   display: block;
   position: absolute;
@@ -126,34 +122,34 @@ table {
   border-radius: 8px;
   z-index: 100;
 }
-
 .site-header .site-nav.is-open ul {
   flex-direction: column;
   gap: 1.5rem;
 }
-
 /* Headerだけはガター無し */
 .site-header .header-inner {
-  padding-left: 0;
-  padding-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  // padding-right: 0 ;
 }
-
 /* ==== mid幅(約1000px)の整形：PC→タブレットの穴埋め ==== */
-@media (max-width: 1024px) {
+@media (max-width: 1024px){
+
   /* ヘッダー：左余白 & タイトル縮小 & ナビ間隔 */
-  .site-header .header-inner {
+  .site-header .header-inner{
+    // padding-inline: 16px;                /* これで左のガターを固定的に確保 */
     min-height: var(--header-h, 64px);
   }
-  .site-header .logo {
-    font-size: clamp(24px, 3vw, 32px); /* タイトルを素直に小さく */
+  .site-header .logo{
+    font-size: clamp(24px, 3vw, 32px);   /* タイトルを素直に小さく */
     line-height: 1.1;
     margin: 0;
   }
-  .site-header .site-nav ul {
-    gap: 1.25rem;
-  } /* 文字が詰まるなら間隔を控えめに */
+  .site-header .site-nav ul{ gap: 1.25rem; }  /* 文字が詰まるなら間隔を控えめに */
+
 }
-@media (max-width: 900px) {
+
+@media (max-width: 600px) {
   .site-header .hamburger {
     display: inline-grid;
     position: relative;
@@ -206,18 +202,8 @@ table {
     text-align: center;
     padding: 0 1rem;
   }
-  /* 開いたときのアニメーション */
-  .hamburger.is-open span:nth-child(1) {
-    transform: translateY(18px) rotate(45deg);
-  }
-  .hamburger.is-open span:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
-  }
-  .hamburger.is-open span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
 }
+
 /* ===== hero ===== */
 .hero {
   display: flex;
@@ -234,7 +220,7 @@ table {
 }
 
 .hero-tagline {
-  width: 100%;
+
   font-size: 1.8rem;
   line-height: 1.4;
   color: #245e62;
@@ -244,241 +230,338 @@ table {
   position: relative;
   align-items: center;
   padding: 18px 0;
+  &::after {
+   content:""; 
+  //  background-image: url("../imgs/hero-img.png");
+   width: 370px;
+   height: 440px;
+   display: block;
+   background-size: contain;
+   background-repeat:no-repeat; 
+   right: 0;
+   top: 50%;
+   position: absolute;
+   bottom: 50%;
+  }
+
 }
 
 .hero-visual img {
-  width: min(30vw, 260px); /* 木のサイズはここ */
+  width: min(30vw, 260px);  /* 木のサイズはここ */
   height: auto;
   display: block;
 }
 
+
+
+
+
+
 /* 3) タイトルとコピーの“でかくなり過ぎ”を抑える */
-.logo {
-  font-size: clamp(28px, 3.2vw, 40px);
+.logo { font-size: clamp(28px, 3.2vw, 40px); }  
+/* ==== Hero 余白を詰める・モバイル優先 ==== */
+@media (max-width: 600px){
+ .hero{
+  /* ... */
+  align-items: flex-start;
+}
+.hero-inner{
+  align-items: flex-start;
+}
+.hero > *:first-child,
+.hero-inner > *:first-child{
+  margin-top: 0;
+}
+ 
+  /* 見出し直指定の保険 */
+  .hero h1, .hero h2, .hero p { margin-top: 0; }
 }
 
-/* ==== Hero 余白を詰める・モバイル優先 ==== */
-@media (max-width: 600px) {
-  .hero {
-    /* ... */
-    align-items: flex-start;
-  }
-  .hero-inner {
-    align-items: flex-start;
-  }
-  .hero > *:first-child,
-  .hero-inner > *:first-child {
-    margin-top: 0;
-  }
-  /* 見出し直指定の保険 */
-  .hero h1, .hero h2, .hero p {
-    margin-top: 0;
-  }
-}
 /* タブレットでも少し詰めたいなら */
-@media (max-width: 1024px) {
-  .hero {
+@media (max-width: 1024px){
+  .hero{
     min-height: auto;
     padding-block: 16px;
-    margin-bottom: 430px;
   }
-  .hero-inner {
-    align-items: flex-start;
-  }
+  .hero-inner{ align-items: flex-start; }
 }
-.hero {
+.hero{
   min-height: clamp(520px, 70svh, 880px);
-  display: flex;
-  align-items: center;
-  overflow: visible;
-  background: #f9f7f1;
+  display:flex; align-items:center;
+  overflow:visible; background:#f9f7f1;
 }
-
-@media (max-width: 600px) {
-  .hero {
-    padding-block: 16px;
-  } /* ここはお好みで微調整 */
+@media (max-width: 600px){
+  .hero{ padding-block: 16px; } /* ここはお好みで微調整 */
 }
 /* ===== Hero: 最小パッチ（他に影響しない） ===== */
+
+
+
 /* モバイル：木をテキストの“下”に回して余白を少しだけ確保 */
-@media (max-width: 600px) {
-  .hero {
-    padding-block: 16px; /* 40px → 16px（上の空きが広すぎる対策） */
+@media (max-width: 600px){
+  .hero{ 
+    padding-block: 16px;   /* 40px → 16px（上の空きが広すぎる対策） */
   }
-  .hero-tagline {
-    padding-right: 0; /* 右の余白を解除（画像を下へ回すので不要） */
-    position: relative; /* 念のため（既に付いてるならOK） */
+  .hero-tagline{
+    padding-right: 0;      /* 右の余白を解除（画像を下へ回すので不要） */
+    position: relative;    /* 念のため（既に付いてるならOK） */
   }
-}
-/* 念のため：ヘッダーが常に前面（重なって見える時の保険） */
-.site-header {
-  position: relative;
-  z-index: 10;
+
 }
 
+/* 念のため：ヘッダーが常に前面（重なって見える時の保険） */
+.site-header{ position: relative; z-index: 10; }
 /* ========= ヒーロー：擬似要素版に統一 ========= */
 /* 実画像が残っていても出ないよう封印（保険） */
-.hero-visual {
-  display: none;
-}
+.hero-visual{ display:none ; }
 
 /* ベース（共通） */
-.hero-tagline {
-  position: relative;
+.hero-tagline{ position: relative; }
+.hero-tagline::after{
+  content:"";
+  position: absolute;
+  background: url("../imgs/hero-img.png") center/contain no-repeat;
+  pointer-events: none;
+  aspect-ratio: 370 / 440; /* 縦横比キープ */
 }
 
 /* ===== スマホ（～600px）：テキストの“下・中央”に置く ===== */
-@media (max-width: 768px) {
-  .hero-tagline::after {
-    width: 100%;
-    min-width: 350px;
-  }
-}
-@media (max-width: 600px) {
-  .hero {
-    min-height: 100svh; /* ファーストビュー占有＝Aboutを隠す */
+@media (max-width: 600px){
+  .hero{
+    min-height: 100svh;   /* ファーストビュー占有＝Aboutを隠す */
     overflow: visible;
     padding-block: 16px;
     padding-bottom: clamp(140px, 28vw, 260px); /* 木のぶん下に余白を確保 */
   }
-  .hero-tagline {
+  .hero-tagline{
     width: 100%;
     text-align: center;
     padding-right: 0;
   }
-  .hero-tagline::after {
-    top: calc(100% + 12px); /* テキスト直下に12pxあける */
+  .hero-tagline::after{
+    top: calc(100% + 12px);  /* テキスト直下に12pxあける */
     left: 50%;
     transform: translateX(-50%);
+    width: clamp(260px, 62vw, 420px); /* ★木の大きさ（スマホ用つまみ） */
   }
 }
+
 /* ===== 中間（601–1200px）：縦並び・中央下配置 ===== */
-@media (min-width: 601px) and (max-width: 1200px) {
-  .hero {
-    min-height: 80svh; /* 75–85svhで好みに */
+@media (min-width: 601px) and (max-width: 1200px){
+  .hero{
+    min-height: 80svh;     /* 75–85svhで好みに */
     overflow: visible;
+    margin-bottom: clamp(140px, 30vw, 320px); /* 下セクション食い込み防止 */
     padding-block: 16px;
   }
-  .hero-tagline {
+  .hero-tagline{
     width: 100%;
     text-align: center;
     padding-right: 0;
   }
+  .hero-tagline::after{
+    top: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(300px, 46vw, 500px); /* ★木の大きさ（中間用つまみ） */
+  }
 }
+
 /* ===== PC（1201px～）：テキスト右側・縦中央 ===== */
-@media (min-width: 1400px) {
-  .hero {
-    min-height: calc(100vh - var(--header-h, 72px)); /* ★高さつまみ：About見えない */
+@media (min-width: 1400px){
+  .hero{
+    min-height: calc(100vh - var(--header-h,72px)); /* ★高さつまみ：About見えない */
     overflow: visible;
     padding-block: 32px; /* 24–40pxで微調整 */
   }
-  .hero-tagline {
+  .hero-tagline{
     text-align: left;
     padding-right: clamp(260px, 28vw, 370px); /* 右に木のスペースを確保 */
   }
+  .hero-tagline::after{
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);  /* 上下位置のつまみはここを±pxに */
+    width: clamp(480px, 36vw, 620px); /* ★木の大きさ（PC用つまみ） */
+  }
 }
+
 /* PCだけ擬似要素に統一（1201px〜） */
-@media (min-width: 1400px) {
+@media (min-width: 1400px){
   /* 実画像は消す */
-  .hero-visual {
-    display: none;
-  }
+  .hero-visual{ display: none ; }
+
   /* 擬似要素の土台 */
-  .hero-tagline {
-    position: relative;
-    padding-right: clamp(300px, 32vw, 420px);
+  .hero-tagline{ position: relative; padding-right: clamp(300px, 32vw, 420px); }
+
+  /* ★擬似要素（木） */
+  .hero-tagline::after{
+    content: "";
+    position: absolute;
+    right: 0;                  /* 右端に基準 */
+    top: 50%;
+    transform: translateY(-50%);   /* 縦中央。横はこれでOK */
+    width: clamp(480px, 36vw, 620px);  /* 木の大きさ（つまみ） */
+    aspect-ratio: 370 / 440;
+    background: url("../imgs/hero-img.png") center / contain no-repeat;
+    pointer-events: none;
   }
+
   /* はみ出し見せたくないなら hidden、見せたいなら visible */
-  .hero {
-    overflow: visible;
-    min-height: calc(100vh - var(--header-h, 72px));
-  }
+  .hero{ overflow: visible; min-height: calc(100vh - var(--header-h,72px)); }
 }
 /* ===== PC（1201px〜）だけ：擬似要素で木を表示＆少し右へ ===== */
 @media (min-width: 1400px) {
-  .hero-visual {
-    display: none;
-  }
+  .hero-visual { display: none ; } // 実画像は封印
+
   .hero {
     min-height: calc(100vh - var(--header-h, 72px));
     overflow: visible;
     padding-block: 32px;
+  }
+
+  .hero-tagline {
+    position: relative;
+    text-align: left;
+    padding-right: clamp(300px, 32vw, 420px); // 木の居場所
+
+    &::after {
+      content: "" ;                     // ←命！
+      position: absolute;
+      right: -16px;                               // 右へ寄せるつまみ（-8 / -24 に調整OK）
+      top: 50%;
+      transform: translateY(-50%);                // 縦中央
+      width: clamp(480px, 36vw, 620px);           // 大きさつまみ（32–40vw）
+      aspect-ratio: 370 / 440;
+      background: url("../imgs/hero-img.png") center/contain no-repeat;
+      pointer-events: none;
+      z-index: 2;
+    }
   }
 }
 /* PC（1201px〜）：赤箱→本物の木に置き換え＆右寄せ調整 */
 @media (min-width: 1400px) {
-  .hero-visual {
-    display: none;
-  }
+  .hero-visual { display: none ; } // 実画像は封印のまま
+
   .hero {
     min-height: calc(100vh - var(--header-h, 72px));
-    overflow: visible;
+    overflow: visible;               // 切れそうなら visible に変更OK
     padding-block: 32px;
   }
-}
-@media (max-width: 768px) {
-  .hero {
-    margin-bottom: 100px;
+
+  .hero-tagline {
+    position: relative;
+    text-align: left;
+    padding-right: clamp(300px, 32vw, 420px); // 木の“居場所”を確保（ここ増やすともっと右に寄る）
+    &::after{
+      content: "" ;
+      position: absolute;
+      right: -16px;                 // 右へ寄せるつまみ（-8 / -24 / -32…で調整）
+      top: 50%;
+      transform: translateY(-50%);  // 縦中央。上下微調整は translateY(-48%/ -55%) 等
+      width: clamp(480px, 36vw, 620px);  // 木の大きさ（32–40vwあたりが使いやすい）
+      aspect-ratio: 370 / 440;      // 比率キープ
+      background: url("../imgs/hero-img.png") center / contain no-repeat; // ←画像に戻す
+      pointer-events: none;
+      z-index: 2;
+    }
   }
 }
 /* === DESKTOP HARD OVERRIDE (最後尾) === */
 @media (min-width: 1201px) {
   /* コンテナ基準を広げる */
-  .hero-inner {
-    position: relative;
-  }
+  .hero-inner{ position: relative ; }
+
   /* テキスト側の“中央寄せ/狭さ”を殺す */
-  .hero-tagline {
-    display: block;
-    max-width: none;
-    margin: 0;
-    text-align: left;
-    padding-right: clamp(320px, 34vw, 480px); /* 木の居場所を広く取る */
-    position: relative;
+  .hero-tagline{
+    display: block ;
+    max-width: none ;
+    margin: 0 ;
+    text-align: left ;
+    padding-right: clamp(320px, 34vw, 480px) ; /* 木の居場所を広く取る */
+    position: relative ;
   }
+
+  /* 木（擬似要素）を右端に固定。中央化の名残を完全リセット */
+  .hero-tagline::after{
+    content: "" ;
+    position: absolute ;
+
+    /* 中央寄せ系の残骸を無効化 */
+    left: auto ;
+    margin: 0 ;
+    transform: translateY(-50%) ;
+
+    /* 右寄せ＋微調整 */
+    right: -168px ;                /* もっと右へ → -40 / -56 など */
+    top: 50% ;
+    width: clamp(500px, 38vw, 680px) ; /* 大きさつまみ */
+
+    aspect-ratio: 370 / 440 ;
+    // background: url("../imgs/hero-img.png") center/contain no-repeat ;
+    pointer-events: none ;
+    z-index: 2 ;
+  }
+
   /* 枠の高さ・はみ出し */
-  .hero {
-    min-height: calc(100vh - var(--header-h, 72px));
-    overflow: visible; /* 切れるなら visible に変更OK */
-    padding-block: 32px;
+  .hero{
+    min-height: calc(100vh - var(--header-h, 72px)) ;
+    overflow: visible ; /* 切れるなら visible に変更OK */
+    padding-block: 32px ;
   }
+
   /* 実画像は封印のまま */
-  .hero-visual {
-    display: none;
-  }
-}
-/* === RESPONSIVE CENTER FIX (〜1200px) === */
-@media (max-width: 1400px) {
-  .hero {
-    overflow: visible; /* 切れ防止 */
-    padding-bottom: clamp(140px, 28vw, 260px);
-  }
-  .hero-tagline {
-    padding-right: 0; /* PCの右スペースを解除 */
-    text-align: center;
-    position: relative;
-    width: 100%;
-  }
-}
-/* ===== HERO タイトル帯：最終フル幅パッチ ===== */
-.hero {
-  position: relative;
-  overflow: visible;
+  .hero-visual{ display: none }
 }
 
-.hero-tagline {
-  position: relative;
+/* === RESPONSIVE CENTER FIX (〜1200px) === */
+@media (max-width: 1400px){
+  .hero{ 
+    overflow: visible ;                  /* 切れ防止 */
+    padding-bottom: clamp(140px, 28vw, 260px) ;
+  }
+  .hero-tagline{
+    padding-right: 0 ;                  /* PCの右スペースを解除 */
+    text-align: center ;
+    position: relative ;
+    width: 100% ;
+  }
+
+  .hero-tagline::after{
+    content: "" ;
+    position: absolute ;
+
+    /* 右寄せの名残を完全リセット */
+    right: auto ;
+    left: 50% ;
+    transform: translateX(-50%) ;
+
+    top: calc(100% + 12px) ;            /* テキストの下に配置 */
+    width: clamp(260px, 46vw, 500px) ;  /* ←大きさつまみ（必要なら調整） */
+    aspect-ratio: 370 / 440 ;
+    background: url("../imgs/hero-img.png") center/contain no-repeat ;
+    pointer-events: none ;
+  }
+}
+
+
+/* ===== HERO タイトル帯：最終フル幅パッチ ===== */
+.hero {
+ position: relative; overflow: visible; }
+
+.hero-tagline{
+  position: relative ;
   z-index: 1;
   text-align: left;
   color: #245e62;
   line-height: 1.6;
   padding: 1.2em 0;
-  max-width: none;
-  margin: 0;
-  display: block;
+  max-width: none ;
+  margin: 0 ;
+  display: block ;
 }
 
-.hero-tagline::before {
+.hero-tagline::before{
   content: "";
   position: absolute;
   left: 50%;
@@ -486,49 +569,52 @@ table {
   top: 0;
   bottom: 0;
   width: 100vw;
-  background: url("../imgs/bg-line.png") center/cover repeat;
+  background: url("../imgs/bg-line.png") center / cover repeat;
   z-index: -1;
 }
 
-.hero-inner {
-  background: none;
+.hero-inner{
+  background: none ;
 }
-
 /* ===== Hero（スマホ）— 木のサイズ＆位置、Aboutを隠す ===== */
-@media (max-width: 600px) {
-  .hero {
-    min-height: 100svh; /* 画面いっぱい確保＝Aboutを押し下げ */
-    padding-block: 16px; /* 上下の余白はお好みで 12–24px */
-    overflow: visible; /* 木が切れないように */
+@media (max-width: 600px){
+  .hero{
+    min-height: 100svh ;   /* 画面いっぱい確保＝Aboutを押し下げ */
+    padding-block: 16px ;  /* 上下の余白はお好みで 12–24px */
+    overflow: visible ;     /* 木が切れないように */
   }
-  .hero-inner {
-    flex-direction: column; /* 縦並び */
-    align-items: center;
-    text-align: center;
+  .hero-inner{
+    flex-direction: column ;   /* 縦並び */
+    align-items: center ;
+    text-align: center ;
     gap: 16px;
   }
 }
+
 /* ===== PC幅だけ調整（1025px〜） ===== */
-@media (min-width: 1025px) {
+@media (min-width: 1025px){
+
   /* 1) ヒーローの高さ（Aboutを隠す用） */
-  .hero {
-    min-height: calc(100vh - var(--header-h, 72px)); /* ←高さつまみ */
-    padding-block: 32px; /* 上下の余白。24〜40で好み調整 */
-    overflow: visible; /* 木が切れるなら visible のまま */
+  .hero{
+    min-height: calc(100vh - var(--header-h, 72px)) ; /* ←高さつまみ */
+    padding-block: 32px;     /* 上下の余白。24〜40で好み調整 */
+    overflow: visible;       /* 木が切れるなら visible のまま */
   }
+
   /* 2) 横並び&中央寄せ（安定） */
-  .hero-inner {
+  .hero-inner{
     display: flex;
     align-items: left;
     justify-content: space-between;
     gap: 32px;
   }
+
   /* 3) ★木（画像）のサイズ＆位置つまみ */
-  .hero-visual img {
+  .hero-visual img{
     width: clamp(480px, 36vw, 620px); /* ←大きさつまみ（小→32vw / 大→40vw） */
     height: auto;
     display: block;
-    translate: 0 8px; /* ←上下位置つまみ。下げる: 12px / 上げる: -4px */
+    translate: 0 8px;                /* ←上下位置つまみ。下げる: 12px / 上げる: -4px */
     /* 横位置をもっと右に寄せたいなら👇を追加
        margin-left: auto;
     */
@@ -537,25 +623,25 @@ table {
 /* ==========================
    HERO (isolated)
 ========================== */
-:root {
+:root{
   --container: min(1200px, 92vw);
   --gap-lg: 32px;
   --gap-sm: 24px;
   --brand: #245e62;
 }
 
-.hero {
+.hero{
   min-height: clamp(520px, 70svh, 880px);
   display: flex;
   align-items: center;
   overflow: visible;
   background: #f9f7f1;
   /* ヒーロー：上の余白と木の被り回避（mid幅） */
-  min-height: 72svh; /* 100vhやautoを避けて安定化 */
+  min-height: 72svh;                   /* 100vhやautoを避けて安定化 */
   padding-block: 16px;
 }
 
-.hero-inner {
+.hero-inner{
   width: 100%;
   max-width: min(1200px, 92vw);
   margin: 0 auto;
@@ -564,13 +650,10 @@ table {
   align-items: center;
   justify-content: space-between;
   gap: var(--gap-lg);
+  
 }
-
-.hero-copy {
-  max-width: 680px;
-}
-
-.hero-tagline {
+.hero-copy{ max-width: 680px; }
+.hero-tagline{
   position: relative;
   color: var(--brand);
   line-height: 1.6;
@@ -578,55 +661,42 @@ table {
   padding: 18px 0;
   /* 右擬似要素ぶんの余白（PC時） */
   padding-right: clamp(260px, 28vw, 370px);
+  &::after{
+    content:"";
+    position: absolute;
+    right: 50%
+    ; top: 50%;
+    transform: translateY(-50%);
+    width: clamp(220px, 28vw, 370px);
+    aspect-ratio: 370 / 440;
+    background: url("../imgs/hero-img.png") center / contain no-repeat;
+    pointer-events: none;
+  }
 }
-.hero-tagline::after {
-  content: "";
-  position: absolute;
-  right: 30px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: clamp(220px, 28vw, 370px);
-  aspect-ratio: 370/440;
-  background: url("../imgs/hero-img.png") center/contain no-repeat;
-  pointer-events: none;
-}
-
 /* 他の画像要素 .hero-visual があるならPCでは使わない */
-.hero-visual {
-  display: none;
-}
+.hero-visual{ display: none ; }
 
 /* 📱 タブレット以下で縦並び（カラム） */
 @media (max-width: 1024px) {
   .hero-inner {
-    flex-direction: column; /* ←縦並び */
+    flex-direction: column;     /* ←縦並び */
     justify-content: center;
     align-items: center;
     text-align: left;
     gap: 24px;
   }
+
   .hero-copy {
     max-width: 90%;
   }
+
   .hero-visual img {
-    width: min(72vw, 400px); /* 画像も少し大きめに */
+    width: min(72vw, 400px);   /* 画像も少し大きめに */
     margin-top: 12px;
   }
-  .hero-tagline {
-    font-size: 1.8rem;
-  }
 }
+
 /* 📱 スマホでフォントも縮小 */
-@media (max-width: 768px) {
-  .hero {
-    margin-top: 200px;
-  }
-}
-@media (max-width: 500px) {
-  .hero {
-    margin-top: 150px;
-  }
-}
 @media (max-width: 600px) {
   .hero .hero-tagline {
     font-size: clamp(16px, 4.8vw, 22px);
@@ -634,54 +704,52 @@ table {
   }
 }
 /* ====== タブレット以下：縦並び＋::after を下に回す ====== */
-@media (max-width: 1024px) {
-  .hero .hero-inner {
+@media (max-width: 1024px){
+  .hero .hero-inner{
     display: flex;
-    flex-direction: column; /* ←縦カラム */
+    flex-direction: column;   /* ←縦カラム */
     justify-content: center;
     align-items: center;
     text-align: left;
     gap: 24px;
   }
+
   /* PCで付けた右余白を消す（画像は下へ回すので不要） */
-  .hero-tagline {
-    text-align: center;
-  }
-  .hero-tagline::after {
-    right: 0;
-    left: 0;
-    top: 100%;
-    transform: none;
-    display: block;
-    margin: 24px auto 0; /* テキストの下に画像 */
-    width: clamp(220px, 56vw, 420px);
-    aspect-ratio: 370/440;
+  .hero-tagline{
+    padding-right: 0 ;         /* ←残留対策 */
+    writing-mode: horizontal-tb ; /* ←縦書き化対策（もし当たってたら無効化） */
+    &::after{
+  
+      transform: none ;
+      display: block ;
+      margin: 12px auto 0 ;    /* テキストの下に画像 */
+      width: clamp(220px, 56vw, 420px);
+      aspect-ratio: 370 / 440;
+    }
   }
 }
 /* ====== スマホ：フォント縮小を確実に通す ====== */
-@media (max-width: 600px) {
-  .hero {
-    min-height: 60svh;
-    padding-block: 40px;
-  }
-  .hero .hero-tagline {
-    font-size: clamp(16px, 4.8vw, 22px);
+@media (max-width: 600px){
+  .hero{ min-height: 60svh; padding-block: 40px; }
+  .hero .hero-tagline{
+    font-size: clamp(16px, 4.8vw, 22px) ;
     line-height: 1.7;
   }
 }
 /* PC幅では横のガター（左右の20px）を殺す */
-@media (min-width: 1025px) {
+@media (min-width: 1025px){
   .container,
   .header-inner,
   .hero-inner,
   .service,
   .contact {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0 ;
+    padding-right: 0 ;
   }
 }
+
 /* スマホ/タブレットではガター復活（読みにくくならないように） */
-@media (max-width: 1024px) {
+@media (max-width: 1024px){
   .container,
   .header-inner,
   .hero-inner,
@@ -691,37 +759,38 @@ table {
   }
 }
 /* PC幅は横ガターをゼロに（Worksだけは例外） */
-@media (min-width: 1025px) {
+@media (min-width: 1025px){
   .container,
   .header-inner,
   .hero-inner {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0 ;
+    padding-right: 0 ;
   }
   /* ←ここがポイント：複数形 .services をゼロに */
   .services,
   .contact {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0 ;
+    padding-right: 0 ;
   }
+
   /* Works は今のまま中央に 20px 欲しいなら維持 */
   .works {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
-@media (min-width: 1025px) {
-  .hero-tagline {
+@media (min-width: 1025px){
+  .hero-tagline{
     max-width: none;
-    margin: 0; /* 中央寄せを解除＝全幅に */
+    margin: 0;         /* 中央寄せを解除＝全幅に */
   }
 }
 @media (max-width: 1024px) {
   .hero-inner,
   .about__content,
   .works__header {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column ;
+    align-items: center ;
     gap: 24px;
     text-align: left;
   }
@@ -731,96 +800,120 @@ table {
   }
 }
 /* === HERO 最終上書き（後勝ち＆最低限だけ） === */
-@media (max-width: 600px) {
-  .hero {
-    min-height: 72svh; /* 60svh → 72svhに。もっと欲しければ80svh */
-    padding-block: 16px; /* 40px を上書きして詰める */
+@media (max-width: 600px){
+  .hero{
+    min-height: 72svh ;   /* 60svh → 72svhに。もっと欲しければ80svh */
+    padding-block: 16px ;  /* 40px を上書きして詰める */
   }
-  .hero-tagline {
-    padding-right: 0; /* 右余白を無効化（画像を下に逃がす前提なら） */
+  .hero-tagline{
+    padding-right: 0 ;     /* 右余白を無効化（画像を下に逃がす前提なら） */
   }
-}
-.hero-inner {
-  flex-direction: column; /* 1000px付近で縦並びに切替 */
-  align-items: center;
-  text-align: left;
-  gap: 16px;
+
 }
 
-.hero-tagline {
-  padding-right: 0; /* 右の余白（木のスペース）を解除 */
-}
-
-/* ==== 1000px前後で木が切れる対策（最小） ==== */
-@media (max-width: 1400px) and (min-width: 720px) {
-  .hero {
-    overflow: visible; /* 木のはみ出しを切らない */
-    min-height: 80svh; /* 枠を少し高く確保（75〜85で好み調整） */
-    padding-block: 16px;
-  }
-  .hero-inner {
-    flex-direction: column; /* この帯域は縦並びにして安全に */
+  .hero-inner{
+    flex-direction: column;              /* 1000px付近で縦並びに切替 */
     align-items: center;
     text-align: left;
     gap: 16px;
   }
-}
-/* PC幅で横並びに戻す時は overflow を元に */
-@media (min-width: 1401px) {
-  .hero {
-    overflow: visible;
+  .hero-tagline{
+    padding-right: 0;                    /* 右の余白（木のスペース）を解除 */
   }
+
+
+/* ==== 1000px前後で木が切れる対策（最小） ==== */
+@media (max-width: 1400px) and (min-width: 720px){
+  .hero{
+    overflow: visible;           /* 木のはみ出しを切らない */
+    min-height: 80svh;           /* 枠を少し高く確保（75〜85で好み調整） */
+    padding-block: 16px;
+  }
+  .hero-inner{
+    flex-direction: column;      /* この帯域は縦並びにして安全に */
+    align-items: center;
+    text-align: left;
+    gap: 16px;
+  }
+  // .hero-tagline{ padding-right: 0; }
+}
+
+
+/* PC幅で横並びに戻す時は overflow を元に */
+@media (min-width: 1401px){
+  .hero{ overflow: visible; }
 }
 /* 720〜1200px帯：木の分だけ下にスペースを確保 */
-@media (max-width: 1400px) and (min-width: 720px) {
-  .hero {
+@media (max-width: 1400px) and (min-width: 720px){
+  .hero{ 
     overflow: visible;
+    margin-bottom: clamp(140px, 30vw, 320px); /* ★コレで木の分の余白を保証 */
   }
-  .hero-tagline {
+  .hero-tagline{
     padding-right: 0;
   }
+
 }
 /* 1000px前後〜スマホ：テキスト幅に影響されない安定中央 */
-@media (max-width: 1024px) {
-  .hero-tagline {
-    width: 100%; /* ← 基準を固定 */
+@media (max-width: 1024px){
+  .hero-tagline{
+    width: 100%;                 /* ← 基準を固定 */
     text-align: left;
-    padding-right: 0; /* 右余白はいらない */
+    padding-right: 0;            /* 右余白はいらない */
     position: relative;
+  }
+  .hero-tagline::after{
+    position: absolute;
+    top: calc(100% + 12px);      /* テキストの下に配置 */
+    left: 50%;                   /* ← right基準をやめて */
+    transform: translateX(-50%); /* ← 左右どっちにもブレない中央 */
+    width: clamp(240px, 40vw, 380px);
+    aspect-ratio: 370 / 440;
   }
 }
 /* 木が右に飛ぶ問題の強制修正（～1024px帯） */
-@media (max-width: 1024px) {
-  .hero-tagline {
+@media (max-width: 1024px){
+  .hero{ overflow: visible; } /* 切れ防止（必要なら） */
+  .hero-tagline{
     width: 100%;
     position: relative;
     padding-right: 0;
-    text-align: center;
+    text-align: left;
+  }
+  .hero-tagline::after{
+    /* 右寄せ系を完全リセットして中央固定に */
+    right: auto ;
+    left: 50% ;
+    transform: translateX(-50%) ;
+
+    width: clamp(220px, 56vw, 360px);
+    aspect-ratio: 370 / 440;
+    top: calc(100% + 12px);
   }
 }
+
+
 /* ===== about ===== */
 /* About 見出し行：タイトル＋フクロウを横並び */
-.about__header {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  padding: 0 5rem;
-  gap: 16px;
-  margin: 0 0 24px;
-}
-
-.profile__img {
-  aspect-ratio: 1/1;
-}
-
-@media (max-width: 640px) {
   .about__header {
-    flex-direction: column;
-    text-align: center;
-    padding: 0.5rem;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    padding: 0 5rem;
+    gap: 16px;
+    margin: 0 0 24px;
   }
-}
+
+  @media (max-width: 640px) {
+    .about__header {
+      flex-direction: column;
+      text-align: center;
+      padding: .5rem;
+    }
+    
+  }
 .about__title {
   font-family: "Noto Serif JP", serif;
   font-size: clamp(28px, 3vw, 40px);
@@ -836,7 +929,6 @@ table {
   border-radius: 50%;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .about__to-top img {
   width: 100%;
   height: auto;
@@ -852,49 +944,56 @@ table {
 .about__profile {
   max-width: 960px;
   display: grid;
-  grid-template-columns: 32% 40%;
-  gap: 4rem;
+  grid-template-columns: 32% 62%;
+  gap: 11rem;
   align-items: center;
   justify-content: center;
   margin: 4rem auto;
   height: fit-content;
-}
+    }
+
 
 @media (max-width: 640px) {
   .about__profile {
-    display: grid;
-    grid-template-columns: 100%;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    margin: 4rem auto;
-    margin-left: 8px;
-    margin-right: 8px;
-  }
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem auto;
+  margin-left: 8px;
+  margin-right: 8px;
+}
 }
 .profile__img img {
-  width: 70%;
-  margin: 0 auto;
+  width: 240px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   object-fit: contain;
+  margin-left: 200px;
   height: 100%;
 }
-
+@media (max-width: 640px) {
+  .profile__img img {
+    width: 180px;
+    margin: 0 auto;
+  }
+} 
 .profile__name {
   font-size: 24px;
   margin: 0 0 0.4rem;
   color: #245e62;
 }
-
 @media (max-width: 640px) {
   .profile__name {
-    font-size: 32px;
-    margin-bottom: 0.6rem;
+    font-size: 20px;
     text-align: center;
-  }
+  }   
+  
 }
+
 .profile__desc {
+  max-width: 38ch;
   font-size: 16px;
   line-height: 1.7;
   hyphens: auto;
@@ -908,35 +1007,32 @@ table {
 @media (max-width: 640px) {
   .profile__desc {
     max-width: 100%;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.6;
     margin: 0 auto;
     padding: 0 1rem;
     gap: 16px;
-  }
+  }   
+  
 }
+
 .about__content {
   display: flex;
   gap: 2rem;
   justify-content: center;
   margin-top: 2rem;
-  padding-right: 20px;
-  padding-left: 20px;
 }
-
 .about__section-title {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
   color: #245e62;
 }
-
 .about__strength-image {
   max-width: 100%;
   height: auto;
   display: block;
   padding-top: 16px;
 }
-
 .about__skills-list {
   list-style: none;
   padding: 0;
@@ -945,22 +1041,18 @@ table {
   gap: 0.75rem;
   color: #245e62;
 }
-
 .about__skills-item {
   text-align: center;
   padding: 0.6rem 0.9rem;
   border-radius: 6px;
   background: #e6f0e6;
   color: #245e62;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 0.5rem;
   font-family: sans-serif;
 }
-
 .about {
   /* 例：注目させたい時のmodifier */
 }
-
 .about__skills-item--highlight {
   outline: 2px solid #6aa38a;
   font-weight: 600;
@@ -969,13 +1061,15 @@ table {
 
 .about__cta {
   display: flex;
-  justify-content: center;
+  justify-content: center
+  ;
   margin-top: 4rem;
   margin-bottom: 6rem;
+  
 }
 
 /* ベースのボタン */
-.btn, .works .works__footer .works__view-more {
+.btn {
   display: inline-block;
   padding: 0.6rem 1.4rem;
   font-weight: 600;
@@ -986,13 +1080,12 @@ table {
 }
 
 /* バリエーション: アウトラインボタン */
-.btn--outline, .works .works__footer .works__view-more {
+.btn--outline {
   border: 2px solid #f0c75e;
   color: #f0c75e;
   background: transparent;
 }
-
-.btn--outline:hover, .works .works__footer .works__view-more:hover {
+.btn--outline:hover {
   background: #f0c75e;
   color: #fff;
 }
@@ -1003,7 +1096,6 @@ table {
   color: #fff;
   border: 1px solid #f0c75e;
 }
-
 .btn--contact:hover {
   background: #e0b24e;
   border-color: #e0b24e;
@@ -1017,36 +1109,39 @@ table {
   height: 900px;
   max-width: 100%;
   margin: 0 auto;
-}
-.works .works__header {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  margin-bottom: 8rem;
-}
-.works .works__title {
-  font-family: "Noto Serif JP", serif;
-  font-size: clamp(28px, 3vw, 40px);
-  font-weight: bold;
-  color: #245e62;
-  margin: 0;
-}
-.works .works__footer {
-  display: flex;
-  justify-content: center;
-  margin: 100px auto;
-}
-.works .works__footer .works__view-more {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
+  .works__header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+ flex-direction: row;
+    margin-bottom: 8rem;
+  }
+  .works__title {
+    font-family: "Noto Serif JP", serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: bold;
+    color: #245e62;
+    margin: 0;
+  }
+  .works__footer {
+    display: flex;
+    justify-content: center;
+    margin: 100px auto;
+    .works__view-more {
+      @extend .btn;
+      @extend .btn--outline;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+  }
 }
 
 /* 汎用ボタン（前に作ったパターン） */
-.btn, .works .works__footer .works__view-more {
+.btn {
   display: inline-block;
   padding: 0.6rem 1.4rem;
   font-weight: 600;
@@ -1056,13 +1151,13 @@ table {
   cursor: pointer;
 }
 
-.btn--outline, .works .works__footer .works__view-more {
+.btn--outline {
   border: 2px solid #f0c75e;
   color: #f0c75e;
   background: transparent;
 }
 
-.btn--outline:hover, .works .works__footer .works__view-more:hover {
+.btn--outline:hover {
   background: #f0c75e;
   color: #fff;
 }
@@ -1087,10 +1182,10 @@ table {
 .works__inner {
   max-width: 1200px;
   margin: 0 auto;
+
   /* ここに .works__footer が入っていれば自然に中央ど真ん中に */
   /* Worksフッター（中央・余白・区切り線で “終わり感”） */
 }
-
 .works__inner .works__footer {
   display: grid;
   place-items: center;
@@ -1098,6 +1193,7 @@ table {
   padding: clamp(16px, 4vw, 32px) 0;
   border-top: 1px solid rgba(0, 0, 0, 0.08); /* 背景が暗いなら */
 }
+  
 
 /* モバイルで余白を気持ち広めに */
 @media (max-width: 480px) {
@@ -1113,18 +1209,16 @@ table {
 .swiper-wrapper {
   transition-timing-function: linear;
 }
-
 .swiper.belt {
   width: 100%;
   max-width: 100vw;
+  margin-left: calc(-50vw + 50%);
   box-sizing: border-box;
   padding: 16px 0;
 }
-
 .swiper-wrapper {
   align-items: center;
 }
-
 .swiper-slide {
   display: flex;
   flex-direction: column;
@@ -1132,7 +1226,6 @@ table {
   justify-content: space-between;
   padding: 8px 2px;
 }
-
 .swiper-slide img {
   max-width: 200px;
   height: auto;
@@ -1143,19 +1236,17 @@ table {
   margin-top: 6px;
   text-align: center;
 }
-
 .swiper-button-prev,
 .swiper-button-next {
-  color: #f0c75e;
+  color:  #f0c75e;
   background: #fff;
   border-radius: 50%;
   box-shadow: 0 2px 8px #f0c75e;
-  width: 20px;
+  width:20px;
   height: 20px;
   top: 50%;
   transform: translateY(-50%);
 }
-
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
   background: #f0c75e;
@@ -1218,6 +1309,9 @@ table {
     opacity: 1;
   }
 }
+
+
+
 /* --- 寿司ベルトのオーバーレイ最終形（上書き用） --- */
 .belt__item {
   position: relative; /* ← これが土台。captionの基準にする */
@@ -1262,260 +1356,210 @@ table {
 .belt__item:focus-within .belt__caption {
   opacity: 1;
 }
-
-.belt__item:hover {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18); /* 影を足す */
+.belt__item:hover{
+  box-shadow: 0 10px 28px rgba(0,0,0,.18);  /* 影を足す */
 }
 
 /* キーボード操作でも分かるように */
-.belt__item:focus-visible {
+.belt__item:focus-visible{
   outline: 3px solid #f0c75e;
   outline-offset: 2px;
 }
 
 /* モバイル（hover無い環境）は常時うっすら表示 or タップでJS制御に切替もOK */
-@media (hover: none) {
-  .belt__caption {
-    opacity: 0.9;
-  } /* 迷ったら常時表示にするとUX安定 */
+@media (hover: none){
+  .belt__caption{ opacity: .9; }   /* 迷ったら常時表示にするとUX安定 */
 }
+
 /* 低モーション設定に優しく */
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce){
   .belt__item,
-  .belt__caption {
-    transition: none;
-  }
+  .belt__caption{ transition: none; }
 }
+
 /* まずは全体でひと回りUP */
-.swiper-slide img {
-  max-width: clamp(180px, 36vw, 260px); /* 真ん中(36vw)で調整感を出す */
+.swiper-slide img{
+  max-width: clamp(180px, 36vw, 260px);  /* 真ん中(36vw)で調整感を出す */
   height: auto;
 }
 
 /* タブレット以下で少し抑える */
-@media (max-width: 768px) {
-  .swiper-slide img {
+@media (max-width: 768px){
+  .swiper-slide img{
     max-width: clamp(160px, 44vw, 240px);
   }
 }
+
 /* スマホで大きめに見せたいなら */
-@media (max-width: 480px) {
-  .swiper-slide img {
+@media (max-width: 480px){
+  .swiper-slide img{
     max-width: clamp(150px, 56vw, 220px);
   }
 }
+
 /* Services */
 /* セクション外枠 */
 /* ========== Service Section (production) ========== */
 .services {
+  height: 1300px;
   --circle-size: clamp(240px, 26vw, 260px); /* 丸を“元の大きめ”に */
   padding: 80px 20px;
   max-width: var(--container);
   margin: 0 auto;
   position: relative;
   overflow: hidden; /* 雲のはみ出し防止 */
+  // background: #e8f0e9;
   padding-top: clamp(56px, 10vw, 96px);
   padding-bottom: clamp(32px, 8vw, 72px);
 }
+  /* タイトル：右寄せ（フォント大きめに） */
+  .services__title-block {
+    display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: row;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        text-align: left;
+        gap: 24px;
 
-/* タイトル：右寄せ（フォント大きめに） */
-.section-title__inner {
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: left;
-  gap: 24px;
-}
-.section-title__inner .section-title {
-  color: #245e62;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 800;
-  font-size: 40px; /* ← 上限UPで効かせる */
-  line-height: 1.2;
-  margin: 0;
-}
-.section-title__inner .section-title .section-icon {
-  height: 1.1em;
-  width: auto;
-}
+    .section-title{
+      color:#245e62;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 800;
+      font-size: clamp(22px, 2.8vw, 36px); /* ← 上限UPで効かせる */
+      line-height: 1.2;
+      margin: 0;
 
-/* 説明：左揃え＋中央配置 */
-.services__description-block {
-  display: flex;
-  justify-content: center; /* ブロックを中央へ */
-  margin-top: 6rem;
-  margin-bottom: 2rem;
-}
-.services__description-block .section-description {
-  text-align: left; /* 左揃え */
-  line-height: 1.7;
-  color: #245e62;
-  margin: 0;
-}
+      .section-icon{ height: 1.1em; width: auto; }
+    }
+  }
 
-/* カードのグリッド（雲の基準） */
-.service-grid {
-  position: relative; /* 雲のposition基準 */
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  place-items: center;
-  gap: clamp(24px, 5vw, 48px);
-  max-width: 1100px;
-  margin: 0 auto;
-  z-index: 1;
-}
+  /* 説明：左揃え＋中央配置 */
+  .services__description-block{
+    display: flex;
+    justify-content: center; /* ブロックを中央へ */
+    margin-top: 6rem;
+    margin-bottom: 2rem;
 
-/* カード（丸） */
-.card {
-  width: var(--circle-size);
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  padding: clamp(16px, 2.4vw, 22px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-}
-.card .card-icon {
-  width: clamp(40px, 7vw, 56px);
-  height: auto;
-  margin-bottom: 0.4rem;
-}
-.card .card-title {
-  font-weight: 800;
-  font-size: clamp(15px, 1.6vw, 18px);
-  margin-bottom: 0.2rem;
-  min-height: 1.9em;
-}
-.card .card-text {
-  font-size: clamp(13px, 1.3vw, 15px);
-  line-height: 1.6;
-  color: #245e62;
-  max-width: 32ch;
-}
-.card .card-more {
-  margin-top: auto;
-  font-size: 0.92rem;
-  text-decoration: none;
-  color: inherit;
-}
-@media (max-width: 900px) {
-  .card .services__title-block {
+    .section-description{
+
+      text-align: left;       /* 左揃え */
+      line-height: 1.7;
+      font-size: clamp(13px, 1.3vw, 15px);
+      color: #245e62;;
+      margin: 0;
+    }
+  }
+
+  /* カードのグリッド（雲の基準） */
+  .service-grid{
+    position: relative; /* 雲のposition基準 */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    gap: clamp(24px, 5vw, 48px);
+    max-width: 1100px;
+    margin: 0 auto;
+    z-index: 1;
+  }
+
+  /* カード（丸） */
+  .card{
+    width: var(--circle-size);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    padding: clamp(16px, 2.4vw, 22px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-  }
-  .card .service-grid {
-    grid-template-columns: 1fr;
-  }
-  .card .section-title {
-    font-size: clamp(18px, 5vw, 28px);
-  }
+    overflow: hidden;
+    position: relative;
+    transition: transform .25s ease, box-shadow .25s ease;
+
+    &:hover{ transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.12); }
+
+    .card-icon  { width: clamp(40px, 7vw, 56px); height: auto; margin-bottom: .4rem; }
+    .card-title { font-weight: 800; font-size: clamp(15px, 1.6vw, 18px); margin-bottom: .2rem; min-height: 1.9em; }
+    .card-text  { font-size: clamp(13px, 1.3vw, 15px); line-height: 1.6; color: #245e62;; max-width: 32ch; }
+    .card-more  { margin-top: auto; font-size: .92rem; text-decoration: none; color: inherit; }
+
+    @media (max-width: 900px) {
+  .services__title-block { text-align: center; }
+  .service-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: clamp(18px, 5vw, 28px); }
 }
+
 @media (max-width: 600px) {
-  .card .card {
+  .card {
     width: 80%;
     margin-inline: auto;
   }
-  .card .card-text {
+  .card-text {
     font-size: clamp(11px, 3vw, 14px);
   }
 }
 
-@media (max-width: 900px) {
-  .animate-nav {
-    animation-delay: unset;
   }
-}
-/* アクセント色 */
-.is-design .card-title {
-  color: #2a8a84;
-}
 
-.is-coding .card-title {
-  color: #1673b1;
-}
+  /* アクセント色 */
+  .is-design  .card-title{ color:#2a8a84; }
+  .is-coding  .card-title{ color:#1673b1; }
+  .is-training .card-title{ color:#0b8a6a; }
 
-.is-training .card-title {
-  color: #0b8a6a;
-}
-
-/* 雲（グリッド相対） */
-.service-grid .cloud {
-  position: absolute;
-  opacity: 0.85;
-  pointer-events: none;
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.05));
-  width: clamp(80px, 12vw, 160px);
-  height: auto;
-  z-index: 0; /* 背面 */
-}
-
-.service-grid .cloud--top {
-  left: 0;
-  top: -56px;
-  transform: none; /* 端ピタ：ズレたら left:-6px; に */
-}
-
-.service-grid .cloud--bottom {
-  right: 0;
-  bottom: -56px;
-  transform: scaleY(-1); /* 反転 */
-}
-
-/* レスポンシブ */
-@media (max-width: 900px) {
-  .services__title-block {
-    text-align: center;
+  /* 雲（グリッド相対） */
+  .service-grid .cloud{
+    position: absolute;
+    opacity: .85;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,.05));
+    width: clamp(80px, 12vw, 160px);
+    height: auto;
+    z-index: 0; /* 背面 */
   }
-  .service-grid {
-    grid-template-columns: 1fr;
+  .service-grid .cloud--top{
+    left: 0; top: -56px; transform:none;        /* 端ピタ：ズレたら left:-6px; に */
   }
-  .service-grid .cloud {
-    width: clamp(90px, 30vw, 160px);
-    opacity: 0.28;
+  .service-grid .cloud--bottom{
+    right: 0; bottom: -56px; transform: scaleY(-1); /* 反転 */
   }
-  .service-grid .cloud--top {
-    left: 50%;
-    right: auto;
-    top: -40px;
-    transform: translateX(-50%);
+
+  /* レスポンシブ */
+  @media (max-width: 900px){
+    .services__title-block{ text-align:center; }
+    .service-grid{ grid-template-columns: 1fr; }
+    .service-grid .cloud{
+      width: clamp(90px, 30vw, 160px); opacity:.28;
+    }
+    .service-grid .cloud--top{
+      left:50%; right:auto; top:-40px; transform: translateX(-50%);
+    }
+    .service-grid .cloud--bottom{
+      right:auto; left:50%; bottom:-40px; transform: translateX(-50%) scaleY(-1);
+    }
+    
   }
-  .service-grid .cloud--bottom {
-    right: auto;
-    left: 50%;
-    bottom: -40px;
-    transform: translateX(-50%) scaleY(-1);
-  }
-}
-/*Service cards: テキストを確実に小さくできるよう下限を下げる */
-.services .service-grid .card .card-title {
-  font-size: 18px;
+
+ /*Service cards: テキストを確実に小さくできるよう下限を下げる */
+ .services .service-grid .card .card-title {
+  font-size: clamp(6px, 0.7vw, 12px); // 下限を6pxに
   line-height: 1.2;
-  margin-bottom: 0.8rem;
+  margin-bottom: .15rem;
   min-height: 1.5em;
-}
-
+ }
 .services .service-grid .card .card-text {
   color: #245e62;
-  font-size: 14px;
+  font-size: clamp(5px, 0.6vw, 10px); // 下限を5pxに
   line-height: 1.4;
   margin-inline: auto;
   word-break: break-word;
@@ -1523,31 +1567,27 @@ table {
   line-break: strict;
 }
 
-/* Contact */
-.contact {
-  padding: 80px 20px;
-  background: url("../imgs/bg-full.png") no-repeat center/cover;
-  text-align: center;
-}
-.contact__title {
-  font-size: 1.6rem;
-  color: #245e62;
-  margin-bottom: 1rem;
-}
-.contact__lead {
-  margin-bottom: 2rem;
-  font-size: 0.95rem;
-  opacity: 0.8;
-}
 
-.contact__inner {
+/* Contact */
+
+.contact {
   max-width: var(--container);
   margin: 0 auto;
-}
+  padding: 80px 20px;
+  background: url("../imgs/bg-full.png") no-repeat center/cover; // 麻の葉模様
+  text-align: center;
 
-.contact__text {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  &__title {
+    font-size: 1.6rem;
+    color: #245e62; // 濃いめ青緑
+    margin-bottom: 1rem;
+  }
+
+  &__lead {
+    margin-bottom: 2rem;
+    font-size: .95rem;
+    opacity: .8;
+  }
 }
 
 .c-form {
@@ -1555,38 +1595,42 @@ table {
   margin: 0 auto;
   display: grid;
   gap: 20px;
-}
-.c-form label {
-  text-align: left;
-  font-weight: 600;
-}
-.c-form input, .c-form textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border: none;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(4px);
-  font: inherit;
-}
-.c-form input:focus, .c-form textarea:focus {
-  outline: 2px solid #6aa89b;
-  background: #fff;
-}
-.c-form button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 999px;
-  background: #ffeaa7;
-  color: #245e62;
-  font-weight: bold;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-.c-form button:hover {
-  opacity: 0.9;
-}
 
+  label {
+    text-align: left;
+    font-weight: 600;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.6); // 半透明ホワイト
+    backdrop-filter: blur(4px);
+    font: inherit;
+
+    &:focus {
+      outline: 2px solid #6aa89b; // 薄萌葱
+      background: #fff;
+    }
+  }
+
+  button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 999px;
+    background: #ffeaa7; // 淡い黄色
+    color: #245e62;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity .2s;
+
+    &:hover {
+      opacity: .9;
+    }
+  }
+}
 /* ===== Footer ===== */
 .site-footer {
   width: 100%;
@@ -1599,24 +1643,21 @@ table {
   padding: 2rem 1rem;
   border-top: 1px solid rgba(244, 222, 160, 0.08);
 }
+  .site-footer  {
+    
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+  }
+  .copyright { font-size: .875rem; opacity: .7; margin-top: .5rem; }
 
-.site-footer {
-  margin: 0 auto;
-  display: grid;
-  gap: 1rem;
-}
-
-.copyright {
-  font-size: 0.875rem;
-  opacity: 0.7;
-  margin-top: 0.5rem;
-}
 
 @media (max-width: 480px) {
   .site-footer {
     text-align: center;
   }
 }
+
 .to-top {
   position: fixed;
   bottom: 32px;
@@ -1650,83 +1691,80 @@ table {
   pointer-events: auto;
 }
 
+
+
+
+
 /* Swiper のスライド幅をCSSで強制上書き（JS設定に勝つ） */
-.works .swiper.belt .swiper-slide {
-  width: 280px; /* 好みで 300〜340 に上げてOK */
+.works .swiper.belt .swiper-slide { 
+  width: 280px ;     /* 好みで 300〜340 に上げてOK */
 }
 
 /* 画像も追随して広げる */
-.works .swiper.belt .swiper-slide img {
-  width: 100%;
+.works .swiper.belt .swiper-slide img{
+  width: 100% ;
   height: auto;
   display: block;
 }
 
 /* 画面幅で段階調整したい場合（任意） */
-@media (max-width: 768px) {
-  .works .swiper.belt .swiper-slide {
-    width: 220px;
-  }
+@media (max-width: 768px){
+  .works .swiper.belt .swiper-slide { width: 220px ; }
 }
-@media (max-width: 480px) {
-  .works .swiper.belt .swiper-slide {
-    width: 180px;
-  }
+@media (max-width: 480px){
+  .works .swiper.belt .swiper-slide { width: 180px ; }
 }
 /* 等速でぬるっと流す */
-.swiper.belt .swiper-wrapper {
-  transition-timing-function: linear;
-  will-change: transform;
-}
-
+.swiper.belt .swiper-wrapper{ transition-timing-function: linear ; will-change: transform; }
 /* 画像に合わせてスライド幅を自動化（固定px指定は外す） */
-.swiper.belt .swiper-slide {
-  width: auto;
-}
+.swiper.belt .swiper-slide{ width: auto ; }
 
 /* ==== HERO: Desktop locks (最後に置く) ==== */
 @media (min-width: 1025px) {
-  .hero .hero-inner {
-    text-align: left;
-    justify-content: flex-start; /* 念のためレイアウトも左寄せに */
+  .hero .hero-inner { 
+    text-align: left; 
+    justify-content: flex-start;   /* 念のためレイアウトも左寄せに */
+  }
+  .hero .hero-tagline { 
+    text-align: left; 
+    margin-left: 0;
   }
 }
 /* hero全体の箱 */
-.hero {
+.hero{
   position: relative;
-  overflow: visible; /* はみ出しで崩れるのを防ぐ */
-  min-height: min(76svh, 860px); /* お好みで */
+  overflow: visible;                 /* はみ出しで崩れるのを防ぐ */
+  min-height: min(76svh, 860px);    /* お好みで */
 }
 
 /* テキストは常に前面 */
-.hero-copy {
+.hero-copy{
   position: relative;
   z-index: 2;
   max-width: 60ch;
 }
 
 /* 植物の絵：左下に固定・サイズ制御 */
-.hero-visual {
+.hero-visual{
   position: absolute;
   left: 0;
   bottom: 0;
-  width: min(900px, 95vw); /* デカくなりすぎ防止 */
+  width: min(900px, 95vw);          /* デカくなりすぎ防止 */
   max-width: 100%;
-  z-index: 1; /* テキストより下 */
-  pointer-events: none; /* クリック干渉を防ぐ */
+  z-index: 1;                       /* テキストより下 */
+  pointer-events: none;             /* クリック干渉を防ぐ */
 }
 
 /* 小さめ画面でさらに縮める */
-@media (max-width: 768px) {
-  .hero {
+@media (max-width: 768px){
+  .hero{
     min-height: 80svh;
     align-items: baseline;
   }
-  .hero-visual {
+  .hero-visual{
     width: min(640px, 92vw);
-    opacity: 0.95; /* 視認性UP（任意） */
+    opacity: .95;                   /* 視認性UP（任意） */
   }
 }
 
-/*# sourceMappingURL=style.css.map */
-body{outline:6px solid red !important}
+

@@ -12,7 +12,7 @@
   --container:min(1200px,92vw); --radius:18px;
 
   /* 麻の葉サイズ（全ページ共通） */
-  --asanoha-size:360px;
+  --asanoha-size:640px;
 
   /* 透かし既定（全ページ共通） */
   --wm-size:clamp(44px,9vw,110px);
@@ -216,30 +216,30 @@ h3.category{
   user-select: none;
 }
 
-/* ==================== Works Detail（詳細） ==================== */
-/* 一覧用の透かしは消す（重複防止） */
-.works-detail-page .category::before{ content: none !important; display: none !important; }
+// /* ==================== Works Detail（詳細） ==================== */
+// /* 一覧用の透かしは消す（重複防止） */
+// .works-detail-page .category::before{ content: none !important; display: none !important; }
 
-/* 透かしは section-block 側で出す */
-.works-detail-page .section-block{ position: relative; }
-.works-detail-page .section-block::before{
-  content: attr(data-watermark);
-  position: absolute;
-  left: 0; right: 0;
-  top: -0.35em;             /* ←上下はここで調整 */
-  text-align: left;
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: var(--wm-size);
-  line-height: 1;
-  color: rgba(36, 94, 98, .035);
-  z-index: 0;
-  pointer-events: none;
-  user-select: none;
-}
+// /* 透かしは section-block 側で出す */
+// .works-detail-page .section-block{ position: relative; }
+// .works-detail-page .section-block::before{
+//   content: attr(data-watermark);
+//   position: absolute;
+//   left: 0; right: 0;
+//   top: -0.35em;             /* ←上下はここで調整 */
+//   text-align: left;
+//   font-family: var(--serif);
+//   font-weight: 700;
+//   font-size: var(--wm-size);
+//   line-height: 1;
+//   color: rgba(36, 94, 98, .035);
+//   z-index: 0;
+//   pointer-events: none;
+//   user-select: none;
+// }
 
-/* 詳細のカタカナ見出しも少し上げる（任意） */
-.works-detail-page h3.category{
-  transform: translateY(-0.25em);
-  margin: 0 0 16px;
-}
+// /* 詳細のカタカナ見出しも少し上げる（任意） */
+// .works-detail-page h3.category{
+//   transform: translateY(-0.25em);
+//   margin: 0 0 16px;
+// }
