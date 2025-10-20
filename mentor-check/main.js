@@ -89,3 +89,24 @@
     el.addEventListener('mouseleave', () => s.autoplay.start());
   });
 })();
+// ==== Reveal 最小実装：非表示(.js-reveal/.js-inview)を表示にする ====
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('[main.js] DOM ready');
+
+  const targets = document.querySelectorAll('.js-reveal, .js-inview, [data-reveal]');
+  if (!targets.length) {
+    console.warn('[reveal] 対象が見つかりません (.js-reveal/.js-inview/[data-reveal])');
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  targets.forEach(el => io.observe(el));
+});

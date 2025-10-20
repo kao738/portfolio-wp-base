@@ -1728,5 +1728,18 @@ table {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
-body{outline:6px solid red !important}
+
+
+/* ==== TEMP: Reveal強制ON（JS不発でも見えるように） ==== */
+/* ==== reveal: 初期/表示状態（集約） ==== */
+.js-reveal, .js-inview, [data-reveal]{
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.js-reveal.is-visible,
+.js-inview.is-visible,
+[data-reveal].is-visible{
+  opacity: 1;
+  transform: none;
+}
