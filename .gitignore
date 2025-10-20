@@ -1,3 +1,15 @@
 assets/scss/*.css
 assets/scss/*.map
 assets/scss/*.css.map
+# mac
+.DS_Store
+assets/**/.DS_Store
+
+# generated
+assets/scss/*.css
+assets/scss/*.css.map
+*.map
+*_backup.*
+
+# sandbox
+mentor-check/
