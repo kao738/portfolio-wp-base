@@ -103,16 +103,17 @@ html {
   }
 }
 /* 初期は非表示にしておく */
-/* .back-to-top{
+.back-to-top {
   opacity: 0;
   pointer-events: none;
-  transition: opacity .25s ease;
 }
-/* Heroを通過したら（＝クラスが付いたら）表示 
+
+/* Heroを通過したら（＝クラスが付いたら）表示 */
+.back-to-top.is-visible {
   opacity: 1;
   pointer-events: auto;
+}
 
-} */
 /* ===== header ===== */
 .site-header {
   position: relative;
@@ -288,7 +289,8 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center gap 24px;
+    justify-content: center;
+    gap: 24px;
     text-align: center;
   }
   .hero .hero-visual {
@@ -485,7 +487,7 @@ html {
   border-radius: 6px;
   background: #e6f0e6;
   color: #245e62;
-  font-size: 0.5rem;
+  font-size: 0.875rem;
   font-family: sans-serif;
 }
 .about {
@@ -591,39 +593,7 @@ html {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* 汎用ボタン（前に作ったパターン） */
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.4rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 9999px;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-
-.btn--outline {
-  border: 2px solid #f0c75e;
-  color: #f0c75e;
-  background: transparent;
-}
-
-.btn--outline:hover {
-  background: #f0c75e;
-  color: #fff;
-}
-
-.btn--solid {
-  background: #f0c75e;
-  color: #fff;
-  border: 2px solid #f0c75e;
-}
-
-.btn--solid:hover {
-  background: #e0b24e;
-  border-color: #e0b24e;
-}
-
+/* サイズ修飾子 */
 .btn--lg {
   padding: 0.8rem 1.6rem;
   font-size: 1.05rem;
@@ -910,7 +880,7 @@ html {
 
 .contact {
   padding: 80px 20px;
-  background: url("../img/bg-asanoha.png") repeat;
+  background: url("../imgs/bg-asanoha.png") repeat;
   text-align: center;
 }
 .contact__title {
@@ -960,5 +930,3 @@ html {
 .c-form button:hover {
   opacity: 0.9;
 }
-
-/*# sourceMappingURL=style.css.map */
